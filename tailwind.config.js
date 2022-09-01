@@ -9,7 +9,12 @@ module.exports = {
         colors: {
             spaceGray: "#DEDAD0",
             gold : "#AA983F",
+            brown : "#635C44",
         },
+        borderRadius: {
+            'large': '50px',
+        },
+
         extend: {},
     },
     plugins: [],

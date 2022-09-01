@@ -17,7 +17,7 @@
         <div class="bg-spaceGray w-full h-8">
         </div>
         <div class="bg-white w-auto h-28">
-            <img class="pl-8 h-[70%] md:h-[100%] md:h-28"  src="{{ URL('img/Header.jpg') }}">
+            <img class="pl-8  h-[70%] md:h-[100%] md:h-28 lg:pl-[10%]"  src="{{ URL('img/Header.jpg') }}">
         </div>
         
 

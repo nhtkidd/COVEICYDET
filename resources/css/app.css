@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* estilo para todos los inputs de los diferentes formularios */
+    .inputsStyle {
+        width: 100%;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        /* appearance: none; */
+        border-radius: 0.25rem;
+        padding-top: 0.5rem; /* 8px */
+        padding-bottom: 0.5rem; /* 8px */
+        padding-left: 0.75rem; /* 12px */
+        padding-right: 0.75rem; /* 12px */
+        color: rgb(55 65 81);
+        margin-bottom: 0.75rem; /* 12px */
+        line-height: 1.25;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        /* class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" */
+    }
+    .labelStyle{
+        display: block;
+        margin-bottom: 0.5rem; /* 8px */
+        font-weight:bold;
+        color: rgb(55 65 81);
+        /* block mb-2 text-md font-bold text-gray-700 2xl:text-xl */
+    }
+}
