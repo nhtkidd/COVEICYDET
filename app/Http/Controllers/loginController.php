@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\registerRequest;
+use App\Models\Escolaridad;
+use App\Models\Sede;
+use App\Models\Usuario;
 
 class loginController extends Controller
 {
-   public function login(){
-      return view('screens.login');
-  }
+    public function login()
+    {
+        $escolaridades = Escolaridad::all();
+        $sedes = Sede::all();
+        return view('screens.login', compact('sedes', 'escolaridades'));
+    }
 
-  public function store(Request $request){
-      //aqui va la logica para el registro
-      return $request;
-  }
+    public function store(registerRequest $request)
+    {
+        //return $request;
+
+    $userr = Usuario::create($request->validated());
+
+    
+
+    }
 }
