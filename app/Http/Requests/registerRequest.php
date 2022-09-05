@@ -35,8 +35,6 @@ class registerRequest extends FormRequest
             'sector' => 'required',
             'fk_idSede' => 'required',
             'terminos' => 'required'
-
-
         ];
     }
 }

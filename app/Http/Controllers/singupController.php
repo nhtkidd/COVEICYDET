@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Requests\registerRequest;
+use App\Models\Escolaridad;
+use App\Models\Sede;
 use App\Models\Usuario;
-use Illuminate\Http\Request;
+
+
 
 class singupController extends Controller
 {
-    public function singup(){
-    //    get al users
-        //$usuario = Usuario::all();
-
-        return view('screens.singup');
+    public function singup()
+    {
+        $escolaridades = Escolaridad::all();
+        $sedes = Sede::all();
+        return view('screens.singup', compact('sedes', 'escolaridades'));
     }
 
-    public function compare(Request $request){
-        //aqui va la logica para el inicio de sesión
+    public function store(registerRequest $request)
+    {
         return $request;
+
+        //$userr = Usuario::create($request->validated());
+        //return redirect('coveicydet/singup')->with('success','Cuenta creada con éxito');
+
     }
 }

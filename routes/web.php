@@ -22,14 +22,14 @@ Route::get('/', function () {
 
 //controlador para inicio de sesión
 
-Route::get('coveicydet/singup', [singupController::class, 'singup'])->name('coveicydet.singup');
-Route::post('singup', [singupController::class, 'compare'])->name('coveicydet.compare');
+Route::get('coveicydet/login', [loginController::class, 'login'])->name('coveicydet.login');
+Route::post('login', [loginController::class, 'compare'])->name('coveicydet.compare');
 
 
 //controlador para el registro de usuario
 
-Route::get('coveicydet/login', [loginController::class, 'login'])->name('coveicydet.login');
-Route::post('login', [loginController::class, 'store'])->name('coveicydet.store');
+Route::get('coveicydet/singup', [singupController::class, 'singup'])->name('coveicydet.singup');
+Route::post('singup', [singupController::class, 'store'])->name('coveicydet.store');
 
 
 //controlador para el formulario de la propuesta
