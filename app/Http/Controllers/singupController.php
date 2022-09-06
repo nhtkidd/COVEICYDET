@@ -23,7 +23,7 @@ class singupController extends Controller
         //return $request;
 
         $userr = Usuario::create($request->validated());
-        return redirect('coveicydet/login')->with('success','Cuenta creada con éxito');
+        return view('messages.success');
 
     }
 }

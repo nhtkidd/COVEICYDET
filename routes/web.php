@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('screens.home');
 })->name('coveicydet.home');
 
+
+
 //controlador para inicio de sesión
 
 Route::get('coveicydet/login', [loginController::class, 'login'])->name('coveicydet.login');
