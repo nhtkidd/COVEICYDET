@@ -12,7 +12,7 @@ class Usuario extends Model
 
 
 
-    protected $fillable = ['nombre', 'apellidos', 'curp', 'correo', 'contrasena', 'sector', 'fk_idEscolaridad', 'fk_idSede', 'terminos'];
+    protected $fillable = ['nombre', 'apellidos', 'curp', 'correo', 'contrasena', 'sector','participacionPresencial', 'fk_idEscolaridad', 'fk_idSede', 'terminos'];
 
     // public function setPasswordAttribute($value)
     // {

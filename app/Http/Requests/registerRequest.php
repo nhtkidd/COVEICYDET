@@ -24,7 +24,9 @@ class registerRequest extends FormRequest
     public function rules()
     {
 
+        // return[
 
+        // ];
         return [
             'nombre' => 'required',
             'apellidos' => 'required',
@@ -33,7 +35,8 @@ class registerRequest extends FormRequest
             'contrasena' => 'required|min:8',
             'fk_idEscolaridad' => 'required',
             'sector' => 'required',
-            'fk_idSede' => 'required',
+            'participacionPresencial'=>'required',
+            'fk_idSede' => 'sometimes|required',
             'terminos' => 'required'
         ];
     }

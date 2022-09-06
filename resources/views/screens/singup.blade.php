@@ -60,7 +60,7 @@
                         <label class="labelStyle 2xl:text-xl" for="curp">
                             CURP
                         </label>
-                        <input maxlength="18" class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
+                        <input minlength="18" maxlength="18" class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
                             value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP" />
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
@@ -119,10 +119,10 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             ¿Tu participación será presencial?
                         </label>
-                        <input type="radio" id="participacionSi" name="participacion" value="si"
+                        <input type="radio" id="participacionSi" name="participacionPresencial" value="si" required
                             onchange="participaSelector()">
                         <label for="si">Si</label><br>
-                        <input type="radio" id="participacionNo" name="participacion" value="no"
+                        <input type="radio" id="participacionNo" name="participacionPresencial" value="no" required
                             onchange="participaSelector()">
                         <label for="no">No</label><br>
                     </div>
@@ -131,7 +131,7 @@
                             <label class="labelStyle 2xl:text-xl" for="fk_idSede">
                                 Participacion presencial
                             </label>
-                            <select name="fk_idSede" value="{{ old('fk_idSede') }}" id="sedeSelect" required disabled
+                            <select name="fk_idSede" value="" id="sedeSelect" required disabled
                                 class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 <option>Selecciona tu sede de Participacion</option>
                                 <optgroup label="Sedes">

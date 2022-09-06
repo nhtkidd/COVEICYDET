@@ -20,10 +20,10 @@ class singupController extends Controller
 
     public function store(registerRequest $request)
     {
-        return $request;
+        //return $request;
 
-        //$userr = Usuario::create($request->validated());
-        //return redirect('coveicydet/singup')->with('success','Cuenta creada con éxito');
+        $userr = Usuario::create($request->validated());
+        return redirect('coveicydet/login')->with('success','Cuenta creada con éxito');
 
     }
 }
