@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\registerRequest;
 use App\Models\Escolaridad;
+use App\Models\Headquarter;
+use App\Models\Schooling;
 use App\Models\Sede;
-use App\Models\Usuario;
+use App\Models\User;
 
 
 
@@ -13,17 +15,17 @@ class singupController extends Controller
 {
     public function singup()
     {
-        $escolaridades = Escolaridad::all();
-        $sedes = Sede::all();
+        $escolaridades = Schooling::all();
+        $sedes = Headquarter::all();
         return view('screens.singup', compact('sedes', 'escolaridades'));
     }
 
     public function store(registerRequest $request)
     {
-        //return $request;
-
-        $userr = Usuario::create($request->validated());
-        return view('messages.success');
+        //  return $request;
+        //  $userr = $this->create($request->all());
+        $userr = User::create($request->validated());
+         return view('messages.success');
 
     }
 }

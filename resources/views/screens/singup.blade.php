@@ -13,44 +13,44 @@
                 @csrf
                 <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                     <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
-                        <label class="labelStyle 2xl:text-xl" for="nombre">
+                        <label class="labelStyle 2xl:text-xl" for="name">
                             Nombre(s)
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="nombre"
-                            value="{{ old('nombre') }}" placeholder="Ingrese su(s) nombre(s)" />
-                        @error('nombre')
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" />
+                        @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="md:ml-2 2xl:my-4">
-                        <label class="labelStyle 2xl:text-xl" for="apellidos">
+                        <label class="labelStyle 2xl:text-xl" for="last_name">
                             Apellidos
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="apellidos"
-                            value="{{ old('apellidos') }}" placeholder="Ingrese sus apellidos" />
-                        @error('apellidos')
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" />
+                        @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                     <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
-                        <label class="labelStyle 2xl:text-xl" for="correo">
+                        <label class="labelStyle 2xl:text-xl" for="email">
                             Email
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="correo"
-                            value="{{ old('correo') }}" placeholder="Ingrese su correo electronico" />
-                        @error('correo')
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="email"
+                            value="{{ old('email') }}" placeholder="Ingrese su email electronico" />
+                        @error('email')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="md:ml-2 2xl:my-4">
-                        <label class="labelStyle 2xl:text-xl" for="contrasena">
+                        <label class="labelStyle 2xl:text-xl" for="password">
                             Contraseña
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="contrasena"
-                            value="{{ old('contrasena') }}" placeholder="Genere una contraseña de almenos 8 caracteres" />
-                        @error('contrasena')
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="password"
+                            value="{{ old('password') }}" placeholder="Genere una contraseña de almenos 8 caracteres" />
+                        @error('password')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     </div>
@@ -60,21 +60,21 @@
                         <label class="labelStyle 2xl:text-xl" for="curp">
                             CURP
                         </label>
-                        <input minlength="18" maxlength="18" class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
+                        <input  style="text-transform: uppercase;" minlength="18" maxlength="18" class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
                             value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP" />
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="md:ml-2 2xl:my-4">
-                        <label class="labelStyle 2xl:text-xl" for="fk_idEscolaridad">
+                        <label class="labelStyle 2xl:text-xl" for="fk_idEducations">
                             Escolaridad
                         </label>
-                        <select name="fk_idEscolaridad" class="inputsStyle focus:outline-none focus:shadow-outline"
-                            value="{{ old('fk_idEscolaridad') }}" required>
+                        <select name="fk_idEducations" class="inputsStyle focus:outline-none focus:shadow-outline"
+                            value="{{ old('fk_idEducations') }}" required>
                             <optgroup label="Seleccione su escolaridad">
                                 @foreach ($escolaridades as $escolaridad)
-                                    <option value="{{ $escolaridad->idEscolaridad }}">{{ $escolaridad->nombre }}</option>
+                                    <option value="{{ $escolaridad->idEducations}}">{{ $escolaridad->name }}</option>
                                 @endforeach
                             </optgroup>
                         </select>
@@ -119,24 +119,24 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             ¿Tu participación será presencial?
                         </label>
-                        <input type="radio" id="participacionSi" name="participacionPresencial" value="si" required
+                        <input type="radio" id="participacionSi" name="participation" value="si" required
                             onchange="participaSelector()">
                         <label for="si">Si</label><br>
-                        <input type="radio" id="participacionNo" name="participacionPresencial" value="no" required
+                        <input type="radio" id="participacionNo" name="participation" value="no" required
                             onchange="participaSelector()">
                         <label for="no">No</label><br>
                     </div>
                     <div class="md:ml-2 2xl:my-4">
                         <div class="md:ml-2 2xl:my-4">
-                            <label class="labelStyle 2xl:text-xl" for="fk_idSede">
+                            <label class="labelStyle 2xl:text-xl" for="fk_idHeadquarters">
                                 Participacion presencial
                             </label>
-                            <select name="fk_idSede" value="" id="sedeSelect" required disabled
+                            <select name="fk_idHeadquarters" value="" id="sedeSelect" required disabled
                                 class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 <option>Selecciona tu sede de Participacion</option>
                                 <optgroup label="Sedes">
                                     @foreach ($sedes as $sede)
-                                        <option value="{{ $sede->idSede }}">{{ $sede->nombre }}</option>
+                                        <option value="{{ $sede->idHeadquarters }}">{{ $sede->name }}</option>
                                     @endforeach
                             </select>
                         </div>
@@ -145,7 +145,7 @@
 
                 <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                     <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
-                        <input type="checkbox" name="terminos" value="true" required>
+                        <input type="checkbox" name="conditions" value="true" required>
                         <label>Aceptas los <a class="text-sky-800">terminos y condiciones</a></label>
                     </div>
                     <div class="md:ml-2 2xl:my-4">

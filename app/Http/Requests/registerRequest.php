@@ -23,21 +23,18 @@ class registerRequest extends FormRequest
      */
     public function rules()
     {
-
-        // return[
-
-        // ];
+        // return[];
         return [
-            'nombre' => 'required',
-            'apellidos' => 'required',
-            'curp' =>  'required|unique:usuarios', //no te olivdes de poner de nuevos los unique
-            'correo' => 'required|email|unique:usuarios',
-            'contrasena' => 'required|min:8',
-            'fk_idEscolaridad' => 'required',
+            'name' => 'required',
+            'last_name' => 'required',
+            'curp' =>  'required|unique:users', //no te olivdes de poner de nuevos los unique
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+             'fk_idEducations' => 'required',
             'sector' => 'required',
-            'participacionPresencial'=>'required',
-            'fk_idSede' => 'sometimes|required',
-            'terminos' => 'required'
+            'participation'=>'required',
+            'fk_idHeadquarters' => 'sometimes|required',
+            'conditions' => 'required'
         ];
     }
 }

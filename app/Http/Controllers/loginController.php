@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Http\Requests\loginRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class loginController extends Controller
 {
     public function login()
     {
-        //    get al users
-        //$usuario = Usuario::all();
 
         return view('screens.login');
     }
 
-    public function compare(Request $request)
+    public function compare(loginRequest $request)
     {
-        //aqui va la logica para el inicio de sesión
-        return $request;
+        
+         
+
+    }
+
+
+
+
+
+    public function authenticated(Request $request, $usuario)
+    {
+        return redirect('coveicydet/propuesta');
     }
 }
