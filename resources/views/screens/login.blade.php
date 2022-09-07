@@ -1,4 +1,3 @@
-
 @extends('layout.layout')
 
 @section('title', 'Inicia sesión')
@@ -7,7 +6,7 @@
 
     <div id="wrapper" class="flex flex-wrap w-screen ">
         <div id="1" class="w-full hidden lg:flex items-center justify-center lg:w-1/2 lg:h-[100vh-176px] "
-            style="height: calc(100vh -  176px )" >
+            style="height: calc(100vh -  176px )">
             <h1 class="text-3xl 2xl:text-5xl font-bold p-[20%]">Inicia sesión en la plataforma
                 para participar.
             </h1>
@@ -26,6 +25,7 @@
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="email" type="email" placeholder="Email" name="email" required>
                     </div>
+
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm 2xl:text-xl font-bold mb-2" for="password">
                             Password
@@ -33,8 +33,13 @@
                         <input
                             class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                             id="password" type="password" placeholder="**********" name="password" required>
-                        <a href="" class="text-stone-500 hover:text-stone-800 2xl:text-lg">¿Olvidaste la contraseña?</a>
+                        @error('message')
+                          <small class="text-red-800">Email o contraseña incorrecta</small><br>
+                        @enderror
+                        <a href="" class="text-stone-500 hover:text-stone-800 2xl:text-lg">¿Olvidaste la
+                            contraseña?</a>
                     </div>
+
                     <div class="mb-3">
                         <button
                             class="bg-[#635C44] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
