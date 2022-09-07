@@ -20,7 +20,7 @@ class loginController extends Controller
 
     public function compare(loginRequest $request)
     {
-    //     $credentials = $request->getCredentials();
+        $credentials = $request->getCredentials();
        
     //     if(auth()->attempt($credentials)==false){
     //         return back()->withErrors([
@@ -29,9 +29,14 @@ class loginController extends Controller
     //     }
     //     return redirect()->route('coveicydet.propuesta');
     // }
-        $credentials = $request->getCredentials();
-        Auth::login($credentials);
-        return  'success';
+
+       $query = Auth::validate($credentials);
+
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
+        $mamate = Auth::login($user);
+        dd($mamate);
+    
         // if (!Auth::validate($credentials)) :
         //     dd('error');
         //     return redirect()->to('screens.login')
