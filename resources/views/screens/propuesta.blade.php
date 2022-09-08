@@ -4,8 +4,15 @@
 
 @section('content')
 
-
-    @if (auth()->check())
+    @auth
+            <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
+                
+                    <a class="px-5 font-bold text-lg text-red-800" href="{{ route('coveicydet.destroy') }}">Cerrar sesión</a>
+                    <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
+                
+              
+                
+            </div>
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
                 <section id="bienvenida" class="w-full h-[40vh] md:h-[35%] lg:h-[50%]  p-[5%] text-center  ">
@@ -140,8 +147,7 @@
                                 bienestar
                             </label>
                         </div>
-                        <div
-                            class=" md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                        <div class=" md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
                             <input id="bordered-checkbox-4" type="checkbox" value="Educación de calidad" name="ods[]"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="bordered-checkbox-4"
@@ -174,9 +180,19 @@
                 </form>
             </div>
         </div>
-    @else
-        <h1 class="text-3xl font-bold text-center mt-10">Inicia sesión para ver el contenido de esta pagina</h1>
-    @endif
+    @endauth
+    @guest
+        <div class="w-full grid items-center justify-center ">
+            <h1 class="text-3xl font-bold text-center  mt-5">Inicia sesión para ver el contenido</h1>
+            <a class="text-xl text-white font-bold text-center bg-[#AA983F] hover:bg-[#8c7e36] p-2 m-[10%] rounded focus:outline-none focus:shadow-outline "   href="{{ route('coveicydet.login') }}">Inicia sesión</a>
+        </div>
+
+
+
+
+    @endguest
+
+
 
 
 

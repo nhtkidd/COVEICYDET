@@ -8,6 +8,7 @@ class propuestaController extends Controller
 {
     public function propuesta()
     {
+
         return view('screens.propuesta');
     }
 

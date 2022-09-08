@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('coveicydet/login', [loginController::class, 'login'])->name('coveicydet.login');
 Route::post('login', [loginController::class, 'compare'])->name('coveicydet.compare');
-
+Route::get('logout', [loginController::class, 'destroy'])->name('coveicydet.destroy');
 
 //controlador para el registro de usuario
 
