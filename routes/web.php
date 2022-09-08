@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('screens.home');
-})->name('coveicydet.home');
+})->name('proveicydet.home');
 
 
 
 //controlador para inicio de sesión
 
-Route::get('coveicydet/login', [loginController::class, 'login'])->name('coveicydet.login');
-Route::post('login', [loginController::class, 'compare'])->name('coveicydet.compare');
-Route::get('logout', [loginController::class, 'destroy'])->name('coveicydet.destroy');
+Route::get('proveicydet/login', [loginController::class, 'login'])->name('proveicydet.login');
+Route::post('login', [loginController::class, 'compare'])->name('proveicydet.compare');
+Route::get('logout', [loginController::class, 'destroy'])->name('proveicydet.destroy');
 
 //controlador para el registro de usuario
 
-Route::get('coveicydet/singup', [singupController::class, 'singup'])->name('coveicydet.singup');
-Route::post('singup', [singupController::class, 'store'])->name('coveicydet.store');
+Route::get('proveicydet/singup', [singupController::class, 'singup'])->name('proveicydet.singup');
+Route::post('singup', [singupController::class, 'store'])->name('proveicydet.store');
 
 
 //controlador para el formulario de la propuesta
 
-Route::get('coveicydet/propuesta',[propuestaController::class,'propuesta'])->name('coveicydet.propuesta');
-Route::post('coveicydet/registro/propuesta',[propuestaController::class,'store'])->name('coveicydet.propuesta.store');
+Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
+Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');

@@ -15,7 +15,7 @@ class singupController extends Controller
     public function singup()
     {
         if (Auth::check()) {
-            return redirect()->route('coveicydet.propuesta');
+            return redirect()->route('proveicydet.propuesta');
         }
         $escolaridades = Schooling::all();
         $sedes = Headquarter::all();
@@ -41,7 +41,7 @@ class singupController extends Controller
         
         if ($edad >=18) { //VALIDAR SI ES MAYOR DE EDAD
             $userr = User::create($request->validated());
-            return view('screens.login');
+            return view('messages.success');
         }else{
         return back()->withErrors([
             'message' => 'Para participar necesitas ser mayor de edad'

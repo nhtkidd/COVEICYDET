@@ -15,7 +15,7 @@
             @enderror
             <h1 class="text-2xl 2xl:text-3xl font-bold lg:w-[35%] 2xl:w-[25%] pb-5">Registrate en la plataforma para
                 participar</h1>
-            <form action="{{ route('coveicydet.store') }}" method="post">
+            <form action="{{ route('proveicydet.store') }}" method="post">
                 @csrf
                 <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                     <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">

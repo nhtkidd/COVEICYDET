@@ -11,7 +11,7 @@
             <h4 class="text-2xl md:text-2xl lg:text-xl 2xl:text-2xl font-normal">Has sido registrado con éxtio</h4>
             <h5>Por favor, proceda a iniciar sesión para continuar</h5>
             <br>
-            <a href="{{route('coveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Continuar</a>
+            <a href="{{route('proveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Continuar</a>
         </div>
         
 

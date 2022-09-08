@@ -7,7 +7,7 @@
     @auth
             <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
                 
-                    <a class="px-5 font-bold text-lg text-red-800" href="{{ route('coveicydet.destroy') }}">Cerrar sesión</a>
+                    <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
                     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
             </div>
         <div id="father" class="flex items-center justify-center h-auto">
@@ -26,7 +26,7 @@
                     </div>
                 </section>
                 {{-- FORMULARIO --}}
-                <form action="{{ route('coveicydet.propuesta.store') }}" method="post" class=" p-[5%] mt-5 lg:mt-0  ">
+                <form action="{{ route('proveicydet.propuesta.store') }}" method="post" class=" p-[5%] mt-5 lg:mt-0  ">
                     @csrf
                     <div class="my-3">
                         <label class="labelStyle 2xl:text-xl">
@@ -160,7 +160,7 @@
     @guest
         <div class="w-full grid items-center justify-center ">
             <h1 class="text-3xl font-bold text-center  mt-5">Inicia sesión para ver el contenido</h1>
-            <a class="text-xl text-white font-bold text-center bg-[#AA983F] hover:bg-[#8c7e36] p-2 m-[10%] rounded focus:outline-none focus:shadow-outline "   href="{{ route('coveicydet.login') }}">Inicia sesión</a>
+            <a class="text-xl text-white font-bold text-center bg-[#AA983F] hover:bg-[#8c7e36] p-2 m-[10%] rounded focus:outline-none focus:shadow-outline "   href="{{ route('proveicydet.login') }}">Inicia sesión</a>
         </div>
 
 

@@ -14,7 +14,7 @@
         <div id="2" class="w-full lg:w-1/2 flex mt-[10%] lg:mt-0 lg:items-center justify-center "
             style="height: calc(100vh -  176px )">
             <div class="bg-white w-[90%] h-[65%] lg:w-[70%] lg:h-[90%] 2xl:h-[65%] rounded-br-large">
-                <form action="{{ route('coveicydet.compare') }}" method="post" class="p-10">
+                <form action="{{ route('proveicydet.compare') }}" method="post" class="p-10">
                     @csrf
                     <h1 class="text-2xl 2xl:text-4xl font-bold">Inicia sesión</h1>
                     <div class="my-4">
@@ -51,7 +51,7 @@
                         <label class="block text-stone-500 mb-2 2xl:text-lg">
                             ¿No estás registrado?
                         </label>
-                        <a href="{{ route('coveicydet.singup') }}"
+                        <a href="{{ route('proveicydet.singup') }}"
                             class="bg-[#AA983F] hover:bg-[#8c7e36] text-center text-white 2xl:text-xl font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button">
                             Registrate

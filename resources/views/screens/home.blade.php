@@ -1,6 +1,6 @@
 @extends('layout.layout')
 
-@section('title', 'COVEICYDET')
+@section('title', 'PROVEICYDET')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 Para más informacion, ingresa a la plataforma.
             </h1>
             <br>
-            <a href="{{route('coveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Ingresa</a>
+            <a href="{{route('proveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Ingresa</a>
         </div>
         
 

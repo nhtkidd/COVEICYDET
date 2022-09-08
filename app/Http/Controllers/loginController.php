@@ -13,7 +13,7 @@ class loginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('coveicydet.propuesta');
+            return redirect()->route('proveicydet.propuesta');
         }
         return view('screens.login');
     }
@@ -25,13 +25,13 @@ class loginController extends Controller
 
         if (Auth::attempt($credentials)) {
             Auth::check();
-            return redirect()->route('coveicydet.propuesta');
+            return redirect()->route('proveicydet.propuesta');
         }
         return back()->withErrors(['message' => 'El correo o la contraseña son incorrectos']);
 
         // RECUERDO DE LOS 10000 INTENTOS QUE HICE PARA QUE FUNCIONARA EL LOGIN}
         // if(Auth::attempt($credentials)) {
-        //     return redirect()->route('coveicydet.propuesta');       
+        //     return redirect()->route('proveicydet.propuesta');       
         // }
 
         // return $credentials;
@@ -51,7 +51,7 @@ class loginController extends Controller
         //             'message' => 'El correo o la contraseña son incorrectos'
         //         ]);
         //     }
-        //     return redirect()->route('coveicydet.propuesta');
+        //     return redirect()->route('proveicydet.propuesta');
         // }
 
         //    $query = Auth::validate($credentials);
@@ -74,14 +74,14 @@ class loginController extends Controller
         // return $this->authenticated($request, $user);
           // protected function authenticated(Request $request, $user)
     // {
-    //     return redirect()->route('coveicydet.propuesta');
+    //     return redirect()->route('proveicydet.propuesta');
     // }
     }
     public function destroy(){
 
         auth()->logout();
 
-        return redirect()->route('coveicydet.login');
+        return redirect()->route('proveicydet.login');
     }
   
 }
