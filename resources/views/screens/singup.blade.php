@@ -7,6 +7,12 @@
     <div id="father" class="flex items-center justify-center h-auto">
         <div id="wrapper"
             class="bg-white w-[90%] h-auto lg:w-[90%] lg:h-[90%] 2xl:h-[90%] rounded-br-large p-5 md:p-16 my-5">
+            @error('message')
+                <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                    <p class="font-bold">Error</p>
+                    <p>Para participar necesitas ser mayor de edad.</p>
+                </div>
+            @enderror
             <h1 class="text-2xl 2xl:text-3xl font-bold lg:w-[35%] 2xl:w-[25%] pb-5">Registrate en la plataforma para
                 participar</h1>
             <form action="{{ route('coveicydet.store') }}" method="post">
@@ -60,7 +66,8 @@
                         <label class="labelStyle 2xl:text-xl" for="curp">
                             CURP
                         </label>
-                        <input  style="text-transform: uppercase;" minlength="18" maxlength="18" class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
+                        <input style="text-transform: uppercase;" minlength="18" maxlength="18"
+                            class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
                             value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP" />
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
@@ -74,7 +81,7 @@
                             value="{{ old('fk_idEducations') }}" required>
                             <optgroup label="Seleccione su escolaridad">
                                 @foreach ($escolaridades as $escolaridad)
-                                    <option value="{{ $escolaridad->idEducations}}">{{ $escolaridad->name }}</option>
+                                    <option value="{{ $escolaridad->idEducations }}">{{ $escolaridad->name }}</option>
                                 @endforeach
                             </optgroup>
                         </select>
