@@ -9,9 +9,6 @@
                 
                     <a class="px-5 font-bold text-lg text-red-800" href="{{ route('coveicydet.destroy') }}">Cerrar sesión</a>
                     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
-                
-              
-                
             </div>
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
@@ -102,10 +99,9 @@
                         </label>
                         <select name="lugarImpacto" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la region</option>
-                            <option>1.- Huasteca alta</option>
-                            <option>1.- Huasteca baja</option>
-                            <option>3.- Totonaca</option>
-                            <option>4.- Nautla</option>
+                            @foreach ($places as $place)
+                            <option value="{{$place->idPlace}}">{{$place->name}}</option>
+                        @endforeach
                         </select>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
@@ -123,39 +119,19 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
-                        <div class="md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                            <input id="bordered-checkbox-1" type="checkbox" value="Fin de la pobreza" name="ods[]"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="bordered-checkbox-1"
-                                class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">1.-Fin de la
-                                pobreza
-                            </label>
-                        </div>
-                        <div class=" md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                            <input id="bordered-checkbox-2" type="checkbox" value="Hambre cero" name="ods[]"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="bordered-checkbox-2"
-                                class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">2.- Hambre
-                                cero
-                            </label>
-                        </div>
-                        <div class=" md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                            <input id="bordered-checkbox-3" type="checkbox" value="Salud y bienestar" name="ods[]"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="bordered-checkbox-3"
-                                class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">3.- Salud y
-                                bienestar
-                            </label>
-                        </div>
-                        <div class=" md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                            <input id="bordered-checkbox-4" type="checkbox" value="Educación de calidad" name="ods[]"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="bordered-checkbox-4"
-                                class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">4.- Educación
-                                de
-                                calidad
-                            </label>
-                        </div>
+                            @foreach ($ods as $odsOption)
+                            <div class="md:w-[60%] flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                <input id="{{$odsOption->idOds}}" type="checkbox" value="{{$odsOption->objetive}}" name="ods[]"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="{{$odsOption->idOds}}"
+                                    class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">{{$odsOption->objetive}}
+                                </label>
+                            </div>
+                            @endforeach
+
+
+                  
+                      
                         {{-- BOTON SUBMIT --}}
                         <div class="my-5">
                             <button
