@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\propuestaController;
 use App\Http\Controllers\singupController;
@@ -33,8 +34,11 @@ Route::get('logout', [loginController::class, 'destroy'])->name('proveicydet.des
 Route::get('proveicydet/singup', [singupController::class, 'singup'])->name('proveicydet.singup');
 Route::post('singup', [singupController::class, 'store'])->name('proveicydet.store');
 
+//controller para el inicio
+Route::get('proveicydet/inicio',[homeController::class, 'inicio'])->name('proveicydet.inicio');
 
 //controlador para el formulario de la propuesta
 
 Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
+Route::get('proveicydet/editPropuest/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
 Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');

@@ -47,23 +47,18 @@
                         </label>
                         <div class="bg-spaceGray w-full h-[30vh]" style="overflow-y: scroll" id="resultados">
                             <!-- M O S T R A R - A N E X O S -->
-                            @include('screens.annexes')
-                        </div>
 
-                        <script type="text/javascript">
-                        
-                        window.addEventListener('load',function(){
-                            document.getElementById('area').addEventListener('onclick',function(){
-                                fetch(`/proveicydet/editPropuesta?area=${document.getElementById("area").value}`,{
-                                    method: 'get'
-                                })
-                                .then(response => response.text())
-                                .then(html => {
-                                    document.getElementById('resultados').innerHTML += html
-                                })
-                            })
-                        })
-                    </script>
+                            @foreach ($annexes as $anexo)
+                                <div class="md:w-full flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                    <input id="bordered-radio-{{ $anexo->idAnnexes }}" type="radio" value="{{ $anexo->idAnnexes }}" name="annexes"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="bordered-radio-{{ $anexo->idAnnexes }}"
+                                    class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">
+                                    {{ $anexo->idAnnexes }}- {{ $anexo->problematic }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="my-3">
                         <label class="labelStyle 2xl:text-xl">
@@ -74,7 +69,7 @@
 
                         </label>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
-                            name="name" placeholder="Ingresa el nombre de tu propuesa" />
+                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="" />
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Objetivo de la propuesta
 
