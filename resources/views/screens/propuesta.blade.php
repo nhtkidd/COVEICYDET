@@ -50,20 +50,7 @@
                             @include('screens.annexes')
                         </div>
 
-                        <script type="text/javascript">
                         
-                        window.addEventListener('load',function(){
-                            document.getElementById('area').addEventListener('onclick',function(){
-                                fetch(`/proveicydet/editPropuesta?area=${document.getElementById("area").value}`,{
-                                    method: 'get'
-                                })
-                                .then(response => response.text())
-                                .then(html => {
-                                    document.getElementById('resultados').innerHTML += html
-                                })
-                            })
-                        })
-                    </script>
                     </div>
                     <div class="my-3">
                         <label class="labelStyle 2xl:text-xl">
