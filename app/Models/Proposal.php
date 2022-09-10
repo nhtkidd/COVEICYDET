@@ -17,7 +17,9 @@ class Proposal extends Model
         'finished',
         'fk_idPlaces',
         'fk_idOds',
-        'fk_idUsers'
+        'fk_idUsers',
+        'area',
+        'fk_idAnnexe'
     ];
 
     public $timestamps = false;

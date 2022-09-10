@@ -32,7 +32,9 @@ class propuestaRequest extends FormRequest
             'finished' => 'Required',
             'fk_idPlaces' => 'Required',
             'fk_idOds' => 'Required',
-            'fk_idUsers' => 'Required'
+            'fk_idUsers' => 'Required',
+            'area' => 'Required',
+            'fk_idAnnexe' => 'Required'
         ];
 
     }

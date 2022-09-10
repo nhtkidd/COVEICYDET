@@ -71,10 +71,10 @@
                             <option value="3" >Económico</option>
                             <option value="4" >Tecnológico</option>
                         </select>-->
-                        <input type="radio" name="area" id="primero"><label for="primero"> Ambiental</label><br>
-                        <input type="radio" name="area" id="segundo"><label for="segundo"> Social</label><br>
-                        <input type="radio" name="area" id="tercero"><label for="tercero"> Economico</label><br>
-                        <input type="radio" name="area" id="cuarto"><label for="cuarto"> Tecnológico</label><br>
+                        <input type="radio" name="area" id="primero" value="Ambiental"><label for="primero"> Ambiental</label><br>
+                        <input type="radio" name="area" id="segundo" value="Social"><label for="segundo"> Social</label><br>
+                        <input type="radio" name="area" id="tercero" value="Economico"><label for="tercero"> Economico</label><br>
+                        <input type="radio" name="area" id="cuarto" value="Tecnologico"><label for="cuarto"> Tecnológico</label><br>
                     </div>
                     
                     <div class="my-3">

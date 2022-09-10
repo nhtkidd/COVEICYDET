@@ -32,17 +32,10 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
-                        <!--<select name="area" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
-                            <option value="">Seleccione el área</option>
-                            <option value="1" id="area">Ambiental</option>
-                            <option value="2" id="segundo">Social</option>
-                            <option value="3" id="tercero">Económico</option>
-                            <option value="4" >Tecnológico</option>
-                        </select>-->
-                        <input type="radio" name="area" id="primero"><label for="primero"> Ambiental</label><br>
-                        <input type="radio" name="area" id="segundo"><label for="segundo"> Social</label><br>
-                        <input type="radio" name="area" id="tercero"><label for="tercero"> Economico</label><br>
-                        <input type="radio" name="area" id="cuarto"><label for="cuarto"> Tecnológico</label><br>
+                        <input type="radio" name="area" id="primero" value="Ambiental"><label for="primero"> Ambiental</label><br>
+                        <input type="radio" name="area" id="segundo" value="Social"><label for="segundo"> Social</label><br>
+                        <input type="radio" name="area" id="tercero" value="Economico"><label for="tercero"> Economico</label><br>
+                        <input type="radio" name="area" id="cuarto" value="Tecnologico"><label for="cuarto"> Tecnológico</label><br>
                     </div>
                     
                     <div class="my-3">

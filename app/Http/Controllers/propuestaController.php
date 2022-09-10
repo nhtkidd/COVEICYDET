@@ -49,6 +49,8 @@ class propuestaController extends Controller
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
             $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->area = $request->input('area');
+            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }else{
             $propuesta->name = $request->input('name');
@@ -60,6 +62,8 @@ class propuestaController extends Controller
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
             $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->area = $request->input('area');
+            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }
 
@@ -86,6 +90,8 @@ class propuestaController extends Controller
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
             $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->area = $request->input('area');
+            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         } else {
             //return $request;
@@ -97,6 +103,8 @@ class propuestaController extends Controller
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
             $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->area = $request->input('area');
+            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }
         return redirect()->route('proveicydet.inicio');
