@@ -64,24 +64,17 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
-                        <!--<select name="area" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" id="areas">
-                            <option value="">Seleccione el área</option>
-                            <option value="1" onclick="primerA()">Ambiental</option>
-                            <option value="2" onclick="primerA()">Social</option>
-                            <option value="3" >Económico</option>
-                            <option value="4" >Tecnológico</option>
-                        </select>-->
-                        <input type="radio" name="area" id="primero" value="Ambiental"><label for="primero"> Ambiental</label><br>
-                        <input type="radio" name="area" id="segundo" value="Social"><label for="segundo"> Social</label><br>
-                        <input type="radio" name="area" id="tercero" value="Economico"><label for="tercero"> Economico</label><br>
-                        <input type="radio" name="area" id="cuarto" value="Tecnologico"><label for="cuarto"> Tecnológico</label><br>
+                        <input type="radio" name="area" id="primero" value="Ambiental" @if ("Ambiental" == $data->area) checked @endif ><label for="primero"> Ambiental</label><br>
+                        <input type="radio" name="area" id="segundo" value="Social" @if ("Social" == $data->area) checked @endif><label for="segundo"> Social</label><br>
+                        <input type="radio" name="area" id="tercero" value="Económico" @if ("Económico" == $data->area) checked @endif><label for="tercero"> Economico</label><br>
+                        <input type="radio" name="area" id="cuarto" value="Tecnologico" @if ("Tecnologico" == $data->area) checked @endif><label for="cuarto"> Tecnológico</label><br>
                     </div>
                     
                     <div class="my-3">
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
                         </label>
-                        <div class="bg-spaceGray w-full h-[30vh]" style="overflow-y: scroll" id="resultados">
+                        <div class="bg-spaceGray w-full h-[30vh] overflow-y-auto" id="resultados">
                             <!-- M O S T R A R - A N E X O S -->
                            
 
@@ -812,18 +805,31 @@
                             &nbsp; Lugar o región de impacto (espacio físico):
                         </label>
                         <iframe src="{{URL('docs/Municipios por region.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe>
-                        <select name="fk_idPlaces" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
+                        <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la region</option>
                             @foreach ($places as $place)
                                 @if ($place->idPlace == $data->fk_idPlaces)
-                                    <option value="{{$place->idPlace}}" selected>{{$place->name}}</option>
+                                    <option value="{{$place->name}}" selected>{{$place->name}}</option>
                                 @endif
                                 @if ($place->idPlace != $data->fk_idPlaces)
                                     <option value="{{$place->idPlace}}">{{$place->name}}</option>
                                 @endif
                                 
                             @endforeach
+                            <option value="otros">Otra opción</option>
                         </select>
+
+                        <div id="hiddenInput" class="md:ml-2 2xl:my-4 w-[60%] hidden">
+                            <label class="labelStyle 2xl:text-xl" for="fk_idPlaces">
+                                Especifica tu lugar o región de impacto
+                            </label>
+                            <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="fk_idPlaces"
+                                disabled id="lugarInput" value="{{ old('fk_idPlaces') }}" placeholder="Ingresa la región de impacto" />
+                            @error('fk_idPlaces')
+                                <small class="text-red-800">*{{ $message }}</small>
+                            @enderror
+                        </div>
+
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
@@ -840,7 +846,7 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
-                            <div class="w-[60%] h-[30vh]" style="overflow-y: scroll">
+                            <div class="w-[60%] h-[30vh] flex overflow-y-auto flex-col flex-grow">
                             @foreach ($ods as $odsOption)
                             @if ($odsOption->idOds == $odsOne || $odsOption->idOds == $odsTwo || $odsOption->idOds == $odsThree || $odsOption->idOds == $odsFour || $odsOption->idOds == $odsFive)
                             <div class="md:w-full flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
@@ -944,6 +950,25 @@
                   document.getElementById("enviar").disabled=true;
                 }
             })
+
+            function selectLugar() {
+                d = document.getElementById("lugarSelected").value;
+                var disabled = document.getElementById("lugarInput").disabled;
+                if (d == "otros") {
+                    document.getElementById("lugarInput").disabled = false;
+                    document.getElementById("lugarInput").classList.add('bg-green-200');
+                    document.getElementById("hiddenInput").classList.remove('hidden');
+                    document.getElementById("hiddenInput").classList.add('none');
+                
+                
+                } else {
+                    document.getElementById("lugarInput").disabled = true;
+                    document.getElementById("lugarInput").value = "";
+                    document.getElementById("lugarInput").classList.remove('bg-green-200');
+                    document.getElementById("hiddenInput").classList.add('hidden');
+            }
+
+    };
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         

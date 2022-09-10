@@ -37,37 +37,26 @@ class propuestaController extends Controller
         $propuesta = Proposal::findOrFail($id);
         $finalizado = $request->input("finished");
         $ods = implode(',',$request->input('fk_idOds'));
+        $propuesta->name = $request->input('name');
+        $propuesta->objetive = $request->input('objetive');
+        $propuesta->description = $request->input('description');
+        $propuesta->group = $request->input('group');
+        $propuesta->reach = $request->input('reach');
         
+        $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
+        $propuesta->fk_idOds = $ods;
+        $propuesta->fk_idUsers = $request->input('fk_idUsers');
+        $propuesta->area = $request->input('area');
+        $propuesta->fk_idAnnexe = $request->input('annexes');
         if ($finalizado == 'true') {
             
-            $propuesta->name = $request->input('name');
-            $propuesta->objetive = $request->input('objetive');
-            $propuesta->description = $request->input('description');
-            $propuesta->group = $request->input('group');
-            $propuesta->reach = $request->input('reach');
+            /**/
             $propuesta->finished = $request->input('finished');
-            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $ods;
-            $propuesta->fk_idUsers = $request->input('fk_idUsers');
-            $propuesta->area = $request->input('area');
-            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }else{
-            $propuesta->name = $request->input('name');
-            $propuesta->objetive = $request->input('objetive');
-            $propuesta->description = $request->input('description');
-            $propuesta->group = $request->input('group');
-            $propuesta->reach = $request->input('reach');
-            $propuesta->finished = $request->input('finished');
-            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $ods;
-            $propuesta->fk_idUsers = $request->input('fk_idUsers');
-            $propuesta->area = $request->input('area');
-            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }
 
-    
         return redirect()->route('proveicydet.inicio');
     }
 
