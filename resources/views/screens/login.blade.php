@@ -12,8 +12,8 @@
             </h1>
         </div>
         <div id="2" class="w-full lg:w-1/2 flex mt-[10%] lg:mt-0 lg:items-center justify-center "
-            style="height: calc(100vh -  176px )">
-            <div class="bg-white w-[90%] h-[65%] lg:w-[70%] lg:h-[90%] 2xl:h-[65%] rounded-br-large">
+         >
+            <div class="bg-white w-[90%] h-auto lg:w-[70%] lg:h-[90%] 2xl:h-[65%] rounded-br-large">
                 <form action="{{ route('proveicydet.compare') }}" method="post" class="p-10">
                     @csrf
                     <h1 class="text-2xl 2xl:text-4xl font-bold">Inicia sesión</h1>
@@ -32,7 +32,7 @@
                         </label>
                         <input
                             class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password" type="password" placeholder="**********" name="password" required>
+                            id="password" type="password" placeholder="****" name="password" required>
                         @error('message')
                           <small class="text-red-800">Email o contraseña incorrecta</small><br>
                         @enderror

@@ -13,7 +13,7 @@ class loginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('proveicydet.propuesta');
+            return redirect()->route('proveicydet.inicio');
         }
         return view('screens.login');
     }
@@ -25,7 +25,7 @@ class loginController extends Controller
 
         if (Auth::attempt($credentials)) {
             Auth::check();
-            return redirect()->route('proveicydet.propuesta');
+            return redirect()->route('proveicydet.inicio');
         }
         return back()->withErrors(['message' => 'El correo o la contraseña son incorrectos']);
 

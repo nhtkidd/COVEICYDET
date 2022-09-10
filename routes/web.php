@@ -40,5 +40,6 @@ Route::get('proveicydet/inicio',[homeController::class, 'inicio'])->name('provei
 //controlador para el formulario de la propuesta
 
 Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
-Route::get('proveicydet/editPropuest/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
+Route::get('proveicydet/editPropuesta/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
+Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->name('proveicydet.propuesta.update');
 Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');

@@ -18,7 +18,7 @@ class propuestaRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 1,2,3,4,5
      * @return array<string, mixed>
      */
     public function rules()
@@ -31,8 +31,9 @@ class propuestaRequest extends FormRequest
             'reach' => 'Required',
             'finished' => 'Required',
             'fk_idPlaces' => 'Required',
-            'fk_idOds' => 'Required|max:5',
+            'fk_idOds' => 'Required',
             'fk_idUsers' => 'Required'
         ];
+
     }
 }

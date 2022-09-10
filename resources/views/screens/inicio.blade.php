@@ -12,17 +12,41 @@
     </div>
     <div id="father" class="flex items-center justify-center h-auto">
         <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
-            <section id="bienvenida" class="w-full h-[40vh] md:h-[35%] lg:h-[50%]  p-[5%] text-center  ">
+            <section id="bienvenida" class="w-full h-[60vh] md:h-[35%] lg:h-[70%]  p-[5%] text-center  ">
                 <h1 class="text-xl lg:text-4xl font-bold">Tus Propuestas.</h1>
                 @if (count($proposal)>0)
                 <h2 class="text-lg lg:text-xl 2xl:text-2xl  pt-6 px-[10%] 2xl:px-[15%]">
-                    Ya haz iniciado una propuesta
+                    Ya haz iniciado con tus propuestas
                 </h2>
-                @if (count($proposal) != 2)
-                <br>
-                <form action="{{ route('proveicydet.propuesta') }}"></form>
-                <button type="submit" class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-[20%] py-2 px-4 rounded focus:outline-none focus:shadow-outline">Crear una nueva Propuesta</button>
-                <br>
+                @if (count($proposal) < 2)
+                    @foreach ($proposal as $finish)
+                        @if ($finish->finished === null)
+                            <br>
+                            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                                <p class="font-bold">Importante!</p>
+                                <p>No puedes crear otra propuesta hasta concluir con la propuesta actual.</p>
+                            </div>
+                            <br>
+                            <form action="{{ route('proveicydet.propuesta') }}">
+                                <button disabled type="submit" class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-[50%] py-2 px-4 rounded focus:outline-none focus:shadow-outline">Crear una nueva Propuesta</button>
+                            </form>
+                            <br>
+                        @endif
+
+                        @if ($finish->finished == true)
+                            <br>
+                            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                                <p class="font-bold">Mensaje informativo</p>
+                                <p class="text-sm">Solo puedes crear y enviar 2 propuestas.</p>
+                            </div>
+                            <br>
+                            <form action="{{ route('proveicydet.propuesta') }}">
+                                <button type="submit" class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-[50%] py-2 px-4 rounded focus:outline-none focus:shadow-outline">Crear una nueva Propuesta</button>
+                            </form>
+                            <br>
+                        @endif
+                @endforeach
+
                 @endif
                 <br>
                 <div class="overflow-x-auto relative">
@@ -64,7 +88,11 @@
                     Crea una propuesta nueva
                 </h2>
                 <br>
-                
+                <br>
+                <form action="{{ route('proveicydet.propuesta') }}">
+                    <button type="submit" class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-[50%] py-2 px-4 rounded focus:outline-none focus:shadow-outline">Crear una nueva Propuesta</button>
+                </form>
+                <br>
                     
                 @endif
             </section>

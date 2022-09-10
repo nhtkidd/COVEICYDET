@@ -8,6 +8,9 @@ use App\Models\Annexe;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
 
 class propuestaController extends Controller
 {
@@ -20,28 +23,23 @@ class propuestaController extends Controller
     }
 
     public function edit($id){
-        echo $id;
-        //return view('screens.annexes',compact('data'));
+        $ods = Od::all();
+        $places = Place::all();
+        $annexes = Annexe::all();
+        //$propuesta = Proposal::find($id);
+        $propuesta = Proposal::where('idProposal','=',$id)->get();
+        return view('screens.editPropuesta',compact('ods','places','annexes','propuesta'));
     }
 
-    public function store(Request $request)
-    {
-        $ods = $request->fk_idOds;
-        $idOds = implode(",", $ods);
-        $terminado = $request->input("finished");
+    public function update(Request $request,$id){
+        //return $request;
 
-        function str_limit($value, $limit = 100, $end = '...')
-        {
-            if (mb_strwidth($value, 'UTF-8') <= $limit) {
-                return $value;
-            }
-            return rtrim(mb_strimwidth($value, 0, $limit, '', 'UTF-8')) . $end;
-        }
+        $propuesta = Proposal::findOrFail($id);
+        $finalizado = $request->input("finished");
+        $ods = implode(',',$request->input('fk_idOds'));
         
-        $limite = str_limit($idOds, 9, "");
-        //logica para determinar si el usuario guarda o termina la propuesta
-        if ($terminado == 'true') {
-            $propuesta = new Proposal;
+        if ($finalizado == 'true') {
+            
             $propuesta->name = $request->input('name');
             $propuesta->objetive = $request->input('objetive');
             $propuesta->description = $request->input('description');
@@ -49,25 +47,58 @@ class propuestaController extends Controller
             $propuesta->reach = $request->input('reach');
             $propuesta->finished = $request->input('finished');
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $limite;
+            $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
             $propuesta->save();
-            return view('screens.inicio');
+        }else{
+            $propuesta->name = $request->input('name');
+            $propuesta->objetive = $request->input('objetive');
+            $propuesta->description = $request->input('description');
+            $propuesta->group = $request->input('group');
+            $propuesta->reach = $request->input('reach');
+            $propuesta->finished = $request->input('finished');
+            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
+            $propuesta->fk_idOds = $ods;
+            $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->save();
+        }
+
+    
+        return redirect()->route('proveicydet.inicio');
+    }
+
+
+    public function store(Request $request)
+    {
+        $ods = $request->fk_idOds;
+        $terminado = $request->input("finished");
+        //$idOds = implode(",", $ods);
+        $ods = implode(',',$request->input('fk_idOds'));
+        $propuesta = new Proposal;
+        //logica para determinar si el usuario guarda o termina la propuesta
+        if ($terminado == 'true') {
+            $propuesta->name = $request->input('name');
+            $propuesta->objetive = $request->input('objetive');
+            $propuesta->description = $request->input('description');
+            $propuesta->group = $request->input('group');
+            $propuesta->reach = $request->input('reach');
+            $propuesta->finished = $request->input('finished');
+            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
+            $propuesta->fk_idOds = $ods;
+            $propuesta->fk_idUsers = $request->input('fk_idUsers');
+            $propuesta->save();
         } else {
             //return $request;
-
-            $propuesta = new Proposal;
             $propuesta->name = $request->input('name');
             $propuesta->objetive = $request->input('objetive');
             $propuesta->description = $request->input('description');
             $propuesta->group = $request->input('group');
             $propuesta->reach = $request->input('reach');
             $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $limite;
+            $propuesta->fk_idOds = $ods;
             $propuesta->fk_idUsers = $request->input('fk_idUsers');
             $propuesta->save();
-            //return view('screens.editPropuesta');
-            return redirect()->route('proveicydet.inicio');
         }
+        return redirect()->route('proveicydet.inicio');
     }
 }

@@ -55,7 +55,7 @@
                             Contraseña
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="password"
-                            value="{{ old('password') }}" placeholder="Genere una contraseña de almenos 8 caracteres" />
+                            value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres" />
                         @error('password')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -102,14 +102,26 @@
                                 <option value="otros">Especificar</option>
                             </optgroup>
                             <optgroup label="Sector educativo">
-                                <option value="3">Universidad Veracruzana</option>
-                                <option value="4">Universidad Tecnlogica</option>
-                                <option value="5">Universidad Tecnlogica del Sureste de Vercruz</option>
-                                <option value="otros">Especificar</option>
+                                <option value="CBTIS<">CBTIS</option>
+                                <option value="CEBTA">CEBTA</option>
+                                <option value="COBAEV">COBAEV</option>
+                                <option value="CONALEP">CONALEP</option>
+                                <option value="CETMAR">CETMAR</option>
+                                <option value="Bachillerato estatal">Bachillerato estatal</option>
+                                <option value="Bachillerato federal">Bachillerato federal</option>
+                                <option value="ITS">ITS</option>
+                                <option value="IT Federal ">IT Federal </option>
+                                <option value="Universidad Tecnlogica">Universidad Tecnlogica</option>
+                                <option value="Universidad Pedagógica">Universidad Pedagógica</option>
+                                <option value="Universidad Pedagógica Nacional">Universidad Pedagógica Nacional</option>
+                                <option value="Escuela normal Veracruzana">Escuela normal Veracruzana</option>
+                                <option value="Consorcio clavijero">Consorcio clavijero</option>
+                                <option value="UPAV">UPAV</option>
+                                <option value="otros">Otra opción</option>
                             </optgroup>
                         </select>
                     </div>
-                    <div class="md:ml-2 2xl:my-4">
+                    <div id="hiddenInput" class="md:ml-2 2xl:my-4 hidden">
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             Especifica tu sector
                         </label>
@@ -153,7 +165,7 @@
                 <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                     <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
                         <input type="checkbox" name="conditions" value="true" required>
-                        <label>Aceptas los <a class="text-sky-800">terminos y condiciones</a></label>
+                        <label>Aceptas los <a class="text-sky-800" href="{{URL('docs/Aviso de privacidad.pdf')}}">terminos y condiciones</a></label>
                     </div>
                     <div class="md:ml-2 2xl:my-4">
                         <button
@@ -179,12 +191,15 @@
         if (d == "otros") {
             document.getElementById("sectorInput").disabled = false;
             document.getElementById("sectorInput").classList.add('bg-green-200');
+            document.getElementById("hiddenInput").classList.remove('hidden');
+            document.getElementById("hiddenInput").classList.add('none');
 
 
         } else {
             document.getElementById("sectorInput").disabled = true;
             document.getElementById("sectorInput").value = "";
             document.getElementById("sectorInput").classList.remove('bg-green-200');
+            document.getElementById("hiddenInput").classList.add('hidden');
         }
 
     };

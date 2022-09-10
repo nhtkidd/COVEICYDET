@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposal extends Model
 {
     use HasFactory;
-    protected $idProposal = 'idProposal'; 
+    protected $primaryKey = 'idProposal'; 
     protected $fillable = [
         'name',
         'objetive',

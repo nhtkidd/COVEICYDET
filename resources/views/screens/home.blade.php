@@ -4,21 +4,19 @@
 
 @section('content')
 
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center ">
 
-        <div class="w-[85%] md:w-[60%] h-auto text-center p-10 2xl:mt-20">
-            <h2 class="text-3xl font-bold p-4">Bienvenido</h2>
-            <h1 class="text-2xl md:text-2xl lg:text-xl 2xl:text-2xl font-normal">En esta plataforma podrás dar soluciones a problematicas
-                reales que se viven en nuestra entidad, atraves de propuestas
-                que se evaluarán por un jurado, las soluciones deben ser planteadas.
-                Para más informacion, ingresa a la plataforma.
-            </h1>
-            <br>
-            <a href="{{route('proveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Ingresa</a>
-        </div>
-        
+           <div  class="flex items-center justify-center flex-col pb-10">
+            <img class=" pt-4 pb-10 w-[70%] h-[40%] md:w-[40%] "  src="{{ URL('img/Consulta.jpg') }}">
+            <h5 class="font-bold text-xl md:text-3xl">Nuestro aviso de privacidad</h5>  
+            <iframe src="{{URL('docs/Aviso de privacidad.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe>
 
-
+            <a href="{{route('proveicydet.login')}}" class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Estoy de acuerdo con el aviso de privacidad</a> 
+           </div>
+              
     </div>
+
+
+
 
 @endsection
