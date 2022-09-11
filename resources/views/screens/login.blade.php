@@ -7,9 +7,10 @@
     <div id="wrapper" class="flex flex-wrap w-screen ">
         <div id="1" class="w-full hidden lg:flex items-center justify-center lg:w-1/2 lg:h-[100vh-176px] "
             style="height: calc(100vh -  176px )">
-            <h1 class="text-3xl 2xl:text-5xl font-bold p-[20%]">Inicia sesión en la plataforma
+            <img class=" pt-4 pb-10  h-auto md:w-[40%] lg:w-[64%] "  src="{{ URL('img/Consulta.jpg') }}">
+            {{-- <h1 class="text-3xl 2xl:text-5xl font-bold p-[20%]">Inicia sesión en la plataforma
                 para participar.
-            </h1>
+            </h1> --}}
         </div>
         <div id="2" class="w-full lg:w-1/2 flex mt-[10%] lg:mt-0 lg:items-center justify-center "
          >

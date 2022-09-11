@@ -55,6 +55,7 @@
                       <tr>
                         <th scope="col" class="py-3 px-6">Propuesta</th>
                         <th scope="col" class="py-3 px-6">Estado</th>
+                        <th scope="col" class="py-3 px-6">Mostrar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -66,7 +67,7 @@
                             <td class="py-4 px-6 text-black">
                                 @if ($data->finished == null)
                                 <form action="{{route('proveicydet.propuesta.edit',$data->idProposal)}}" method="GET">
-                                    <button type="submit" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                    <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
                                         Continuar</button>
                                 </form>
                                 
@@ -74,6 +75,22 @@
                                 @if ($data->finished != null)
                                 <button disabled type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                     Enviado</button>
+
+                                @endif
+                            </td>
+                            <td class="py-4 px-6 text-black">
+                                @if ($data->finished == null)
+                                    <button disabled type="buttom" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                        Debes enviar la propuesta</button>
+                                </form>
+                                
+                                @endif
+                                @if ($data->finished != null)
+                                <form action="{{route('proveicydet.propuesta.mostrar',$data->idProposal)}}" method="GET">
+                                    <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                        Consultar</button>
+                                </form>
+                                
 
                                 @endif
                             </td>

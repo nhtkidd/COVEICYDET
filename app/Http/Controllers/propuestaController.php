@@ -26,9 +26,22 @@ class propuestaController extends Controller
         $ods = Od::all();
         $places = Place::all();
         $annexes = Annexe::all();
-        //$propuesta = Proposal::find($id);
         $propuesta = Proposal::where('idProposal','=',$id)->get();
         return view('screens.editPropuesta',compact('ods','places','annexes','propuesta'));
+    }
+    public function annexes(){
+        
+        $annexes = Annexe::where('areas','like','%'. 4 .'%')->get();
+        return view('screens.annexes',compact('annexes'));
+    }
+
+    public function mostrar($id){
+        $ods = Od::all();
+        $places = Place::all();
+        $annexes = Annexe::all();
+        //$propuesta = Proposal::find($id);
+        $propuesta = Proposal::where('idProposal','=',$id)->get();
+        return view('screens.pdf',compact('ods','places','annexes','propuesta'));
     }
 
     public function update(Request $request,$id){
