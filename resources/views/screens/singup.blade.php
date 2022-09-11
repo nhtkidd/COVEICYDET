@@ -103,7 +103,7 @@
                             class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                             <option value="" selected>Selecciona su sector</option>
                             <optgroup label="Sector social">
-                                <option value="2">Sociedad civil</option>
+                                <option value="Sociedad civil">Sociedad civil</option>
                             </optgroup>
                             <optgroup label="Sector empresarial">
                                 <option value="otros">Especificar</option>
