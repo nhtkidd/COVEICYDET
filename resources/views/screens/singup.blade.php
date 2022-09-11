@@ -23,7 +23,7 @@
                             Nombre(s)
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
-                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" />
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" required />
                         @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -33,7 +33,7 @@
                             Apellidos
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
-                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" />
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" required/>
                         @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -45,7 +45,7 @@
                             Email
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="email"
-                            value="{{ old('email') }}" placeholder="Ingrese su email electronico" />
+                            value="{{ old('email') }}" placeholder="Ingrese su email electronico" required />
                         @error('email')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -55,7 +55,7 @@
                             Contraseña
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="password" minlength="8"
-                            value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres" />
+                            value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres"required />
                         @error('password')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
