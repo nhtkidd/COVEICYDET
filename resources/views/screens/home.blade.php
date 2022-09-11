@@ -33,7 +33,7 @@
                             normatividad que resulte aplicable.</p>
                             <br>
                             <div class="py-3">
-                                <a class="text-blue-800 font-semibold " target="_blank"  href="{{URL('docs/Aviso de privacidad.pdf')}}">Consulta el aviso de privacidad aqui</a>
+                                <a class="text-blue-800 font-semibold " target="_blank"  href="{{URL('docs/Aviso de privacidad.pdf')}}">Consulta el aviso de privacidad aquí</a>
                             </div>
                          
                     </div>

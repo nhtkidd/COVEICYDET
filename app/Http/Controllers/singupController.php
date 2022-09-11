@@ -6,6 +6,7 @@ use App\Http\Requests\registerRequest;
 use App\Models\Escolaridad;
 use App\Models\Headquarter;
 use App\Models\Schooling;
+use App\Models\Sector;
 use App\Models\Sede;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class singupController extends Controller
         }
         $escolaridades = Schooling::all();
         $sedes = Headquarter::all();
-        return view('screens.singup', compact('sedes', 'escolaridades'));
+        $sectores = Sector::all();
+        return view('screens.singup', compact('sedes', 'escolaridades','sectores'));
     }
 
     public function store(registerRequest $request)

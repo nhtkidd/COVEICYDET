@@ -101,22 +101,13 @@
                             <optgroup label="Sector empresarial">
                                 <option value="otros">Especificar</option>
                             </optgroup>
+                            <optgroup label="Sector gubernamental">
+                                <option value="otros">Especificar</option>
+                            </optgroup>
                             <optgroup label="Sector educativo">
-                                <option value="CBTIS<">CBTIS</option>
-                                <option value="CEBTA">CEBTA</option>
-                                <option value="COBAEV">COBAEV</option>
-                                <option value="CONALEP">CONALEP</option>
-                                <option value="CETMAR">CETMAR</option>
-                                <option value="Bachillerato estatal">Bachillerato estatal</option>
-                                <option value="Bachillerato federal">Bachillerato federal</option>
-                                <option value="ITS">ITS</option>
-                                <option value="IT Federal ">IT Federal </option>
-                                <option value="Universidad Tecnlogica">Universidad Tecnlogica</option>
-                                <option value="Universidad Pedagógica">Universidad Pedagógica</option>
-                                <option value="Universidad Pedagógica Nacional">Universidad Pedagógica Nacional</option>
-                                <option value="Escuela normal Veracruzana">Escuela normal Veracruzana</option>
-                                <option value="Consorcio clavijero">Consorcio clavijero</option>
-                                <option value="UPAV">UPAV</option>
+                                @foreach ($sectores as $sector)
+                                <option value="{{$sector->name}}">{{$sector->name}}</option>
+                                @endforeach
                                 <option value="otros">Otra opción</option>
                             </optgroup>
                         </select>
