@@ -10,7 +10,7 @@
             @error('message')
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                     <p class="font-bold">Error</p>
-                    <p>Para participar necesitas ser mayor de edad.</p>
+                    <p>{{ $message }}</p>
                 </div>
             @enderror
             <h1 class="text-2xl 2xl:text-3xl font-bold lg:w-[35%] 2xl:w-[25%] pb-5">Registrate en la plataforma para

@@ -808,14 +808,14 @@
                         <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la region</option>
                             @foreach ($places as $place)
-                                @if ($place->idPlace == $data->fk_idPlaces)
-                                    <option value="{{$place->name}}" selected>{{$place->name}}</option>
-                                @endif
-                                @if ($place->idPlace != $data->fk_idPlaces)
-                                    <option value="{{$place->idPlace}}">{{$place->name}}</option>
+                                @if ($place->name != $data->fk_idPlaces)
+                                    <option value="{{$place->name}}">{{$place->name}}</option>
                                 @endif
                                 
                             @endforeach
+                            @if ($place->name != $data->fk_idPlaces)
+                            <option value="{{$data->fk_idPlaces}}" selected>{{$data->fk_idPlaces}}</option>
+                            @endif
                             <option value="otros">Otra opción</option>
                         </select>
 
