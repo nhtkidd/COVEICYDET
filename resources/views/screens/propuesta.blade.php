@@ -771,8 +771,10 @@
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Lugar o región de impacto (espacio físico):
+                            <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">da click aquí</a> </span><br>      
                         </label>
-                        <iframe src="{{URL('docs/Municipios por region.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe>
+              
+                        {{-- <iframe src="{{URL('docs/Municipios por region.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe> --}}
                         <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la region</option>
                             @foreach ($places as $place)
