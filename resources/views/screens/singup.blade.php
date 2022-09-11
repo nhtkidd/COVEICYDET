@@ -54,7 +54,7 @@
                         <label class="labelStyle 2xl:text-xl" for="password">
                             Contraseña
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="password"
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="password" name="password" minlength="8"
                             value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres" />
                         @error('password')
                             <small class="text-red-800">*{{ $message }}</small>
@@ -68,7 +68,7 @@
                         </label>
                         <input style="text-transform: uppercase;" minlength="18" maxlength="18"
                             class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
-                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP" />
+                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP"  required/>
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -77,9 +77,9 @@
                         <label class="labelStyle 2xl:text-xl" for="fk_idEducations">
                             Escolaridad
                         </label>
-                        <select name="fk_idEducations" class="inputsStyle focus:outline-none focus:shadow-outline"
-                            value="{{ old('fk_idEducations') }}" required>
-                            <optgroup label="Seleccione su escolaridad">
+                        <select required name="fk_idEducations" class="inputsStyle focus:outline-none focus:shadow-outline" >
+                            <option value="">Selecciona tu escolaridad</option>
+                            <optgroup label="Escolaridad">
                                 @foreach ($escolaridades as $escolaridad)
                                     <option value="{{ $escolaridad->idEducations }}">{{ $escolaridad->name }}</option>
                                 @endforeach
@@ -92,9 +92,9 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             Sector de la sociedad
                         </label>
-                        <select name="sector" onchange="selectSector()" id="sectorSelected" required
+                        <select required name="sector" onchange="selectSector()" id="sectorSelected" 
                             class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                            <option value="1">Selecciona su sector</option>
+                            <option value="" selected>Selecciona su sector</option>
                             <optgroup label="Sector social">
                                 <option value="2">Sociedad civil</option>
                             </optgroup>
@@ -105,8 +105,8 @@
                                 <option value="otros">Especificar</option>
                             </optgroup>
                             <optgroup label="Sector educativo">
-                                @foreach ($sectores as $sector)
-                                <option value="{{$sector->name}}">{{$sector->name}}</option>
+                                @foreach ($sectores as $sectorEdu)
+                                <option value="{{$sectorEdu->name}}">{{$sectorEdu->name}}</option>
                                 @endforeach
                                 <option value="otros">Otra opción</option>
                             </optgroup>
@@ -132,7 +132,7 @@
                         <input type="radio" id="participacionSi" name="participation" value="si" required
                             onchange="participaSelector()">
                         <label for="si">Si</label><br>
-                        <input type="radio" id="participacionNo" name="participation" value="no" required
+                        <input type="radio"  id="participacionNo" name="participation" value="no" required
                             onchange="participaSelector()">
                         <label for="no">No</label><br>
                     </div>
