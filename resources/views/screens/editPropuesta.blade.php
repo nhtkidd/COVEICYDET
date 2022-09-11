@@ -799,21 +799,23 @@
                             &nbsp; Lugar o región de impacto (espacio físico):
                         </label>
                         <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
-                            
-                            
-                            @if ("" == $data->fk_idPlaces)
-                                <option value="" selected>Seleccione la region</option>
+                            @if (null == $data->fk_idPlaces)
+                                <option selected value="">Selecciona la región</option>
                             @endif
                             @foreach ($places as $place)
+                                
+                                @if ($place->name == $data->fk_idPlaces)
+                                    <option selected value="{{$place->name}}">{{$place->name}}</option>
+                                @endif
                                 @if ($place->name != $data->fk_idPlaces)
                                     <option value="{{$place->name}}">{{$place->name}}</option>
                                 @endif
                                 
                             @endforeach
+                            @if ($place->name != $data->fk_idPlaces && null != $data->fk_idPlaces)
+                                    <option selected value="{{$data->fk_idPlaces}}">{{$data->fk_idPlaces}}</option>
+                                @endif
                             
-                            @if ($place->name != $data->fk_idPlaces)
-                                <option selected value="{{$data->fk_idPlaces}}">{{$data->fk_idPlaces}}</option>
-                            @endif
                             <option value="otros">Otra opción</option>
                         </select>
 
