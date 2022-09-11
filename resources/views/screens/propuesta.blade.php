@@ -765,7 +765,7 @@
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Lugar o región de impacto (espacio físico):
-                            <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">da click aquí</a> </span><br>      
+                            <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">Haz click aquí</a> </span><br>      
                         </label>
               
                         {{-- <iframe src="{{URL('docs/Municipios por region.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe> --}}
@@ -785,11 +785,6 @@
                             @error('fk_idPlaces')
                                 <small class="text-red-800">*{{ $message }}</small>
                             @enderror
-                        </div>
-                        <div class="py-3">
-                            <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-base">¿No conoces tu región?&nbsp;
-                                <a class="text-blue-800 font-semibold " target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">Mostrar regiones.</a>
-                            </span>
                         </div>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?

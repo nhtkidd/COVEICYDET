@@ -45,16 +45,6 @@
                         //echo $odsOne."-".$odsTwo."-".$odsThree."-".$odsFour."-".$odsFive;
                         @endphp
                     <h1 class="text-xl lg:text-4xl font-bold">Gracias por tu interes en participar con tu propuesta.</h1>
-                    <h2 class="text-lg lg:text-xl 2xl:text-2xl  pt-6 px-[10%] 2xl:px-[15%]">
-                        Es importante que tomes en cuenta la siguiente pregunta, que te ayudará a formular la propuesta:
-                    </h2>
-                    <div class="bg-spaceGray w-full h-auto mt-[5%] p-5">
-                        <h3 class="text-sm lg:text-xl 2xl:text-2xl p-3 2xl:p-[4%] ">
-                            ¿Qué proyectos o acciones de desarrollo tecnológico, científico e innovación consideras que debe
-                            implementar o promover el Gobierno del Estado de Veracruz para solucionar los problemas
-                            prioritarios nacionales y estatales?
-                        </h3>
-                    </div>
                 </section>
                 {{-- FORMULARIO --}}
                 <form action="" method="post" class=" p-[5%] mt-5 lg:mt-0  " name="form1">
