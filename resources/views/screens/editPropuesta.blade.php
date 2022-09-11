@@ -24,6 +24,7 @@
                         $odsThree = null;
                         $odsFour = null;
                         $odsFive = null; 
+                        $lugarImpacto = null;
                         ;
                         for ($i=0; $i <= $count-1 ; $i++) { 
                             if ($i == 0) {
@@ -795,9 +796,10 @@
                         </div>
                         <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{$data->group}}</textarea>
-                        <label class="labelStyle 2xl:text-xl">
-                            &nbsp; Lugar o región de impacto (espacio físico):
-                        </label>
+                            <label class="labelStyle 2xl:text-xl">
+                                &nbsp; Lugar o región de impacto (espacio físico):
+                                <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">Haz click aquí</a> </span><br>      
+                            </label>
                         <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             @if (null == $data->fk_idPlaces)
                                 <option selected value="">Selecciona la región</option>
@@ -805,6 +807,7 @@
                             @foreach ($places as $place)
                                 
                                 @if ($place->name == $data->fk_idPlaces)
+                                    {{ $lugarImpacto = $place->name }}
                                     <option selected value="{{$place->name}}">{{$place->name}}</option>
                                 @endif
                                 @if ($place->name != $data->fk_idPlaces)
@@ -812,9 +815,9 @@
                                 @endif
                                 
                             @endforeach
-                            @if ($place->name != $data->fk_idPlaces && null != $data->fk_idPlaces)
-                                    <option selected value="{{$data->fk_idPlaces}}">{{$data->fk_idPlaces}}</option>
-                                @endif
+                            @if ($lugarImpacto != $data->fk_idPlaces && null != $data->fk_idPlaces)
+                                <option selected value="{{$data->fk_idPlaces}}">{{$data->fk_idPlaces}}</option>
+                            @endif
                             
                             <option value="otros">Otra opción</option>
                         </select>
@@ -828,11 +831,6 @@
                             @error('fk_idPlaces')
                                 <small class="text-red-800">*{{ $message }}</small>
                             @enderror
-                        </div>
-                        <div class="py-3">
-                            <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-base">¿No conoces tu región?&nbsp;
-                                <a class="text-blue-800 font-semibold " target="_blank"  href="{{URL('docs/Municipios por region.pdf')}}">Mostrar regiones.</a>
-                            </span>
                         </div>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
