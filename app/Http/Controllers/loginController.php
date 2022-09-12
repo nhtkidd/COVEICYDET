@@ -13,7 +13,7 @@ class loginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('proveicydet.inico');
+            return redirect()->route('proveicydet.inicio');
         }
         return view('screens.login');
     }
