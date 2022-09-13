@@ -14,7 +14,13 @@
         </div>
         <div id="2" class="w-full lg:w-1/2 flex mt-[10%] lg:mt-0 lg:items-center justify-center "
          >
+         
             <div class="bg-white w-[90%] h-auto lg:w-[70%] lg:h-[90%] 2xl:h-[65%] rounded-br-large">
+                @if(session()->has('success'))
+                        <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                            <p class="text-sm">{{ session()->get('success') }}</p>
+                        </div>
+                    @endif
                 <form action="{{ route('proveicydet.compare') }}" method="post" class="p-10">
                     @csrf
                     <h1 class="text-2xl 2xl:text-4xl font-bold">Inicia sesión</h1>
@@ -37,7 +43,7 @@
                         @error('message')
                           <small class="text-red-800">Email o contraseña incorrecta</small><br>
                         @enderror
-                        <a href="" class="text-stone-500 hover:text-stone-800 2xl:text-lg">¿Olvidaste la
+                        <a href="{{ route('proveicydet.email') }}" class="text-stone-500 hover:text-stone-800 2xl:text-lg">¿Olvidaste la
                             contraseña?</a>
                     </div>
 

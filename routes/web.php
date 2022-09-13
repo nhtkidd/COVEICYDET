@@ -5,6 +5,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\propuestaController;
 use App\Http\Controllers\singupController;
+use App\Http\Controllers\resetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,9 @@ Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'
 // ADMIN
 
 Route::get('proveicydet/admin',[adminController::class,'index'])->middleware('auth.admin')->name('proveicydet.admin');
+
+// RECUPERAR CONTRASEÑA
+Route::get('proveicydet/email', [resetController::class, 'email'])->name('proveicydet.email');
+Route::post('enlace', [resetController::class, 'enlace'])->name('proveicydet.enlace');
+Route::get('proveicydet/clave/{token}', [resetController::class, 'clave'])->name('proveicydet.clave');
+Route::post('cambiar', [resetController::class, 'cambiar'])->name('proveicydet.cambiar');
