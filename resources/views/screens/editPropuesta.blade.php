@@ -75,6 +75,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
                         </label>
+                        <input type="hidden" name="annexes" value="{{ $data->fk_idAnnexe }}">
                         <div class="bg-spaceGray w-full h-[30vh] overflow-y-auto" id="resultados">
                             <!-- M O S T R A R - A N E X O S -->
                            
