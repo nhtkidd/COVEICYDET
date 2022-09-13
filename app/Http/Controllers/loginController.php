@@ -13,6 +13,9 @@ class loginController extends Controller
     public function login()
     {
         if (Auth::check()) {
+            if(auth()->user()->role == "admin"){
+                return redirect()->route('proveicydet.admin');
+            }
             return redirect()->route('proveicydet.inicio');
         }
         return view('screens.login');
