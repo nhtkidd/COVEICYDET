@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\propuestaRequest;
 use App\Mail\confirmationMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -129,6 +130,7 @@ class propuestaController extends Controller
 
     public function store(Request $request)
     {
+
         $ods = $request->fk_idOds;
         $terminado = $request->input("finished");
         //$idOds = implode(",", $ods);
@@ -149,6 +151,7 @@ class propuestaController extends Controller
         if ($terminado == 'true') {
             
             $propuesta->finished = $request->input('finished');
+          
             $propuesta->save();
 
             $emailUser = auth()->user()->email;
