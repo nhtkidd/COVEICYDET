@@ -13,6 +13,15 @@
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
                 <section id="bienvenida" class="w-full h-auto md:h-[35%] lg:h-[50%]  p-[5%] text-center  ">
+                    @error(count($errors)>0)
+                    @foreach ($errors->all() as $error)
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                        <p class="font-bold">Error</p>
+                        <p>{{ $error }}</p>
+                    </div>
+                    @endforeach
+                        
+                    @enderror
                     @error('message')
                         <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                             <p class="font-bold">Error</p>
@@ -877,6 +886,12 @@
                             @endif
                             
                             @endforeach
+                            @error($error)
+                                <br>
+                                    <span class="red-text text-darken-1">{{ $error }}</span>
+                                @enderror
+
+                                <br>
                             <script language="javascript">
                                 //VALIDACION CHECKBOX
                                 $(document).ready(function(){

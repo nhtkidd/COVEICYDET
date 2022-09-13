@@ -13,6 +13,12 @@
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
                 <section id="bienvenida" class="w-full h-auto md:h-[35%] lg:h-[50%]  p-[5%] text-center  ">
+                    @error('message')
+                <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                    <p class="font-bold">Error</p>
+                    <p>{{ $message }}</p>
+                </div>
+            @enderror
                     <h1 class="text-xl lg:text-4xl font-bold">Gracias por tu interés en participar con tu propuesta.</h1>
                     <h2 class="text-lg lg:text-xl 2xl:text-2xl  pt-6 px-[10%] 2xl:px-[15%]">
                         Es importante que tomes en cuenta la siguiente pregunta, que te ayudará a formular la propuesta:
@@ -802,6 +808,7 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
+                            
                             <div class="w-[60%] h-[30vh] flex overflow-y-auto flex-col flex-grow">
                             @foreach ($ods as $odsOption)
                             <div class="md:w-full flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
@@ -812,6 +819,9 @@
                                 </label>
                             </div>
                             @endforeach
+                            
+
+                                <br>
                             <script language="javascript">
                                 //VALIDACION CHECKBOX
                                 $(document).ready(function(){

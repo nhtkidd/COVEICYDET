@@ -110,7 +110,6 @@ class propuestaController extends Controller
         $propuesta->fk_idAnnexe = $request->input('annexes');
         if ($finalizado == 'true') {
             
-            /**/
             $propuesta->finished = $request->input('finished');
             $propuesta->save();
 
@@ -129,6 +128,12 @@ class propuestaController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->fk_idOds == null) {
+            //return back()->with('Debes seleccionar al menos una opción');
+            return back()->withErrors([
+                'message' => 'Debes seleccionar al menos un Objetivo de Desarrollo Sostenible para guardar la propuesta'
+            ]);
+        }
         $ods = $request->fk_idOds;
         $terminado = $request->input("finished");
         //$idOds = implode(",", $ods);

@@ -6,18 +6,28 @@
 
     @auth
     <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
-                
+         
         <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
         <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
     </div>
     <div id="father" class="flex items-center justify-center h-auto">
         <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
+                  
             <section id="bienvenida" class="w-full h-[60vh] md:h-[35%] lg:h-[70%]  p-[5%] text-center  ">
                 <h1 class="text-xl lg:text-4xl font-bold">Tus Propuestas.</h1>
+                
                 @if (count($proposal)>0)
                 <h2 class="text-lg lg:text-xl 2xl:text-2xl  pt-6 px-[10%] 2xl:px-[15%]">
                     Ya has iniciado con tus propuestas
                 </h2>
+                @error('message')
+                    <br>
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                        <p class="font-bold">Error</p>
+                        <p>{{ $message }}</p>
+                    </div>
+                    <br>
+                @enderror 
                 @if (count($proposal) < 2)
                     @foreach ($proposal as $finish)
                         @if ($finish->finished === null)
