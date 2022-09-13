@@ -88,19 +88,21 @@ class propuestaController extends Controller
         //$idOds = implode(",", $ods);
         $ods = implode(',',$request->input('fk_idOds'));
         $propuesta = new Proposal;
+
+        $propuesta->name = $request->input('name');
+        $propuesta->objetive = $request->input('objetive');
+        $propuesta->description = $request->input('description');
+        $propuesta->group = $request->input('group');
+        $propuesta->reach = $request->input('reach');
+        $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
+        $propuesta->fk_idOds = $ods;
+        $propuesta->fk_idUsers = $request->input('fk_idUsers');
+        $propuesta->area = $request->input('area');
+        $propuesta->fk_idAnnexe = $request->input('annexes');
         //logica para determinar si el usuario guarda o termina la propuesta
         if ($terminado == 'true') {
-            $propuesta->name = $request->input('name');
-            $propuesta->objetive = $request->input('objetive');
-            $propuesta->description = $request->input('description');
-            $propuesta->group = $request->input('group');
-            $propuesta->reach = $request->input('reach');
+            
             $propuesta->finished = $request->input('finished');
-            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $ods;
-            $propuesta->fk_idUsers = $request->input('fk_idUsers');
-            $propuesta->area = $request->input('area');
-            $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
 
             $emailUser = auth()->user()->email;
@@ -109,16 +111,7 @@ class propuestaController extends Controller
             return redirect()->route('proveicydet.inicio');
         } else {
             //return $request;
-            $propuesta->name = $request->input('name');
-            $propuesta->objetive = $request->input('objetive');
-            $propuesta->description = $request->input('description');
-            $propuesta->group = $request->input('group');
-            $propuesta->reach = $request->input('reach');
-            $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
-            $propuesta->fk_idOds = $ods;
-            $propuesta->fk_idUsers = $request->input('fk_idUsers');
-            $propuesta->area = $request->input('area');
-            $propuesta->fk_idAnnexe = $request->input('annexes');
+            
             $propuesta->save();
         }
 
