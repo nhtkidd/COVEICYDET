@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\propuestaController;
@@ -45,3 +46,8 @@ Route::get('proveicydet/editPropuesta/{id}',[propuestaController::class,'edit'])
 Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->name('proveicydet.propuesta.update');
 Route::get('proveicydet/propuesta/mostrar/{id}',[propuestaController::class,'mostrar'])->name('proveicydet.propuesta.mostrar');
 Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');
+
+
+// ADMIN
+
+Route::get('proveicydet/admin',[adminController::class,'index'])->middleware('auth.admin')->name('proveicydet.admin');

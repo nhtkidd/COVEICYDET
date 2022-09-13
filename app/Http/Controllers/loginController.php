@@ -23,11 +23,17 @@ class loginController extends Controller
 
         $credentials = $request->getCredentials();
 
-        if (Auth::attempt($credentials)) {
-            Auth::check();
-            return redirect()->route('proveicydet.inicio');
-        }
-        return back()->withErrors(['message' => 'El correo o la contraseña son incorrectos']);
+        if (Auth::attempt($credentials) == false) {
+            return back()->withErrors(['message' => 'El correo o la contraseña son incorrectos']);
+        } else {
+            if (auth()->user()->role == "admin") {
+                Auth::check();
+                return redirect()->route('proveicydet.admin');
+            }else{
+                Auth::check();
+                return redirect()->route('proveicydet.inicio');
+            }
+         }
 
         // RECUERDO DE LOS 10000 INTENTOS QUE HICE PARA QUE FUNCIONARA EL LOGIN}
         // if(Auth::attempt($credentials)) {
@@ -72,16 +78,16 @@ class loginController extends Controller
         // Auth::login($user);
 
         // return $this->authenticated($request, $user);
-          // protected function authenticated(Request $request, $user)
-    // {
-    //     return redirect()->route('proveicydet.propuesta');
-    // }
+        // protected function authenticated(Request $request, $user)
+        // {
+        //     return redirect()->route('proveicydet.propuesta');
+        // }
     }
-    public function destroy(){
+    public function destroy()
+    {
 
         auth()->logout();
 
         return redirect()->route('proveicydet.login');
     }
-  
 }
