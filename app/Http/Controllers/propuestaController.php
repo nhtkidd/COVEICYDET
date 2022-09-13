@@ -129,16 +129,12 @@ class propuestaController extends Controller
 
     public function store(Request $request)
     {
-<<<<<<< HEAD
         if ($request->fk_idOds == null) {
             //return back()->with('Debes seleccionar al menos una opción');
             return back()->withErrors([
                 'message' => 'Debes seleccionar al menos un Objetivo de Desarrollo Sostenible para guardar la propuesta'
             ]);
         }
-=======
-
->>>>>>> ea8672067a03c0dce70d9d1915e4ee62a84eecd8
         $ods = $request->fk_idOds;
         $terminado = $request->input("finished");
         //$idOds = implode(",", $ods);

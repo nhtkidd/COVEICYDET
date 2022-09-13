@@ -886,10 +886,6 @@
                             @endif
                             
                             @endforeach
-                            @error($error)
-                                <br>
-                                    <span class="red-text text-darken-1">{{ $error }}</span>
-                                @enderror
 
                                 <br>
                             <script language="javascript">
