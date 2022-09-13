@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\propuestaRequest;
 use App\Mail\confirmationMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -128,12 +129,16 @@ class propuestaController extends Controller
 
     public function store(Request $request)
     {
+<<<<<<< HEAD
         if ($request->fk_idOds == null) {
             //return back()->with('Debes seleccionar al menos una opción');
             return back()->withErrors([
                 'message' => 'Debes seleccionar al menos un Objetivo de Desarrollo Sostenible para guardar la propuesta'
             ]);
         }
+=======
+
+>>>>>>> ea8672067a03c0dce70d9d1915e4ee62a84eecd8
         $ods = $request->fk_idOds;
         $terminado = $request->input("finished");
         //$idOds = implode(",", $ods);
@@ -154,6 +159,7 @@ class propuestaController extends Controller
         if ($terminado == 'true') {
             
             $propuesta->finished = $request->input('finished');
+          
             $propuesta->save();
 
             $emailUser = auth()->user()->email;
