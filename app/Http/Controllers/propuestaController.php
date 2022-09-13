@@ -9,8 +9,9 @@ use App\Models\Proposal;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Mail\confirmationMail;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class propuestaController extends Controller
 {
@@ -66,6 +67,12 @@ class propuestaController extends Controller
             /**/
             $propuesta->finished = $request->input('finished');
             $propuesta->save();
+
+            $emailUser = auth()->user()->email;
+            $nameProposal = $propuesta->name;
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
+            return redirect()->route('proveicydet.inicio');
+
         }else{
             $propuesta->save();
         }
@@ -95,6 +102,11 @@ class propuestaController extends Controller
             $propuesta->area = $request->input('area');
             $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
+
+            $emailUser = auth()->user()->email;
+            $nameProposal = $propuesta->name;
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
+            return redirect()->route('proveicydet.inicio');
         } else {
             //return $request;
             $propuesta->name = $request->input('name');
@@ -109,6 +121,7 @@ class propuestaController extends Controller
             $propuesta->fk_idAnnexe = $request->input('annexes');
             $propuesta->save();
         }
-        return redirect()->route('proveicydet.inicio');
+
+    
     }
 }

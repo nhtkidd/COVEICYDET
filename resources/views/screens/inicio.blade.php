@@ -16,7 +16,7 @@
                 <h1 class="text-xl lg:text-4xl font-bold">Tus Propuestas.</h1>
                 @if (count($proposal)>0)
                 <h2 class="text-lg lg:text-xl 2xl:text-2xl  pt-6 px-[10%] 2xl:px-[15%]">
-                    Ya haz iniciado con tus propuestas
+                    Ya has iniciado con tus propuestas
                 </h2>
                 @if (count($proposal) < 2)
                     @foreach ($proposal as $finish)
