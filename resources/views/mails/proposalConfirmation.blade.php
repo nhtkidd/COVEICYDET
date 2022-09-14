@@ -68,6 +68,14 @@
                                                         <tr>
                                                           <td height="20" style="line-height:20px">&nbsp;</td>
                                                         </tr>
+                                                        <tr>
+                                                          <td>
+                                                            <p style="margin:10px 0 10px 0;color:#3b6174;font-size:18px">Nota. </p>
+                                                            <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Recuerda estar pendiente de la publicación del programa para la exposición de propuestas registradas en:</p>
+                                                            <p style="margin:10px 0 10px 0;color:#cc9328;font-size:18px"><a href=" https://ciencia.covecyt.gob.mx"> https://ciencia.covecyt.gob.mx</a></p>
+                                                                
+                                                          </td>
+                                                        </tr>
                                                       </tbody>
                                                     </table>
                                                   </td>
