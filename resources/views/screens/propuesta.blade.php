@@ -778,7 +778,7 @@
                         <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la region</option>
                             @foreach ($places as $place)
-                            <option value="{{$place->idPlace}}">{{$place->name}}</option>
+                            <option value="{{$place->name}}">{{$place->name}}</option>
                         @endforeach
                         <option value="otros">Otra opción</option>
                         </select>
