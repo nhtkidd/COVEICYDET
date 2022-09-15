@@ -23,7 +23,7 @@
                             Nombre(s)
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
-                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" required />
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" maxlength="50" required />
                         @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -33,7 +33,7 @@
                             Apellidos
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
-                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" required/>
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" maxlength="50" required/>
                         @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror

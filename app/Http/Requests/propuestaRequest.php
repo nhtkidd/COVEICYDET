@@ -31,7 +31,7 @@ class propuestaRequest extends FormRequest
             'reach' => 'Required',
             'finished' => 'Required',
             'fk_idPlaces' => 'Required',
-            'fk_idOds' => 'Required',
+            'fk_idOds' => 'Required|max:9',
             'fk_idUsers' => 'Required',
             'area' => 'Required',
             'fk_idAnnexe' => 'Required'
