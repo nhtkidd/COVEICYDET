@@ -94,8 +94,9 @@ class propuestaController extends Controller
 
     public function update(Request $request,$id){
         //return $request;
-
+        //CONSULTAR LA PROPUESTA 
         $propuesta = Proposal::findOrFail($id);
+        //GUARDAR LOS DATOS
         $finalizado = $request->input("finished");
         $ods = implode(',',$request->input('fk_idOds'));
         $propuesta->name = $request->input('name');
@@ -110,23 +111,24 @@ class propuestaController extends Controller
         $propuesta->area = $request->input('area');
         $propuesta->fk_idAnnexe = $request->input('annexes');
         if ($finalizado == 'true') {
-            if ($request->input("name") != null && $request->input("objetive") != null && $request->input("description") != null && $request->input("group") != null &&
-            $request->input("reach") != null && $request->input("fk_idPlaces") != null && $request->input("area") != null && $request->input("annexes") != null &&
-            $request->input("fk_idOds") != null) {
-                //guardar datos
-                $propuesta->finished = $request->input('finished');
-                $propuesta->save();
 
-                $emailUser = auth()->user()->email;
-                $nameProposal = $propuesta->name;
-                //enviar email
-                Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
-                //return redirect()->route('proveicydet.inicio');
+            if ($request->input("name") == null || $request->input("objetive") == null || $request->input("description") == null || $request->input("group") == null ||
+            $request->input("reach") == null || $request->input("fk_idPlaces") == null || $request->input("area") == null || $request->input("annexes") == null ||
+            $request->input("fk_idOds") == null) {
+                return back()->withErrors([
+                    'message' => 'Formulario incompleto, favor de rellenar todo el formulario'
+                ]);
             }
-            return back()->withErrors([
-                'message' => 'Formulario incompleto, favor de rellenar todo el formulario'
-            ]);
-            /**/
+            
+            //guardar datos
+            $propuesta->finished = $request->input('finished');
+            $propuesta->save();
+
+            $emailUser = auth()->user()->email;
+            $nameProposal = $propuesta->name;
+            //enviar email
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
+            //return redirect()->route('proveicydet.inicio');
 
         }else{
             $propuesta->save();

@@ -7,8 +7,8 @@
     @auth
             <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
                 
-                    <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
-                    <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
+                <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
+                <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
             </div>
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
@@ -91,8 +91,23 @@
                         </label>
                         <input type="hidden" name="annexes" value="{{ $data->fk_idAnnexe }}">
                         <div class="bg-spaceGray w-full h-[30vh] overflow-y-auto" id="resultados">
+                            <!-- MOSTRAR ANEXO GUARDADO ANERIORMENTE -->
+                            
+                            @foreach ($annexes as $annexe)
+                            @if ($annexe->idAnnexes == $data->fk_idAnnexe)
+                                <div class="md:w-full flex flex-wrap items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                    <input checked id="bordered-radio-1" type="radio" value="{{ $annexe->idAnnexes }}" name="annexes"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="bordered-radio-1"
+                                    class="py-4 ml-2 w-[90%] text-sm font-medium text-gray-700 dark:text-gray-700">
+                                    {{ $annexe->problematic }}
+                                    </label>
+                                </div>
+                            @endif
+                            
+                            @endforeach
                             <!-- M O S T R A R - A N E X O S -->
-                           
+                            
 
                         </div>
                     </div>
