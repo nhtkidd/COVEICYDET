@@ -104,12 +104,8 @@
                             <option value="" selected>Selecciona su sector</option>
                             <optgroup label="Sector social">
                                 <option value="Sociedad civil">Sociedad civil</option>
-                            </optgroup>
-                            <optgroup label="Sector empresarial">
-                                <option value="otros">Especificar</option>
-                            </optgroup>
-                            <optgroup label="Sector gubernamental">
-                                <option value="otros">Especificar</option>
+                                <option value="otros">Sector empresarial</option>
+                                <option value="otros">Sector gubernamental</option>
                             </optgroup>
                             <optgroup label="Sector educativo">
                                 @foreach ($sectores as $sectorEdu)
