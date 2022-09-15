@@ -25,15 +25,15 @@ class registerRequest extends FormRequest
     {
         // return[];
         return [
-            'name' => 'required',
-            'last_name' => 'required',
+            'name' => 'required|regex:/^[a-zA-Z]+$/u',
+            'last_name' => 'required|regex:/^[a-zA-Z]+$/u',
             'curp' =>  'required|unique:users', //no te olivdes de poner de nuevos los unique
-            'email' => 'required|email|unique:users',
+            'email' => 'required|max:50|email:rfc,dns|unique:users',
             'password' => 'required|min:8',
-             'fk_idEducations' => 'required',
+            'fk_idEducations' => 'required|exists:schoolings,idEducations',
             'sector' => 'required',
-            'participation'=>'required',
-            'fk_idHeadquarters' => 'sometimes|required',
+            'participation'=>'required|Boolean',
+            'fk_idHeadquarters' => 'sometimes|required|exists:headquarters,idHeadquarters',
             'conditions' => 'required'
         ];
     }
