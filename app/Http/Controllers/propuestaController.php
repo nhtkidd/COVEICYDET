@@ -128,7 +128,6 @@ class propuestaController extends Controller
             $nameProposal = $propuesta->name;
             //enviar email
             Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
-            //return redirect()->route('proveicydet.inicio');
 
         }else{
             $propuesta->save();

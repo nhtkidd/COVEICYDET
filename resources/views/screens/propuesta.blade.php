@@ -865,7 +865,7 @@
                             <input type="hidden" name="fk_idUsers" value="{{ auth()->user()->idUser }}">
                         {{-- BOTON SUBMIT --}}
                         <div class="my-5">
-                            <button
+                            <button id="guardarTarde"
                                 class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="submit">
                                 Guardar para mas tarde
@@ -906,12 +906,15 @@
         </div>
         <script type="text/javascript">
             var disabled = document.getElementById("enviar").disabled;
+            var disabledTarde = document.getElementById("guardarTarde").disabled;
 
             document.querySelector(".finalizar").addEventListener('change', (event) => {
                 if (event.target.checked) {
                   document.getElementById("enviar").disabled=false;
+                  document.getElementById("guardarTarde").disabled=true;
                 } else {
                   document.getElementById("enviar").disabled=true;
+                  document.getElementById("guardarTarde").disabled=false;
                 }
             })
 
