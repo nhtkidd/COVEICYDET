@@ -893,7 +893,7 @@
                                         <div>
                                             <p class="font-bold">Importante</p>
                                             <p class="text-sm">Recuerda que tu propuesta debe tener todos los campos
-                                                completados para que se valida por nuestros administradores, de lo contrario
+                                                completados para que sea valida por nuestros administradores, de lo contrario
                                                 será eliminada.
                                             </p>
                                         </div>
