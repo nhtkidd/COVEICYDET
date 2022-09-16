@@ -92,6 +92,7 @@ class propuestaController extends Controller
         //return view('screens.annexes',compact('ods','places','annexes','propuesta'));
     }
 
+    
     public function update(propuestaRequest $request,$id){
         $propuesta = Proposal::findOrFail($id);
         $idUsuario = auth()->user()->idUser;
@@ -144,6 +145,7 @@ class propuestaController extends Controller
         return redirect()->route('proveicydet.inicio');
     }
 
+    
     public function store(propuestaRequest $request){
         $idUsuario = auth()->user()->idUser;
         $ods = $request->fk_idOds;

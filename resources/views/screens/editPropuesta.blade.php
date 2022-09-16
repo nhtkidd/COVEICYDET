@@ -87,8 +87,8 @@
                         <input type="radio" name="area" id="cuarto" value="Tecnológico"
                             @if ('Tecnológico' == $data->area) checked @endif><label for="cuarto"> Tecnológico</label><br>
                     </div>
-                    @error('area')
-                        <br>
+                        @error('area')
+                            <br>
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                     <div class="my-3">
