@@ -25,8 +25,8 @@ class registerRequest extends FormRequest
     {
         // return[];
         return [
-            'name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+/',
-            'last_name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+/',
+            'name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+$/',
+            'last_name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+$/',
             'curp' =>  [
                 'required',
                 'regex:/^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/',
@@ -34,13 +34,25 @@ class registerRequest extends FormRequest
                 'max:18',
                 'unique:users'
             ], //no te olivdes de poner de nuevos los unique
-            'email' => 'required|email|unique:users',
+            'email' => 'required|max:50|email:dns|unique:users',
             'password' => 'required|min:8',
-             'fk_idEducations' => 'required',
-            'sector' => 'required|regex:/^[a-zA-ZÑñ\s]+$/',
-            'participation'=>'required',
-            'fk_idHeadquarters' => 'sometimes|required',
+             'fk_idEducations' => 'required|exists:schoolings,idEducations',
+            'sector' => 'required',
+            'participation'=>'required|boolean',
+            'fk_idHeadquarters' => 'sometimes|required|exists:headquarters,idHeadquarters',
             'conditions' => 'required'
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'participation' => $this->toBoolean($this->participation),
+        ]);
+    }
+
+    private function toBoolean($booleable)
+    {
+        return filter_var($booleable, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
     }
 }

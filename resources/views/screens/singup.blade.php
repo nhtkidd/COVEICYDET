@@ -132,19 +132,19 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             ¿Tu participación será presencial?
                         </label>
-                        <input type="radio" id="participacionSi" name="participation" value="si" required
+                        <input type="radio" id="participacionSi" name="participation" value="true" required
                             onchange="participaSelector()">
-                        <label for="si">Si</label><br>
-                        <input type="radio"  id="participacionNo" name="participation" value="no" required
+                        <label for="participacionSi">Si</label><br>
+                        <input type="radio"  id="participacionNo" name="participation" value="false" required
                             onchange="participaSelector()">
-                        <label for="no">No</label><br>
+                        <label for="participacionNo">No</label><br>
                     </div>
-                    <div class="md:ml-2 2xl:my-4">
+                    <div id="sedeSelect" class="md:ml-2 2xl:my-4" hidden>
                         <div class="md:ml-2 2xl:my-4">
                             <label class="labelStyle 2xl:text-xl" for="fk_idHeadquarters">
                                 Participacion presencial
                             </label>
-                            <select name="fk_idHeadquarters" value="" id="sedeSelect" required disabled
+                            <select id="selectSede" name="fk_idHeadquarters" value=""  required disabled 
                                 class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 <option>Selecciona tu sede de Participacion</option>
                                 <optgroup label="Sedes">
@@ -200,13 +200,11 @@
 
     function participaSelector() {
         const cb = document.querySelector('#participacionSi');
-        console.log(cb.checked); //
         if (cb.checked) {
-            document.getElementById("sedeSelect").disabled = false;
-            document.getElementById("sedeSelect").classList.add('bg-green-200');
+            document.getElementById("sedeSelect").hidden = false;
+            document.getElementById("selectSede").disabled = false;
         } else {
-            console.log('pendejote')
-            document.getElementById("sedeSelect").disabled = true;
+            document.getElementById("sedeSelect").hidden = true;
             document.getElementById("sedeSelect").value = "Selecciona tu sede de Participacion";
             document.getElementById("sedeSelect").classList.remove('bg-green-200');
         }

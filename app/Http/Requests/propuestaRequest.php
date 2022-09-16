@@ -18,17 +18,17 @@ class propuestaRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     * 1,2,3,4,5
+     * 1,2,3,4,5 -> 9 caracteres
      * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'name' => 'Required',
-            'objetive' => 'Required',
-            'description' => 'Required',
-            'group' => 'Required',
-            'reach' => 'Required',
+            'name' => 'Required|max:200',
+            'objetive' => 'Required|max:500',
+            'description' => 'Required|max:2500',
+            'group' => 'Required|max:2500',
+            'reach' => 'Required|max:2500',
             'finished' => 'Required',
             'fk_idPlaces' => 'Required',
             'fk_idOds' => 'Required|max:9',
