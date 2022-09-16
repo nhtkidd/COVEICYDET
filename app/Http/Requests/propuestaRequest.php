@@ -24,15 +24,15 @@ class propuestaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'Required|max:100',
-            'objetive' => 'nullable|max:500',
-            'description' => 'nullable|max:2500',
-            'group' => 'nullable|max:2500',
-            'reach' => 'nullable|max:2500',
+            'name' => 'Required|max:100|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+            'objetive' => 'nullable|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+            'description' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+            'group' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+            'reach' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'finished' => 'nullable',
             'fk_idPlaces' => 'nullable|exists:places,name',
             'fk_idOds' => 'required|max:9',
-            'fk_idUsers' => 'Required',
+            'fk_idUsers' => 'Required|exists:users,idUser,' . auth()->user()->idUser,
             'area' => 'nullable',
             'fk_idAnnexe' => 'nullable'
         ];

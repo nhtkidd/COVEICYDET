@@ -34,9 +34,9 @@ class registerRequest extends FormRequest
                 'max:18',
                 'unique:users'
             ], //no te olivdes de poner de nuevos los unique
-            'email' => 'required|max:50|email:dns|unique:users',
+            'email' => 'required|max:50|email:rfc,dns|unique:users',
             'password' => 'required|min:8',
-             'fk_idEducations' => 'required|exists:schoolings,idEducations',
+            'fk_idEducations' => 'required|exists:schoolings,idEducations',
             'sector' => 'required',
             'participation'=>'required|boolean',
             'fk_idHeadquarters' => 'sometimes|required|exists:headquarters,idHeadquarters',

@@ -60,7 +60,7 @@ class propuestaController extends Controller
     public function annexes(){
         
         $annexes = Annexe::where('areas','like','%'. 4 .'%')->get();
-        return view('screens.annexes',compact('annexes'));
+        return view('screens.annexe',compact('annexes'));
     }
 
     public function mostrar($id){
@@ -143,19 +143,53 @@ class propuestaController extends Controller
         return redirect()->route('proveicydet.inicio');
     }
 
-    /*public function store(propuestaRequest $request){
-        return $request;
+    public function store(propuestaRequest $request){
+        $idUsuario = auth()->user()->idUser;
+        $ods = $request->fk_idOds;
+        $request->fk_idOds = implode(",", $ods);
+
+        $propuesta = new Proposal;
+
+        $propuesta->name = $request->input('name');
+        $propuesta->objetive = $request->input('objetive');
+        $propuesta->description = $request->input('description');
+        $propuesta->group = $request->input('group');
+        $propuesta->reach = $request->input('reach');
+        $propuesta->fk_idPlaces = $request->input('fk_idPlaces');
+        $propuesta->fk_idOds = $request->fk_idOds;
+        $propuesta->fk_idUsers = $request->input('fk_idUsers');
+        $propuesta->area = $request->input('area');
+        $propuesta->fk_idAnnexe = $request->input('annexes');
+        $propuesta->finished = $request->input('finished');
+
         if ($request->finished == "true") {
-            Proposal::create($request->validated());
+            $request->validate([
+                'name' => 'Required|max:100|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/', 
+                'objetive' => 'Required|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'description' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'group' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'reach' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'finished' => 'Required',
+                'fk_idPlaces' => 'Required|exists:places,name',
+                'fk_idOds' => 'Required|max:9',
+                'fk_idUsers' => 'Required|exists:users,idUser,' . $idUsuario,
+                'area' => 'Required',
+                'fk_idAnnexe' => 'Required'
+            ]);
+            
+            return $propuesta;
+            /*Proposal::create($request->validated());
             $emailUser = auth()->user()->email;
             $nameProposal = $request->name;
-            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); */
         }else{
-            return $request;
+            //Proposal::create($request->validated());
+            return $propuesta;
         }
-    }*/
+        //return redirect()->route('proveicydet.inicio');
+    }
 
-    public function store(propuestaRequest $request)
+    /*public function store(propuestaRequest $request)
     {
         if ($request->fk_idOds == null) {
             //return back()->with('Debes seleccionar al menos una opción');
@@ -208,5 +242,5 @@ class propuestaController extends Controller
         }
         return redirect()->route('proveicydet.inicio');
     
-    }
+    }*/
 }
