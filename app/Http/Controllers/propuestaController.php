@@ -181,7 +181,6 @@ class propuestaController extends Controller
             ]);
             
             //return $propuesta;
-            //Proposal::create($request->validated());
             $propuesta->save();
 
             $emailUser = auth()->user()->email;

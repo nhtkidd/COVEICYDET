@@ -38,7 +38,5 @@ class propuestaRequest extends FormRequest
             'fk_idAnnexe' => 'nullable'
         ];
 
-        
-
     }
 }
