@@ -32,7 +32,7 @@ class propuestaRequest extends FormRequest
             'finished' => 'nullable',
             'fk_idPlaces' => 'nullable|exists:places,name',
             'fk_idOds' => 'required|max:9',
-            'fk_idUsers' => 'Required|exists:users,idUser,' . auth()->user()->idUser,
+            'fk_idUsers' => 'Required|exists:users,idUser,' .auth()->user()->idUser,
             'area' => 'nullable',
             'fk_idAnnexe' => 'nullable'
         ];

@@ -16,7 +16,7 @@
                     @error('message')
                         <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                             <p class="font-bold">Error</p>
-                            <p>{{ $message }}</p>
+                            <p>*{{ $message }}</p>
                         </div>
                     @enderror
                     <h1 class="text-xl lg:text-4xl font-bold">Gracias por tu interés en participar con tu propuesta.</h1>

@@ -87,7 +87,10 @@
                         <input type="radio" name="area" id="cuarto" value="Tecnológico"
                             @if ('Tecnológico' == $data->area) checked @endif><label for="cuarto"> Tecnológico</label><br>
                     </div>
-
+                    @error('area')
+                        <br>
+                            <small class="text-red-800">*{{ $message }}</small>
+                        @enderror
                     <div class="my-3">
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
@@ -115,7 +118,10 @@
 
                         </div>
                     </div>
-
+                    @error('fk_idAnnexe')
+                        <br>
+                            <small class="text-red-800">*{{ $message }}</small>
+                        @enderror
                     <script type="text/javascript">
                         const area = document.getElementById('primero');
                         const areados = document.getElementById('segundo');
@@ -866,7 +872,7 @@
                             name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ $data->name }}" />
                             @error('name')
                             <br>
-                            <p class="text-red-800">{{$message}}</p>
+                            <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Objetivo de la propuesta
@@ -876,7 +882,7 @@
                             maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->objetive }}</textarea>
                             @error('objetive')
                             <br>
-                            <p class="text-red-800">{{$message}}</p>
+                            <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Descripción actual de la problemática
@@ -886,7 +892,7 @@
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->description }}</textarea>
                             @error('description')
                             <br>
-                            <p class="text-red-800">{{$message}}</p>
+                            <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Grupo de impacto
@@ -913,8 +919,8 @@
                         <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->group }}</textarea>
                         @error('group')
-                            <br>
-                            <p class="text-red-800">{{$message}}</p>
+                        <br>
+                        <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Lugar o región de impacto (espacio físico):
@@ -953,8 +959,8 @@
                                 name="fk_idPlaces" disabled id="lugarInput" value="{{ old('fk_idPlaces') }}"
                                 placeholder="Ingresa la región de impacto" />
                             @error('fk_idPlaces')
-                                <br>
-                                <p class="text-red-800">{{$message}}</p>
+                            <br>
+                            <small class="text-red-800">*{{ $message }}</small>
                             @enderror
                         </div>
                         <label class="labelStyle 2xl:text-xl">
@@ -964,8 +970,8 @@
                         <textarea name="reach" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->reach }}</textarea>
                         @error('reach')
-                            <br>
-                            <p class="text-red-800">{{$message}}</p>
+                        <br>
+                        <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         {{-- AQUI VAN LOS CHECKBOXES --}}
                         <label class="labelStyle 2xl:text-xl md:w-[60%]" for="firstName">
@@ -1055,7 +1061,8 @@
 
                         </div>
                         @error('fk_idOds')
-                            <p class="text-red-800">{{$message}}</p>
+                        <br>
+                        <small class="text-red-800">*{{ $message }}</small>
                         @enderror
 
                         <input type="hidden" name="fk_idUsers" value="{{ auth()->user()->idUser }}">

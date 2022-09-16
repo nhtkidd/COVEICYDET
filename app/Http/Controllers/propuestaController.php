@@ -172,7 +172,7 @@ class propuestaController extends Controller
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'Required|max:9',
-                'fk_idUsers' => 'Required|exists:users,idUser,' . $idUsuario,
+                'fk_idUsers' => 'Required|exists:users,idUser,'. $idUsuario,
                 'area' => 'Required',
                 'fk_idAnnexe' => 'Required'
             ]);
