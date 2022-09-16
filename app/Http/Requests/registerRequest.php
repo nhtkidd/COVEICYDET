@@ -23,7 +23,7 @@ class registerRequest extends FormRequest
      */
     public function rules()
     {
-        
+
         return [
             'name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+$/',
             'last_name' => 'required|max:50|regex:/^[a-zA-ZÑñ\s]+$/',
@@ -34,11 +34,17 @@ class registerRequest extends FormRequest
                 'max:18',
                 'unique:users'
             ], //no te olivdes de poner de nuevos los unique
-            'email' => 'required|max:50|email:dns|unique:users',
+            'email' => [
+                'required',
+                'max:50',
+                'email',
+                'unique:users',
+                'regex:/(.*)@(gmail|live|outlook|icloud|hotmail|yahoo)\.com/i'
+            ],
             'password' => 'required|min:8',
-             'fk_idEducations' => 'required|exists:schoolings,idEducations',
+            'fk_idEducations' => 'required|exists:schoolings,idEducations',
             'sector' => 'required',
-            'participation'=>'required|boolean',
+            'participation' => 'required|boolean',
             'fk_idHeadquarters' => 'sometimes|required|exists:headquarters,idHeadquarters',
             'conditions' => 'required'
         ];
