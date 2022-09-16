@@ -92,13 +92,20 @@ class propuestaController extends Controller
         //return view('screens.annexes',compact('ods','places','annexes','propuesta'));
     }
 
-    public function update(Request $request,$id){
+    public function update(propuestaRequest $request,$id){
         //return $request;
         //CONSULTAR LA PROPUESTA 
         $propuesta = Proposal::findOrFail($id);
         //GUARDAR LOS DATOS
         $finalizado = $request->input("finished");
         $ods = implode(',',$request->input('fk_idOds'));
+        $odsus = explode(',',$ods);
+        $count = sizeof($odsus);
+        if ($count > 9) {
+            abort(403, '');
+
+        }
+
         $propuesta->name = $request->input('name');
         $propuesta->objetive = $request->input('objetive');
         $propuesta->description = $request->input('description');
@@ -136,8 +143,19 @@ class propuestaController extends Controller
         return redirect()->route('proveicydet.inicio');
     }
 
+    /*public function store(propuestaRequest $request){
+        return $request;
+        if ($request->finished == "true") {
+            Proposal::create($request->validated());
+            $emailUser = auth()->user()->email;
+            $nameProposal = $request->name;
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
+        }else{
+            return $request;
+        }
+    }*/
 
-    public function store(Request $request)
+    public function store(propuestaRequest $request)
     {
         if ($request->fk_idOds == null) {
             //return back()->with('Debes seleccionar al menos una opción');
@@ -149,6 +167,11 @@ class propuestaController extends Controller
         $terminado = $request->input("finished");
         //$idOds = implode(",", $ods);
         $ods = implode(',',$request->input('fk_idOds'));
+        $odsus = explode(',',$ods);
+        $count = sizeof($odsus);
+        if ($count > 9) {
+            abort(403, 'Has seleccionado más Odjetivos de Desarrollo Sustentable de lo que se te indico');
+        }
         $propuesta = new Proposal;
 
         $propuesta->name = $request->input('name');
@@ -163,29 +186,20 @@ class propuestaController extends Controller
         $propuesta->fk_idAnnexe = $request->input('annexes');
         //logica para determinar si el usuario guarda o termina la propuesta
         if ($terminado == 'true') {
-            if ($request->input("name") != null && $request->input("objetive") != null && $request->input("description") != null && $request->input("group") != null &&
-            $request->input("reach") != null && $request->input("fk_idPlaces") != null && $request->input("area") != null && $request->input("annexes") != null &&
-            $request->input("fk_idOds") != null) {
-                //guardar datos
-                $propuesta->finished = $request->input('finished');
-                $propuesta->save();
-
-                $emailUser = auth()->user()->email;
-                $nameProposal = $propuesta->name;
-                //enviar email
-                Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
-                return redirect()->route('proveicydet.inicio');
+            if ($request->input("name") == null || $request->input("objetive") == null || $request->input("description") == null || $request->input("group") == null ||
+            $request->input("reach") == null || $request->input("fk_idPlaces") == null || $request->input("area") == null || $request->input("annexes") == null ||
+            $request->input("fk_idOds") == null) {
+                return back()->withErrors([
+                    'message' => 'Formulario incompleto, favor de rellenar todo el formulario'
+                ]);
             }
-            return back()->withErrors([
-                'message' => 'Formulario incompleto, favor de rellenar todo el formulario'
-            ]);
-            /*$propuesta->finished = $request->input('finished');
+            $propuesta->finished = $request->input('finished');
           
             $propuesta->save();
 
             $emailUser = auth()->user()->email;
             $nameProposal = $propuesta->name;
-            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); */
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
             
         } else {
             //return $request;

@@ -738,19 +738,31 @@
 
                         </label>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
-                            name="name" placeholder="Ingresa el nombre de tu propuesa" required />
+                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ old('name') }}" required />
+                            @error('name')
+                            <br>
+                                <p class="text-red-800">{{ $message }}</p>
+                            @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Objetivo de la propuesta
 
                         </label>
                         <textarea name="objetive" id="" rows="10" cols="45"placeholder="Maximo 500 caracteres"
-                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
+                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('objetive') }}</textarea>
+                            @error('objetive')
+                            <br>
+                                <p class="text-red-800">{{ $message }}</p>
+                            @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Descripción actual de la problemática
 
                         </label>
                         <textarea name="description" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('description') }}</textarea>
+                            @error('description')
+                            <br>
+                                <p class="text-red-800">{{ $message }}</p>
+                            @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Grupo de impacto
 
@@ -774,7 +786,11 @@
                             </div>
                         </div>
                         <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('group') }}</textarea>
+                            @error('group')
+                            <br>
+                                <p  class="text-red-800">{{ $message }}</p>
+                            @enderror
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Lugar o región de impacto (espacio físico):
                             <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"
@@ -790,6 +806,10 @@
                             @endforeach
                             <option value="otros">Otra opción</option>
                         </select>
+                        @error('fk_idPlaces')
+                        <br>
+                            <small class="text-red-800">*{{ $message }}</small>
+                        @enderror
                         <div id="hiddenInput" class="md:ml-2 2xl:my-4 w-[60%] hidden">
                             <label class="labelStyle 2xl:text-xl" for="fk_idPlaces">
                                 Especifica tu lugar o región de impacto
@@ -798,6 +818,7 @@
                                 name="fk_idPlaces" disabled id="lugarInput" value="{{ old('fk_idPlaces') }}"
                                 placeholder="Ingresa la región de impacto" />
                             @error('fk_idPlaces')
+                            <br>
                                 <small class="text-red-800">*{{ $message }}</small>
                             @enderror
                         </div>
@@ -806,8 +827,11 @@
 
                         </label>
                         <textarea name="reach" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline"></textarea>
-
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('reach') }}</textarea>
+                        @error('reach')
+                        <br>
+                            <p>{{ $message }}</p>
+                        @enderror
                         {{-- AQUI VAN LOS CHECKBOXES --}}
                         <label class="labelStyle 2xl:text-xl md:w-[60%]" for="firstName">
                             &nbsp; De acuerdo con la naturaleza de tu
@@ -830,7 +854,7 @@
                                     </label>
                                 </div>
                             @endforeach
-
+                                
 
                             <br>
                             <script language="javascript">
@@ -871,7 +895,10 @@
                             </script>
                         </div>
 
-
+                        @error('fk_idOds')
+                        <br>
+                            <p>{{ $message }}</p>
+                        @enderror
                         <input type="hidden" name="fk_idUsers" value="{{ auth()->user()->idUser }}">
                         {{-- BOTON SUBMIT --}}
                         <div class="my-5">

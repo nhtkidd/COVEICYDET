@@ -48,6 +48,7 @@ class singupController extends Controller
         return back()->withErrors([
             'message' => 'Para participar necesitas ser mayor de edad'
         ]);
+        //return $request;
         }
         
     }

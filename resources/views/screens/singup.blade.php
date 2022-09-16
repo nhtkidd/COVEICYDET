@@ -23,7 +23,7 @@
                             Nombre(s)
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
-                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" required />
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" maxlength="50" required />
                         @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -33,7 +33,7 @@
                             Apellidos
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
-                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" required/>
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" maxlength="50" required/>
                         @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -134,10 +134,10 @@
                         </label>
                         <input type="radio" id="participacionSi" name="participation" value="true" required
                             onchange="participaSelector()">
-                        <label for="si">Si</label><br>
+                        <label for="participacionSi">Si</label><br>
                         <input type="radio"  id="participacionNo" name="participation" value="false" required
                             onchange="participaSelector()">
-                        <label for="no">No</label><br>
+                        <label for="participacionNo">No</label><br>
                     </div>
                     <div id="sedeSelect" class="md:ml-2 2xl:my-4" hidden>
                         <div class="md:ml-2 2xl:my-4">
