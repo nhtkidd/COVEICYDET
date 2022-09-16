@@ -37,10 +37,6 @@
                                 <p>No puedes crear otra propuesta hasta concluir con la propuesta actual.</p>
                             </div>
                             <br>
-                            <form action="{{ route('proveicydet.propuesta') }}">
-                                <button disabled type="submit" class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-[50%] py-2 px-4 rounded focus:outline-none focus:shadow-outline">Crear una nueva Propuesta</button>
-                            </form>
-                            <br>
                         @endif
 
                         @if ($finish->finished == true)
