@@ -8,7 +8,7 @@ use App\Models\Annexe;
 use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\propuestaRequest;
 use App\Mail\confirmationMail;
@@ -148,6 +148,9 @@ class propuestaController extends Controller
         $ods = $request->fk_idOds;
         $request->fk_idOds = implode(",", $ods);
 
+        if ($request->fk_idUsers != $idUsuario) {
+            abort(403,'ACCESO DENEGADO');
+        }
         $propuesta = new Proposal;
 
         $propuesta->name = $request->input('name');
@@ -159,7 +162,7 @@ class propuestaController extends Controller
         $propuesta->fk_idOds = $request->fk_idOds;
         $propuesta->fk_idUsers = $request->input('fk_idUsers');
         $propuesta->area = $request->input('area');
-        $propuesta->fk_idAnnexe = $request->input('annexes');
+        $propuesta->fk_idAnnexe = $request->input('fk_idAnnexe');
         $propuesta->finished = $request->input('finished');
 
         if ($request->finished == "true") {
@@ -171,22 +174,25 @@ class propuestaController extends Controller
                 'reach' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
-                'fk_idOds' => 'Required|max:9',
-                'fk_idUsers' => 'Required|exists:users,idUser,'. $idUsuario,
+                'fk_idOds' => 'required|exists:ods,idOds|max:5',
+                'fk_idUsers' => 'Required|exists:users,idUser',
                 'area' => 'Required',
                 'fk_idAnnexe' => 'Required'
             ]);
             
-            return $propuesta;
-            /*Proposal::create($request->validated());
+            //return $propuesta;
+            //Proposal::create($request->validated());
+            $propuesta->save();
+
             $emailUser = auth()->user()->email;
             $nameProposal = $request->name;
-            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); */
+            Mail::to($emailUser)->send(new confirmationMail($nameProposal)); 
         }else{
             //Proposal::create($request->validated());
-            return $propuesta;
+            //return $propuesta;
+            $propuesta->save();
         }
-        //return redirect()->route('proveicydet.inicio');
+        return redirect()->route('proveicydet.inicio');
     }
 
     /*public function store(propuestaRequest $request)

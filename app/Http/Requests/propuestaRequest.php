@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -31,11 +32,13 @@ class propuestaRequest extends FormRequest
             'reach' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'finished' => 'nullable',
             'fk_idPlaces' => 'nullable|exists:places,name',
-            'fk_idOds' => 'required|max:9',
-            'fk_idUsers' => 'Required|exists:users,idUser,' .auth()->user()->idUser,
+            'fk_idOds' => 'required|exists:ods,idOds|max:5',
+            'fk_idUsers' => 'Required|exists:users,idUser',
             'area' => 'nullable',
             'fk_idAnnexe' => 'nullable'
         ];
+
+        
 
     }
 }

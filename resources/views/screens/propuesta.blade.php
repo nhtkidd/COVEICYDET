@@ -13,6 +13,7 @@
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
                 <section id="bienvenida" class="w-full h-auto md:h-[35%] lg:h-[50%]  p-[5%] text-center  ">
+                    
                     @error('message')
                         <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                             <p class="font-bold">Error</p>
@@ -814,7 +815,7 @@
 
                         </label>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
-                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ old('name') }}" required />
+                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ old('name') }}" maxlength="100" required />
                             @error('name')
                             <br>
                                 <small class="text-red-800">*{{ $message }}</small>
@@ -973,7 +974,7 @@
 
                         @error('fk_idOds')
                         <br>
-                            <p>{{ $message }}</p>
+                                <small class="text-red-800">*{{ $message }}</small>
                         @enderror
                         <input type="hidden" name="fk_idUsers" value="{{ auth()->user()->idUser }}">
                         {{-- BOTON SUBMIT --}}
