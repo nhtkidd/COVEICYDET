@@ -44,7 +44,6 @@ class singupController extends Controller
         if ($edad >=18) { //VALIDAR SI ES MAYOR DE EDAD
             $userr = User::create($request->validated());
             return view('messages.success');
-            return $request;
         }else{
         return back()->withErrors([
             'message' => 'Para participar necesitas ser mayor de edad'

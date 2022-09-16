@@ -24,17 +24,17 @@ class propuestaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'Required|max:200',
-            'objetive' => 'Required|max:500',
-            'description' => 'Required|max:2500',
-            'group' => 'Required|max:2500',
-            'reach' => 'Required|max:2500',
-            'finished' => 'Required',
-            'fk_idPlaces' => 'Required',
-            'fk_idOds' => 'Required|max:9',
+            'name' => 'Required|max:100',
+            'objetive' => 'nullable|max:500',
+            'description' => 'nullable|max:2500',
+            'group' => 'nullable|max:2500',
+            'reach' => 'nullable|max:2500',
+            'finished' => 'nullable',
+            'fk_idPlaces' => 'nullable|exists:places,name',
+            'fk_idOds' => 'required|max:9',
             'fk_idUsers' => 'Required',
-            'area' => 'Required',
-            'fk_idAnnexe' => 'Required'
+            'area' => 'nullable',
+            'fk_idAnnexe' => 'nullable'
         ];
 
     }
