@@ -56,7 +56,7 @@
                         </label>
                         <div class="flex">
                             <div class="grow h-14 ">
-                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8"
+                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16"
                                 value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres"required />
                               </div>
                               <div class="flex-none w-14 h-14 ">
