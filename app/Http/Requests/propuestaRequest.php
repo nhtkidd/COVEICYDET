@@ -31,7 +31,7 @@ class propuestaRequest extends FormRequest
             'group' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'reach' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'finished' => 'nullable',
-            'fk_idPlaces' => 'nullable|exists:places,name',
+            'fk_idPlaces' => 'nullable',
             'fk_idOds' => 'required|exists:ods,idOds|max:5',
             'fk_idUsers' => 'Required|exists:users,idUser',
             'area' => 'nullable',
