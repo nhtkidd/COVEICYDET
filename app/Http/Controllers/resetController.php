@@ -61,7 +61,7 @@ class resetController extends Controller
             'password_confirmation' => 'Required'
         ]);
 
-        //if($request->password == $request->confirmPassword){
+        
             //Compruebo token válido
             $comprobarToken = DB::table('resets')->where(['email' => $request->email, 'token' => $request->token])->first();
             if(!$comprobarToken){
@@ -77,9 +77,6 @@ class resetController extends Controller
             //Retorno
             //return redirect('acceder')->with('success','La contraseña se ha cambiado correctamente.');
             return redirect(route('proveicydet.login'))->with('success','La contraseña se ha cambiado correctamente.');
-        /*}else{
-            return back()->with('confirmPassword','Las contraseñas no coinciden');
-        }*/
         
 
         

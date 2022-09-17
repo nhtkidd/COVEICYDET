@@ -6,7 +6,6 @@
     <div class="flex items-center justify-center ">
 
         <div class="w-full lg:w-1/2 flex mt-[10%] lg:mt-1/2 lg:items-center justify-center ">
-
             
             <div class="bg-white w-[90%] h-auto lg:w-[70%] lg:h-[90%] 2xl:h-[65%] rounded-br-large">
 

@@ -60,7 +60,7 @@
                                 <br>
                                     <div class="py-3">
                                         <br>
-                                        <button type="submit" class="bg-[#635C44] hover:bg-[#484332] text-white 2xl:text-xl font-bold  py-2 px-4 rounded">Enviar</button>
+                                        <button type="submit" class="bg-[#635C44] hover:bg-[#484332] text-white 2xl:text-xl font-bold  py-2 px-4 rounded">Cambiar contraseña</button>
                                     </div>
                                 </form>
                             </div>
