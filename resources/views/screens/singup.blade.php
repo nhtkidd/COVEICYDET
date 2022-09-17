@@ -23,7 +23,7 @@
                             Nombre(s)
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
-                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" maxlength="50" required />
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" maxlength="50" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,50}" title="El campo no debe contener números o caracteres especiales"/>
                         @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -33,7 +33,7 @@
                             Apellidos
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
-                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" maxlength="50" required/>
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" maxlength="50" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales."/>
                         @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -45,7 +45,7 @@
                             Email
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="email"
-                            value="{{ old('email') }}" placeholder="Ingrese su email electronico" required />
+                            value="{{ old('email') }}" placeholder="Ingrese su email" required pattern="((.*)@(gmail|live|outlook|icloud|hotmail|yahoo)\.com){1,200}" title="Dirección de correo no valida."/>
                         @error('email')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -75,7 +75,7 @@
                         </label>
                         <input style="text-transform: uppercase;" minlength="18" maxlength="18"
                             class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
-                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP"  required/>
+                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP"  required pattern="(^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)){1,200}" title="El campo no coincide con el formato de CURP"/>
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror

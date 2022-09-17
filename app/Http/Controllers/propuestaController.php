@@ -170,7 +170,7 @@ class propuestaController extends Controller
 
         if ($request->finished == "true") {
             $request->validate([
-                'name' => 'Required|max:100|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/', 
+                'name' => 'Required|max:200|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/', 
                 'objetive' => 'Required|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
                 'description' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
                 'group' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',

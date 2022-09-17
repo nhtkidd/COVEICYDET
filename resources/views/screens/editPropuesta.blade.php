@@ -869,7 +869,7 @@
 
                         </label>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
-                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ $data->name }}" />
+                            maxlength="200" name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ $data->name }}" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales"/>
                             @error('name')
                             <br>
                             <small class="text-red-800">*{{ $message }}</small>
@@ -878,8 +878,8 @@
                             &nbsp; Objetivo de la propuesta
 
                         </label>
-                        <textarea name="objetive" id="" rows="10" cols="45"placeholder="Maximo 500 caracteres"
-                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->objetive }}</textarea>
+                        <textarea name="objetive" id="" rows="10" cols="45"placeholder="Máximo 500 caracteres"
+                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->objetive }}</textarea>
                             @error('objetive')
                             <br>
                             <small class="text-red-800">*{{ $message }}</small>
@@ -888,8 +888,8 @@
                             &nbsp; Descripción actual de la problemática
 
                         </label>
-                        <textarea name="description" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->description }}</textarea>
+                        <textarea name="description" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->description }}</textarea>
                             @error('description')
                             <br>
                             <small class="text-red-800">*{{ $message }}</small>
@@ -916,8 +916,8 @@
                                 </div>
                             </div>
                         </div>
-                        <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->group }}</textarea>
+                        <textarea name="group" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->group }}</textarea>
                         @error('group')
                         <br>
                         <small class="text-red-800">*{{ $message }}</small>

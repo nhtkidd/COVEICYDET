@@ -814,7 +814,7 @@
 
                         </label>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
-                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ old('name') }}" maxlength="100" required />
+                            name="name" placeholder="Ingresa el nombre de tu propuesa" value="{{ old('name') }}" maxlength="100" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales"/>
                             @error('name')
                             <br>
                                 <small class="text-red-800">*{{ $message }}</small>
@@ -823,7 +823,7 @@
                             &nbsp; Objetivo de la propuesta
 
                         </label>
-                        <textarea name="objetive" id="" rows="10" cols="45"placeholder="Maximo 500 caracteres"
+                        <textarea name="objetive" id="" rows="10" cols="45"placeholder="Máximo 500 caracteres"
                             maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('objetive') }}</textarea>
                             @error('objetive')
                             <br>
@@ -862,7 +862,7 @@
                             </div>
                         </div>
                         <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('group') }}</textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ old('group') }}</textarea>
                             @error('group')
                             <br>
                                 <small class="text-red-800">*{{ $message }}</small>
