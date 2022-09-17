@@ -127,7 +127,7 @@ class propuestaController extends Controller
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
                 'area' => 'Required',
-                'fk_idAnnexe' => 'Required'
+                'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             
             //return $propuesta;
@@ -180,7 +180,7 @@ class propuestaController extends Controller
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
                 'area' => 'Required',
-                'fk_idAnnexe' => 'Required'
+                'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             
             //return $propuesta;
