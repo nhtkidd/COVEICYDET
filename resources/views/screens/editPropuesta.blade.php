@@ -78,14 +78,16 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
-                        <input type="radio" name="area" id="primero" value="Ambiental"
-                            @if ('Ambiental' == $data->area) checked @endif><label for="primero"> Ambiental</label><br>
-                        <input type="radio" name="area" id="segundo" value="Social"
-                            @if ('Social' == $data->area) checked @endif><label for="segundo"> Social</label><br>
-                        <input type="radio" name="area" id="tercero" value="Económico"
-                            @if ('Económico' == $data->area) checked @endif><label for="tercero"> Economico</label><br>
-                        <input type="radio" name="area" id="cuarto" value="Tecnológico"
-                            @if ('Tecnológico' == $data->area) checked @endif><label for="cuarto"> Tecnológico</label><br>
+                        @foreach ($areas as $area)
+
+                            @if ($area->name == $data->area)
+                                <input type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}" checked><label for="{{$area->position}}">{{$area->name}}</label><br>
+                            @endif
+                            @if ($area->name != $data->area)
+                                <input type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}"><label for="{{$area->position}}">{{$area->name}}</label><br>
+                            @endif
+
+                        @endforeach
                     </div>
                         @error('area')
                             <br>

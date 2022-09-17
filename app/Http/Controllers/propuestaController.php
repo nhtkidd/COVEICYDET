@@ -6,6 +6,7 @@ use App\Models\Od;
 use App\Models\Place;
 use App\Models\Annexe;
 use App\Models\Proposal;
+use App\Models\Area;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,8 @@ class propuestaController extends Controller
             $ods = Od::all();
             $places = Place::all();
             $data = Annexe::all();
-            return view('screens.propuesta', compact('ods', 'places','data'));
+            $areas = Area::all();
+            return view('screens.propuesta', compact('ods', 'places','data','areas'));
         }else{
             return redirect()->route('proveicydet.inicio');
         }
@@ -36,13 +38,14 @@ class propuestaController extends Controller
         $ods = Od::all();
         $places = Place::all();
         $annexes = Annexe::all();
+        $areas = Area::all();
         $proposal = Proposal::findOrFail($id);
         if ($proposal->fk_idUsers == auth()->user()->idUser) {
         //if ($proposal->idProposal == $id) {
 
             if ($proposal->finished == null) {
                 $propuesta = Proposal::where('idProposal','=',$id)->get();
-                return view('screens.editPropuesta',compact('ods','places','annexes','propuesta'));
+                return view('screens.editPropuesta',compact('ods','places','annexes','propuesta','areas'));
             }else{
                 return back()->withErrors([
                     'message' => 'No puedes acceder a otras propuestas'
@@ -126,7 +129,7 @@ class propuestaController extends Controller
                 'fk_idPlaces' => 'Required',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
-                'area' => 'Required',
+                'area' => 'nullable|exists:areas,name',
                 'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             
@@ -154,6 +157,7 @@ class propuestaController extends Controller
         if ($request->fk_idUsers != $idUsuario) {
             abort(403,'ACCESO DENEGADO');
         }
+
         $propuesta = new Proposal;
 
         $propuesta->name = $request->input('name');
@@ -179,7 +183,7 @@ class propuestaController extends Controller
                 'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
-                'area' => 'Required',
+                'area' => 'nullable|exists:areas,name',
                 'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             

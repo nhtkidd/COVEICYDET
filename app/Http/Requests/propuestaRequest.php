@@ -34,7 +34,7 @@ class propuestaRequest extends FormRequest
             'fk_idPlaces' => 'nullable',
             'fk_idOds' => 'required|exists:ods,idOds|max:5',
             'fk_idUsers' => 'Required|exists:users,idUser',
-            'area' => 'nullable',
+            'area' => 'nullable|exists:areas,name',
             'fk_idAnnexe' => 'nullable|exists:annexes,idAnnexes'
         ];
 

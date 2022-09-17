@@ -39,14 +39,10 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
-                        <input type="radio" name="area" id="primero" value="Ambiental"><label for="primero">
-                            Ambiental</label><br>
-                        <input type="radio" name="area" id="segundo" value="Social"><label for="segundo">
-                            Social</label><br>
-                        <input type="radio" name="area" id="tercero" value="Económico"><label for="tercero">
-                            Económico</label><br>
-                        <input type="radio" name="area" id="cuarto" value="Tecnológico"><label for="cuarto">
-                            Tecnológico</label><br>
+                        @foreach ($areas as $area)
+                        <input type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}"><label for="{{$area->position}}">
+                            {{$area->name}}</label><br>
+                        @endforeach
                     </div>
                     @error('area')
                         <br>
