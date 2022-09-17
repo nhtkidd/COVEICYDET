@@ -39,7 +39,7 @@
                         </label>
                         <input
                             class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password" type="password" placeholder="****" name="password" required>
+                            id="password" type="password" placeholder="****" name="password" minlength="8" maxlength="16" required>
                         @error('message')
                           <small class="text-red-800">Email o contraseña incorrecta</small><br>
                         @enderror
