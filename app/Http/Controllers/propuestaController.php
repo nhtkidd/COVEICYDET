@@ -129,7 +129,7 @@ class propuestaController extends Controller
                 'fk_idPlaces' => 'Required',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
-                'area' => 'nullable|exists:areas,name',
+                'area' => 'Required|exists:areas,name',
                 'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             
@@ -183,7 +183,7 @@ class propuestaController extends Controller
                 'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
-                'area' => 'nullable|exists:areas,name',
+                'area' => 'Required|exists:areas,name',
                 'fk_idAnnexe' => 'Required|exists:annexes,idAnnexes'
             ]);
             
