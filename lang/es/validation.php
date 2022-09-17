@@ -146,6 +146,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'fk_idOds' => 'ODS',
+        'reach' => 'alcance',
+        'fk_idPlaces' => 'lugares',
+        'fk_idAnnexe' => 'problematica',
+        'group' => 'grupos de impacto',
+        'objetive' => 'objetivo',
+        'description' => 'descripción',
+    ],
 
 ];
