@@ -33,7 +33,8 @@
                                     id="email" type="email" placeholder="Email" name="email" required>
 
                                 @error("email")
-                                    <span class="red-text text-darken-1">{{ $message }}</span>
+                                    <br>
+                                    <small class="text-red-800">*{{ $message }}</small>
                                 @enderror
                                 <br>
                                     <div class="py-3">

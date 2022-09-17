@@ -41,7 +41,7 @@ class registerRequest extends FormRequest
                 'unique:users',
                 'regex:/(.*)@(gmail|live|outlook|icloud|hotmail|yahoo)\.com/i'
             ],
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|max:16',
             'fk_idEducations' => 'required|exists:schoolings,idEducations',
             'sector' => 'required',
             'participation' => 'required|boolean',

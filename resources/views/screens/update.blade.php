@@ -26,14 +26,14 @@
                                 </label>
                                 <input
                                     class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="email" type="email" placeholder="Email" name="email" required>
+                                    id="email" type="email" placeholder="Email" name="email" value="{{old('email')}}" required>
 
                                 @error("email")
-                                <br>
-                                    <span class="red-text text-darken-1">{{ $message }}</span>
+                                    <br>
+                                    <small class="text-red-800">*{{ $message }}</small>
                                 @enderror
 
-                                <label class="block text-gray-700 text-sm 2xl:text-xl font-bold mb-2" for="email">
+                                <label class="block text-gray-700 text-sm 2xl:text-xl font-bold mb-2" for="password">
                                     Contraseña
                                 </label>
                                 <input
@@ -41,20 +41,20 @@
                                     id="password" type="password" placeholder="Contraseña" name="password" required>
 
                                 @error("password")
-                                <br>
-                                    <span class="red-text text-darken-1">{{ $message }}</span>
+                                    <br>
+                                    <small class="text-red-800">*{{ $message }}</small>
                                 @enderror
 
-                                <label class="block text-gray-700 text-sm 2xl:text-xl font-bold mb-2" for="email">
+                                <label class="block text-gray-700 text-sm 2xl:text-xl font-bold mb-2" for="password-confirm">
                                     Confirmar contraseña
                                 </label>
                                 <input
                                     class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="confirmPass" type="password" placeholder="Confirmar contraseña" name="confirmPassword" required>
+                                    id="password-confirm" type="password" placeholder="Confirmar contraseña" name="password_confirmation" required>
 
-                                @error("confirmPassword")
-                                <br>
-                                    <span class="red-text text-darken-1">{{ $message }}</span>
+                                @error("password_confirmation")
+                                    <br>
+                                    <small class="text-red-800">*{{ $message }}</small>
                                 @enderror
 
                                 <br>
@@ -64,7 +64,11 @@
                                     </div>
                                 </form>
                             </div>
-                     
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                     </div>
 
                 </body>

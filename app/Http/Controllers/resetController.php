@@ -24,7 +24,7 @@ class resetController extends Controller
     public function enlace(Request $request){
         //validacion de email
         $request->validate([
-            'email'=>'required|email|exists:users'
+            'email'=>'required|email|exists:users',
         ]);
 
         //Generación de token y almacenarlo en tabla
@@ -39,7 +39,7 @@ class resetController extends Controller
         //Envio de email al usuario
         Mail::send('mails.token', ['token' => $token], function($message) use($request){
             $message->to($request->email);
-            $message->subject('Cambiar contraseña en CMS Laravel');
+            $message->subject('Cambiar contraseña');
         });
 
         return back()->with('success','Te hemos enviado un email a tu correo electrónico con un enlace para realizar el cambio de contraseña.');
@@ -56,10 +56,12 @@ class resetController extends Controller
     {
         //Valido datos
         $request->validate([
-            'email' => 'required|email|exists:users'
+            'email' => 'Required|email|exists:users,email',
+            'password' => 'Required|min:8|max:16|confirmed',
+            'password_confirmation' => 'Required'
         ]);
 
-        if($request->password == $request->confirmPassword){
+        //if($request->password == $request->confirmPassword){
             //Compruebo token válido
             $comprobarToken = DB::table('resets')->where(['email' => $request->email, 'token' => $request->token])->first();
             if(!$comprobarToken){
@@ -75,9 +77,9 @@ class resetController extends Controller
             //Retorno
             //return redirect('acceder')->with('success','La contraseña se ha cambiado correctamente.');
             return redirect(route('proveicydet.login'))->with('success','La contraseña se ha cambiado correctamente.');
-        }else{
+        /*}else{
             return back()->with('confirmPassword','Las contraseñas no coinciden');
-        }
+        }*/
         
 
         
