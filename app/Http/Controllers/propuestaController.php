@@ -101,8 +101,8 @@ class propuestaController extends Controller
         $idUsuario = auth()->user()->idUser;
         $ods = $request->fk_idOds;
         $request->fk_idOds = implode(",", $ods);
-
-        if ($request->fk_idUsers != $idUsuario) {
+        
+        if ($request->fk_idUsers != $idUsuario || $propuesta->finished == true) {
             abort(403,'ACCESO DENEGADO');
         }
 
