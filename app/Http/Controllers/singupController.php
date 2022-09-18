@@ -26,7 +26,7 @@ class singupController extends Controller
 
     public function store(registerRequest $request)
     {
-
+        
         $xx = "20"; $xix = "19"; $anioActual = "2022";
 
         $curp = array($request->curp); //GUARDAR EN UN ARRAY LA CURP

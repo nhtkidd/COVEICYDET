@@ -20,43 +20,56 @@ class propuestaController extends Controller
 {
     public function propuesta()
     {
-        $idUsuario = auth()->user()->idUser;
-        $usuario = Proposal::where('fk_idUsers','=',$idUsuario)->count();
-        if ($usuario < 2) {
-            $ods = Od::all();
-            $places = Place::all();
-            $data = Annexe::all();
-            $areas = Area::all();
-            return view('screens.propuesta', compact('ods', 'places','data','areas'));
-        }else{
-            return redirect()->route('proveicydet.inicio');
+        if (Auth::check()){
+            if(auth()->user()->role == "admin"){
+                return redirect()->route('proveicydet.admin');
+            }
+            $idUsuario = auth()->user()->idUser;
+            $usuario = Proposal::where('fk_idUsers','=',$idUsuario)->count();
+            if ($usuario < 2) {
+                $ods = Od::all();
+                $places = Place::all();
+                $data = Annexe::all();
+                $areas = Area::all();
+                return view('screens.propuesta', compact('ods', 'places','data','areas'));
+            }else{
+                return redirect()->route('proveicydet.inicio');
+            }
         }
+        return view('screens.login');
         /**/
     }
 
     public function edit($id){
-        $ods = Od::all();
-        $places = Place::all();
-        $annexes = Annexe::all();
-        $areas = Area::all();
-        $proposal = Proposal::findOrFail($id);
-        if ($proposal->fk_idUsers == auth()->user()->idUser) {
-        //if ($proposal->idProposal == $id) {
-
-            if ($proposal->finished == null) {
-                $propuesta = Proposal::where('idProposal','=',$id)->get();
-                return view('screens.editPropuesta',compact('ods','places','annexes','propuesta','areas'));
+        
+        if (Auth::check()){
+            if(auth()->user()->role == "admin"){
+                return redirect()->route('proveicydet.admin');
+            }
+            $ods = Od::all();
+            $places = Place::all();
+            $annexes = Annexe::all();
+            $areas = Area::all();
+            $proposal = Proposal::findOrFail($id);
+            if ($proposal->fk_idUsers == auth()->user()->idUser) {
+            //if ($proposal->idProposal == $id) {
+                if ($proposal->finished == null) {
+                    $propuesta = Proposal::where('idProposal','=',$id)->get();
+                    return view('screens.editPropuesta',compact('ods','places','annexes','propuesta','areas'));
+                }else{
+                    return back()->withErrors([
+                        'message' => 'No puedes acceder a otras propuestas'
+                    ]);
+                }
+                
             }else{
                 return back()->withErrors([
                     'message' => 'No puedes acceder a otras propuestas'
                 ]);
             }
-            
-        }else{
-            return back()->withErrors([
-                'message' => 'No puedes acceder a otras propuestas'
-            ]);
         }
+        return view('screens.login');
+        
         //
         //return $propuesta->idProposal;
     }
@@ -67,36 +80,42 @@ class propuestaController extends Controller
     }
 
     public function mostrar($id){
-        $ods = Od::all();
-        $places = Place::all();
-        $annexes = Annexe::all();
-        //$propuesta = Proposal::find($id);
-        //$propuesta = Proposal::where('idProposal','=',$id)->get();
-        $proposal = Proposal::findOrFail($id);
-        if ($proposal->fk_idUsers == auth()->user()->idUser) {
-        //if ($proposal->idProposal == $id) {
-
-            if ($proposal->finished == "true") {
-                $propuesta = Proposal::where('idProposal','=',$id)->get();
-                return view('screens.pdf',compact('ods','places','annexes','propuesta'));
+        if (Auth::check()){
+            if(auth()->user()->role == "admin"){
+                return redirect()->route('proveicydet.admin');
+            }
+            $ods = Od::all();
+            $places = Place::all();
+            $annexes = Annexe::all();
+            //$propuesta = Proposal::find($id);
+            //$propuesta = Proposal::where('idProposal','=',$id)->get();
+            $proposal = Proposal::findOrFail($id);
+            if ($proposal->fk_idUsers == auth()->user()->idUser) {
+            //if ($proposal->idProposal == $id) {
+    
+                if ($proposal->finished == "true") {
+                    $propuesta = Proposal::where('idProposal','=',$id)->get();
+                    return view('screens.pdf',compact('ods','places','annexes','propuesta'));
+                }else{
+                    return back()->withErrors([
+                        'message' => 'No puedes acceder a otras propuestas'
+                    ]);
+                }
+                
             }else{
                 return back()->withErrors([
                     'message' => 'No puedes acceder a otras propuestas'
                 ]);
             }
-            
-        }else{
-            return back()->withErrors([
-                'message' => 'No puedes acceder a otras propuestas'
-            ]);
         }
-        
-        
+        return view('screens.login');
+
         //return view('screens.annexes',compact('ods','places','annexes','propuesta'));
     }
 
     
     public function update(propuestaRequest $request,$id){
+
         $propuesta = Proposal::findOrFail($id);
         $idUsuario = auth()->user()->idUser;
         $ods = $request->fk_idOds;
@@ -104,6 +123,9 @@ class propuestaController extends Controller
 
         if ($request->fk_idUsers != $idUsuario) {
             abort(403,'ACCESO DENEGADO');
+        }
+        if ($propuesta->finished == 'true' ) {
+            return redirect(route('proveicydet.inicio'))->with('denegado','No puedes modificar propuestas que ya han sido enviadas.');
         }
 
         $propuesta->name = $request->input('name');
@@ -156,6 +178,11 @@ class propuestaController extends Controller
 
         if ($request->fk_idUsers != $idUsuario) {
             abort(403,'ACCESO DENEGADO');
+        }
+        $proposal = Proposal::where('fk_idUsers','=',$idUsuario)->get();
+        if (count($proposal)==2) {
+            //return $proposal;
+            return redirect(route('proveicydet.inicio'))->with('denegado','Solo puedes crear 2 propuestas.');
         }
 
         $propuesta = new Proposal;

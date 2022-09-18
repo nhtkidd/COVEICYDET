@@ -28,6 +28,14 @@
                     </div>
                     <br>
                 @enderror 
+                @if(session()->has('denegado'))
+                    <br>
+                    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                        <p class="font-bold">Error</p>
+                        <p class="text-sm">{{ session()->get('denegado') }}</p>
+                    </div>
+                    <br>
+                @endif
                 @if (count($proposal) < 2)
                     @foreach ($proposal as $finish)
                         @if ($finish->finished == null)

@@ -43,7 +43,7 @@ Route::get('proveicydet/inicio',[homeController::class, 'inicio'])->name('provei
 
 Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
 Route::get('proveicydet/editPropuesta/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
-Route::get('proveicydet/annexes',[propuestaController::class,'annexes'])->name('proveicydet.propuesta.annexes');
+//Route::get('proveicydet/annexes',[propuestaController::class,'annexes'])->name('proveicydet.propuesta.annexes');
 Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->name('proveicydet.propuesta.update');
 Route::get('proveicydet/propuesta/mostrar/{id}',[propuestaController::class,'mostrar'])->name('proveicydet.propuesta.mostrar');
 Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');
