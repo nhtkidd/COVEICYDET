@@ -4,6 +4,7 @@
 
 @section('content')
 
+
     <div id="father" class="flex items-center justify-center h-auto">
         <div id="wrapper"
             class="bg-white w-[90%] h-auto lg:w-[90%] lg:h-[90%] 2xl:h-[90%] rounded-br-large p-5 md:p-16 my-5">
@@ -120,7 +121,7 @@
                             Especifica tu sector
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector"
-                            disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" />
+                            disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
                         @error('sector')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -132,19 +133,21 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             ¿Tu participación será presencial?
                         </label>
-                        <input type="radio" id="participacionSi" name="participation" value="true" required
+                        <input  type="radio" id="participacionSi" name="participation" value="true" required
                             onchange="participaSelector()">
                         <label for="participacionSi">Si</label><br>
                         <input type="radio"  id="participacionNo" name="participation" value="false" required
                             onchange="participaSelector()">
                         <label for="participacionNo">No</label><br>
                     </div>
+                    
+              
                     <div id="sedeSelect" class="md:ml-2 2xl:my-4" hidden>
                         <div class="md:ml-2 2xl:my-4">
                             <label class="labelStyle 2xl:text-xl" for="fk_idHeadquarters">
                                 Participacion presencial
                             </label>
-                            <select id="selectSede" name="fk_idHeadquarters" value=""  required disabled 
+                            <select required id="selectSede" name="fk_idHeadquarters" value=""  disabled 
                                 class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 <option>Selecciona tu sede de Participacion</option>
                                 <optgroup label="Sedes">
@@ -201,12 +204,14 @@
     function participaSelector() {
         const cb = document.querySelector('#participacionSi');
         if (cb.checked) {
+            document.getElementById("sedeSelect").classList.add('bg-green-200');
             document.getElementById("sedeSelect").hidden = false;
             document.getElementById("selectSede").disabled = false;
         } else {
             document.getElementById("sedeSelect").hidden = true;
             document.getElementById("sedeSelect").value = "Selecciona tu sede de Participacion";
             document.getElementById("sedeSelect").classList.remove('bg-green-200');
+            
         }
     }
 
