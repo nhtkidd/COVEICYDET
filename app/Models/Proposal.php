@@ -8,6 +8,8 @@ class Proposal extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idProposal'; 
+    protected $fkidUser = 'fk_idUsers'; 
+
     protected $fillable = [
         'name',
         'objetive',
@@ -23,4 +25,6 @@ class Proposal extends Model
     ];
 
     public $timestamps = false;
+
+    
 }

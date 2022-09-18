@@ -59,22 +59,13 @@
                                                       <tbody>
                                                         <tr>
                                                           <td>
-                                                            <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Confirmación de propuesta.</p>
-                                                            <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Gracias por participar con la propuesta:</p>
-                                                                <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px; font-weight:bold">"{{$name}}"</p>
-                                                                    <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Tu propuesta se ha registrado correctamente.</p>
+                                                            <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Cambiar contraseña</p>
+                                                                <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px;">Para cambiar la contraseña,  haz <a href="{{ route('proveicydet.clave', $token) }}">CLIC AQUÍ</a> o copia y pega el siguiente enlace en el navegador:</p>
+                                                                    <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">{{ route('proveicydet.clave', $token) }}</p>
                                                           </td>
                                                         </tr>
                                                         <tr>
                                                           <td height="20" style="line-height:20px">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td>
-                                                            <p style="margin:10px 0 10px 0;color:#3b6174;font-size:18px">Nota. </p>
-                                                            <p style="margin:10px 0 10px 0;color:#565a5c;font-size:18px">Recuerda estar pendiente de la publicación del programa para la exposición de propuestas registradas en:</p>
-                                                            <p style="margin:10px 0 10px 0;color:#cc9328;font-size:18px"><a href=" https://cienciaveracruz.gob.mx"> https://cienciaveracruz.gob.mx </a></p>
-                                                                
-                                                          </td>
                                                         </tr>
                                                       </tbody>
                                                     </table>

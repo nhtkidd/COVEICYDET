@@ -4,6 +4,7 @@
 
 @section('content')
 
+
     <div id="father" class="flex items-center justify-center h-auto">
         <div id="wrapper"
             class="bg-white w-[90%] h-auto lg:w-[90%] lg:h-[90%] 2xl:h-[90%] rounded-br-large p-5 md:p-16 my-5">
@@ -23,7 +24,7 @@
                             Nombre(s)
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="name"
-                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" required />
+                            value="{{ old('name') }}" placeholder="Ingrese su(s) nombre(s)" maxlength="50" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,50}" title="El campo no debe contener números o caracteres especiales"/>
                         @error('name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -33,7 +34,7 @@
                             Apellidos
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="last_name"
-                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" required/>
+                            value="{{ old('last_name') }}" placeholder="Ingrese sus apellidos" maxlength="50" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales."/>
                         @error('last_name')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -45,7 +46,7 @@
                             Email
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="email"
-                            value="{{ old('email') }}" placeholder="Ingrese su email electronico" required />
+                            value="{{ old('email') }}" placeholder="Ingrese su email" required pattern="((.*)@(gmail|live|outlook|icloud|hotmail|yahoo)\.com){1,200}" title="Dirección de correo no valida."/>
                         @error('email')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -56,7 +57,7 @@
                         </label>
                         <div class="flex">
                             <div class="grow h-14 ">
-                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8"
+                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16"
                                 value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres"required />
                               </div>
                               <div class="flex-none w-14 h-14 ">
@@ -75,7 +76,7 @@
                         </label>
                         <input style="text-transform: uppercase;" minlength="18" maxlength="18"
                             class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
-                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP"  required/>
+                            value="{{ old('curp') }}" name="curp" placeholder="Ingrese su CURP"  required pattern="(^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)){1,200}" title="El campo no coincide con el formato de CURP"/>
                         @error('curp')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -104,12 +105,8 @@
                             <option value="" selected>Selecciona su sector</option>
                             <optgroup label="Sector social">
                                 <option value="Sociedad civil">Sociedad civil</option>
-                            </optgroup>
-                            <optgroup label="Sector empresarial">
-                                <option value="otros">Especificar</option>
-                            </optgroup>
-                            <optgroup label="Sector gubernamental">
-                                <option value="otros">Especificar</option>
+                                <option value="otros">Sector empresarial</option>
+                                <option value="otros">Sector gubernamental</option>
                             </optgroup>
                             <optgroup label="Sector educativo">
                                 @foreach ($sectores as $sectorEdu)
@@ -124,7 +121,7 @@
                             Especifica tu sector
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector"
-                            disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" />
+                            disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
                         @error('sector')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -136,19 +133,21 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             ¿Tu participación será presencial?
                         </label>
-                        <input type="radio" id="participacionSi" name="participation" value="si" required
+                        <input  type="radio" id="participacionSi" name="participation" value="true" required
                             onchange="participaSelector()">
-                        <label for="si">Si</label><br>
-                        <input type="radio"  id="participacionNo" name="participation" value="no" required
+                        <label for="participacionSi">Si</label><br>
+                        <input type="radio"  id="participacionNo" name="participation" value="false" required
                             onchange="participaSelector()">
-                        <label for="no">No</label><br>
+                        <label for="participacionNo">No</label><br>
                     </div>
-                    <div class="md:ml-2 2xl:my-4">
+                    
+              
+                    <div id="sedeSelect" class="md:ml-2 2xl:my-4" hidden>
                         <div class="md:ml-2 2xl:my-4">
                             <label class="labelStyle 2xl:text-xl" for="fk_idHeadquarters">
                                 Participacion presencial
                             </label>
-                            <select name="fk_idHeadquarters" value="" id="sedeSelect" required disabled
+                            <select required id="selectSede" name="fk_idHeadquarters" value=""  disabled 
                                 class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                                 <option>Selecciona tu sede de Participacion</option>
                                 <optgroup label="Sedes">
@@ -204,15 +203,15 @@
 
     function participaSelector() {
         const cb = document.querySelector('#participacionSi');
-        console.log(cb.checked); //
         if (cb.checked) {
-            document.getElementById("sedeSelect").disabled = false;
             document.getElementById("sedeSelect").classList.add('bg-green-200');
+            document.getElementById("sedeSelect").hidden = false;
+            document.getElementById("selectSede").disabled = false;
         } else {
-            console.log('pendejote')
-            document.getElementById("sedeSelect").disabled = true;
+            document.getElementById("sedeSelect").hidden = true;
             document.getElementById("sedeSelect").value = "Selecciona tu sede de Participacion";
             document.getElementById("sedeSelect").classList.remove('bg-green-200');
+            
         }
     }
 

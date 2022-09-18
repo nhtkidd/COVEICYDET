@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class loginController extends Controller
 {
@@ -93,4 +96,6 @@ class loginController extends Controller
 
         return redirect()->route('proveicydet.login');
     }
+
+    
 }

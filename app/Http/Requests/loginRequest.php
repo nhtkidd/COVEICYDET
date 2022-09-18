@@ -26,7 +26,7 @@ class loginRequest extends FormRequest
     {
         return [
             'email' => 'required',
-            'password'=> 'required'
+            'password'=> 'required|min:8|max:16'
         ];
     }
     public function getCredentials(){            

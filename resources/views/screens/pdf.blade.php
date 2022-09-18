@@ -5,10 +5,18 @@
 @section('content')
 
     @auth
-            <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
-                
+            <div class="flex border-b-4 border-[#AA983F] py-2">
+               <div class="basis-1/2 px-5 ">
+                <a href="{{url()->previous()}}" type="button" class="text-white bg-[#635C44] hover:bg-[#635C44]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2">
+                    <svg style="color: white; padding-right:5%" xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-arrow-left-circle " viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" fill="white"></path> </svg>
+                    Atrás
+                </a>
+               </div>
+                <div class="basis-full flex flex-row-reverse  ">
                     <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
                     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
+                </div>
+           
             </div>
         <div id="father" class="flex items-center justify-center h-auto">
             <div class="wrapper bg-white w-full md:w-[80%] h-auto] mt-10 ">
