@@ -120,13 +120,13 @@ class propuestaController extends Controller
         $idUsuario = auth()->user()->idUser;
         $ods = $request->fk_idOds;
         $request->fk_idOds = implode(",", $ods);
-
-        if ($request->fk_idUsers != $idUsuario) {
+        
+        if ($request->fk_idUsers != $idUsuario || $propuesta->finished == true) {
             abort(403,'ACCESO DENEGADO');
         }
-        if ($propuesta->finished == 'true' ) {
+        /*if ($propuesta->finished == 'true' ) {
             return redirect(route('proveicydet.inicio'))->with('denegado','No puedes modificar propuestas que ya han sido enviadas.');
-        }
+        }*/
 
         $propuesta->name = $request->input('name');
         $propuesta->objetive = $request->input('objetive');
@@ -179,10 +179,13 @@ class propuestaController extends Controller
         if ($request->fk_idUsers != $idUsuario) {
             abort(403,'ACCESO DENEGADO');
         }
-        $proposal = Proposal::where('fk_idUsers','=',$idUsuario)->get();
-        if (count($proposal)==2) {
-            //return $proposal;
+        $proposal = Proposal::where('fk_idUsers','=',$idUsuario)->count();
+        if ($proposal == 2) {
             return redirect(route('proveicydet.inicio'))->with('denegado','Solo puedes crear 2 propuestas.');
+        }
+        $proposal2 = Proposal::where('fk_idUsers','=',$idUsuario)->where('finished','=',null)->count();
+        if ($proposal2 == 1) {
+            return redirect(route('proveicydet.inicio'))->with('denegado','DENEGADO.');
         }
 
         $propuesta = new Proposal;

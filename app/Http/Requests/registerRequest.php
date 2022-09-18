@@ -43,7 +43,7 @@ class registerRequest extends FormRequest
             ],
             'password' => 'required|min:8|max:16',
             'fk_idEducations' => 'required|exists:schoolings,idEducations',
-            'sector' => 'required',
+            'sector' => 'required|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'participation' => 'required|boolean',
             'fk_idHeadquarters' => 'sometimes|required|exists:headquarters,idHeadquarters',
             'conditions' => 'required'

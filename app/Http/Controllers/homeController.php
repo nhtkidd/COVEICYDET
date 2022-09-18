@@ -11,9 +11,11 @@ class homeController extends Controller
     //
     public function inicio(){
         if (Auth::check()){
+            
             $id = auth()->user()->idUser;
             $proposal = Proposal::where('fk_idUsers','=',$id)->get();
             return view('screens.inicio',compact('proposal'));
+
         }
         return view('screens.login');
     }

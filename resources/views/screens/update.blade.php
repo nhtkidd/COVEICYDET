@@ -56,7 +56,6 @@
                                     <br>
                                     <small class="text-red-800">*{{ $message }}</small>
                                 @enderror
-
                                 <br>
                                     <div class="py-3">
                                         <br>
