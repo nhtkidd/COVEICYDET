@@ -63,9 +63,10 @@ class propuestaController extends Controller
                 }
                 
             }else{
-                return back()->withErrors([
+                /*return back()->withErrors([
                     'message' => 'No puedes acceder a otras propuestas'
-                ]);
+                ]);*/
+                abort(404,'NOT FOUND');
             }
         }
         return view('screens.login');

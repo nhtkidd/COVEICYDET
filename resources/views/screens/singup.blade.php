@@ -46,7 +46,7 @@
                             Email
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="email" name="email"
-                            value="{{ old('email') }}" placeholder="Ingrese su email" required pattern="((.*)@(gmail|live|outlook|icloud|hotmail|yahoo)\.com){1,200}" title="Dirección de correo no valida."/>
+                            value="{{ old('email') }}" placeholder="Ingrese su email" required pattern="([a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)[.][a-zA-Z])" title="Dirección de correo no valida."/>
                         @error('email')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -57,8 +57,8 @@
                         </label>
                         <div class="flex">
                             <div class="grow h-14 ">
-                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16"
-                                value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres"required />
+                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16" pattern="^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$"
+                                value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres y máximo de 16 caracteres"required />
                               </div>
                               <div class="flex-none w-14 h-14 ">
                                 <button class="bg-[#AA983F] hover:bg-[#998a47] inputsStyle mw-full mw-full flex justify-center items-center" type="button" onclick="mostrarContrasena()" ><svg xmlns="http://www.w3.org/2000/svg" class="w-[70%] h-[80%] " style="color: white" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"> <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/> <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/> </svg> </button>
@@ -112,13 +112,14 @@
                                 @foreach ($sectores as $sectorEdu)
                                 <option value="{{$sectorEdu->name}}">{{$sectorEdu->name}}</option>
                                 @endforeach
-                                <option value="otros">Otra opción</option>
+                                
+                                <option value="otros">Institución de educación particular</option>
                             </optgroup>
                         </select>
                     </div>
                     <div id="hiddenInput" class="md:ml-2 2xl:my-4 hidden">
                         <label class="labelStyle 2xl:text-xl" for="sector">
-                            Especifica tu sector
+                            Especifica cual
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector"
                             disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
