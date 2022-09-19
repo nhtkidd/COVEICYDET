@@ -94,7 +94,7 @@
                             &nbsp; Descripción actual de la problemática
 
                         </label>
-                        <textarea name="description" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
+                        <textarea name="description" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('description') }}</textarea>
                             @error('description')
                             <br>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        <textarea name="group" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
+                        <textarea name="group" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ old('group') }}</textarea>
                             @error('group')
                             <br>
@@ -135,35 +135,25 @@
                         </label>
 
                         {{-- <iframe src="{{URL('docs/Municipios por region.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe> --}}
-                        <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected"
+                        <!-- places -->
+                        <select name="fk_idPlaces" id="lugarSelected"
                             class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
-                            <option value="">Seleccione la region</option>
+                            <option value="">Seleccione la región</option>
                             @foreach ($places as $place)
                                 <option value="{{ $place->name }}">{{ $place->name }}</option>
                             @endforeach
-                            <option value="otros">Otra opción</option>
                         </select>
                         @error('fk_idPlaces')
                         <br>
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
-                        <div id="hiddenInput" class="md:ml-2 2xl:my-4 w-[60%] hidden">
-                            <label class="labelStyle 2xl:text-xl" for="fk_idPlaces">
-                                Especifica tu lugar o región de impacto
-                            </label>
-                            <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
-                                name="fk_idPlaces" disabled id="lugarInput" value="{{ old('fk_idPlaces') }}"
-                                placeholder="Ingresa la región de impacto" />
-                            @error('fk_idPlaces')
-                            <br>
-                                <small class="text-red-800">*{{ $message }}</small>
-                            @enderror
-                        </div>
+                        <!-- places -->
+
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
                         </label>
-                        <textarea name="reach" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
+                        <textarea name="reach" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('reach') }}</textarea>
                         @error('reach')
                         <br>
@@ -242,7 +232,7 @@
                             <button id="guardarTarde"
                                 class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="submit">
-                                Guardar para mas tarde
+                                Guardar para más tarde
                             </button>
 
                             <div class="py-5">
@@ -295,24 +285,6 @@
                 }
             })
 
-            function selectLugar() {
-                d = document.getElementById("lugarSelected").value;
-                var disabled = document.getElementById("lugarInput").disabled;
-                if (d == "otros") {
-                    document.getElementById("lugarInput").disabled = false;
-                    document.getElementById("lugarInput").classList.add('bg-green-200');
-                    document.getElementById("hiddenInput").classList.remove('hidden');
-                    document.getElementById("hiddenInput").classList.add('none');
-
-
-                } else {
-                    document.getElementById("lugarInput").disabled = true;
-                    document.getElementById("lugarInput").value = "";
-                    document.getElementById("lugarInput").classList.remove('bg-green-200');
-                    document.getElementById("hiddenInput").classList.add('hidden');
-                }
-
-            };
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
