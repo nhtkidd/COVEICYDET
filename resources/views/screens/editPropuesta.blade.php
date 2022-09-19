@@ -194,6 +194,7 @@
                             <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"
                                     href="{{ URL('docs/Municipios por region.pdf') }}">Haz click aquí</a> </span><br>
                         </label>
+                        <!-- places -->
                         <select name="fk_idPlaces" id="lugarSelected"
                             class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             @if (null == $data->fk_idPlaces)
@@ -213,12 +214,12 @@
                             <br>
                             <small class="text-red-800">{{ $message }}</small>
                         @enderror
-                        
+                        <!-- places -->
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
                         </label>
-                        <textarea name="reach" id="" rows="10" cols="45" placeholder="Maximo 2500 caracteres"
+                        <textarea name="reach" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->reach }}</textarea>
                         @error('reach')
                         <br>
@@ -323,7 +324,7 @@
                             <button id="guardarTarde"
                                 class="bg-[#AA983F] hover:bg-[#484332] text-white 2xl:text-xl font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 type="submit">
-                                Guardar para mas tarde
+                                Guardar para más tarde
                             </button>
 
                             <div class="py-5">
