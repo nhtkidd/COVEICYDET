@@ -148,7 +148,7 @@ class propuestaController extends Controller
                 'group' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
                 'reach' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
                 'finished' => 'Required',
-                'fk_idPlaces' => 'Required',
+                'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
                 'fk_idUsers' => 'Required|exists:users,idUser',
                 'area' => 'Required|exists:areas,name',

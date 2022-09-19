@@ -194,7 +194,7 @@
                             <span class="text-slate-500">¿No conoces tu región? <a class="text-blue-800" target="_blank"
                                     href="{{ URL('docs/Municipios por region.pdf') }}">Haz click aquí</a> </span><br>
                         </label>
-                        <select name="fk_idPlaces" onchange="selectLugar()" id="lugarSelected"
+                        <select name="fk_idPlaces" id="lugarSelected"
                             class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             @if (null == $data->fk_idPlaces)
                                 <option selected value="">Selecciona la región</option>
@@ -208,28 +208,12 @@
                                     <option value="{{ $place->name }}">{{ $place->name }}</option>
                                 @endif
                             @endforeach
-                            @if ($lugarImpacto != $data->fk_idPlaces && null != $data->fk_idPlaces)
-                                <option selected value="{{ $data->fk_idPlaces }}">{{ $data->fk_idPlaces }}</option>
-                            @endif
-
-                            <option value="otros">Otra opción</option>
                         </select>
                         @error('fk_idPlaces')
                             <br>
                             <small class="text-red-800">{{ $message }}</small>
                         @enderror
-                        <div id="hiddenInput" class="md:ml-2 2xl:my-4 w-[60%] hidden">
-                            <label class="labelStyle 2xl:text-xl" for="fk_idPlaces">
-                                Especifica tu lugar o región de impacto
-                            </label>
-                            <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text"
-                                name="fk_idPlaces" disabled id="lugarInput" value="{{ old('fk_idPlaces') }}"
-                                placeholder="Ingresa la región de impacto" />
-                            @error('fk_idPlaces')
-                            <br>
-                            <small class="text-red-800">*{{ $message }}</small>
-                            @enderror
-                        </div>
+                        
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
@@ -392,24 +376,6 @@
                 }
             })
 
-            function selectLugar() {
-                d = document.getElementById("lugarSelected").value;
-                var disabled = document.getElementById("lugarInput").disabled;
-                if (d == "otros") {
-                    document.getElementById("lugarInput").disabled = false;
-                    document.getElementById("lugarInput").classList.add('bg-green-200');
-                    document.getElementById("hiddenInput").classList.remove('hidden');
-                    document.getElementById("hiddenInput").classList.add('none');
-
-
-                } else {
-                    document.getElementById("lugarInput").disabled = true;
-                    document.getElementById("lugarInput").value = "";
-                    document.getElementById("lugarInput").classList.remove('bg-green-200');
-                    document.getElementById("hiddenInput").classList.add('hidden');
-                }
-
-            };
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
