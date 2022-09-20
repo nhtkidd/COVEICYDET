@@ -112,13 +112,13 @@
                                 @foreach ($sectores as $sectorEdu)
                                 <option value="{{$sectorEdu->name}}">{{$sectorEdu->name}}</option>
                                 @endforeach
-                                <option value="otros">Otra opción</option>
+                                <option value="otros">Institución de educación particular</option>
                             </optgroup>
                         </select>
                     </div>
                     <div id="hiddenInput" class="md:ml-2 2xl:my-4 hidden">
                         <label class="labelStyle 2xl:text-xl" for="sector">
-                            Especifica tu sector
+                            Especifica cual
                         </label>
                         <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector"
                             disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />

@@ -142,11 +142,31 @@ class propuestaController extends Controller
 
         if ($request->finished == "true") {
             $request->validate([
-                'name' => 'Required|max:100|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/', 
-                'objetive' => 'Required|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'description' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'group' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'reach' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'name' => [
+                    'Required',
+                    'max:100',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'objetive' => [
+                    'Required',
+                    'max:500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'description' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'group' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'reach' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
@@ -204,11 +224,31 @@ class propuestaController extends Controller
 
         if ($request->finished == "true") {
             $request->validate([
-                'name' => 'Required|max:200|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/', 
-                'objetive' => 'Required|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'description' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'group' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-                'reach' => 'Required|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+                'name' => [
+                    'Required',
+                    'max:100',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ], 
+                'objetive' => [
+                    'Required',
+                    'max:500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'description' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'group' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
+                'reach' => [
+                    'Required',
+                    'max:2500',
+                    'regex:/^[^$%&|<>#@]+$/'
+                ],
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
                 'fk_idOds' => 'required|exists:ods,idOds|max:5',
