@@ -179,7 +179,7 @@
                                         beneficiarios, por ejemplo: comunidades,
                                         grupos indígenas, grupos vulnerables,
                                         niñez, etc.
-                                    </p>
+                                    </p>xa
                                 </div>
                             </div>
                         </div>
