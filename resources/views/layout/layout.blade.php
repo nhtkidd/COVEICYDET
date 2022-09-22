@@ -38,7 +38,7 @@
                 <polyline points="3 7 12 13 21 7"></polyline>
 
             </svg>
-            <a class="text-white font-semibold" href="mailto:dudas.soporte@gmail.com">dudas.soporte@gmail.com</a>
+            <a class="text-white font-semibold" href="mailto:dudas.soporteProveicydet@gmail.com">dudas.soporteProveicydet@gmail.com</a>
         </div>
         <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone  pr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="black" stroke-linecap="round" stroke-linejoin="round">
