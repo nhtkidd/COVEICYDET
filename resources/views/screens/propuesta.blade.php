@@ -40,7 +40,7 @@
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
                         @foreach ($areas as $area)
-                        <input type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}"><label for="{{$area->position}}">
+                        <input  required type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}" {{ old('area')==$area->name ? 'checked='.'"checked"' : '' }}><label for="{{$area->position}}">
                             {{$area->name}}</label><br>
                         @endforeach
                     </div>
@@ -74,7 +74,7 @@
                             &nbsp; Nombre de la propuesta
 
                         </label>
-                        <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
+                        <input value="{{ old('name') }}" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
                             name="name" placeholder="Máximo 100 caracteres, no debe contener caracteres especiales" value="{{ old('name') }}" maxlength="100" required pattern="(^[^$%&|<>#@]*)" title="El campo no debe contener caracteres especiales"/>
                             @error('name')
                             <br>
@@ -84,7 +84,7 @@
                             &nbsp; Objetivo de la propuesta
 
                         </label>
-                        <textarea name="objetive" id="" rows="10" cols="45"placeholder="Máximo 500 caracteres, no debe contener caracteres especiales"
+                        <textarea value="{{ old('objetive') }}"  name="objetive" id="" rows="10" cols="45"placeholder="Máximo 500 caracteres, no debe contener caracteres especiales"
                             maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('objetive') }}</textarea>
                             @error('objetive')
                             <br>
@@ -94,7 +94,7 @@
                             &nbsp; Descripción actual de la problemática
 
                         </label>
-                        <textarea name="description" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
+                        <textarea value="{{ old('description') }}"  name="description" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('description') }}</textarea>
                             @error('description')
                             <br>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        <textarea name="group" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
+                        <textarea value="{{ old('group') }}"  name="group" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ old('group') }}</textarea>
                             @error('group')
                             <br>
@@ -140,7 +140,7 @@
                             class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">
                             <option value="">Seleccione la región</option>
                             @foreach ($places as $place)
-                                <option value="{{ $place->name }}">{{ $place->name }}</option>
+                                <option {{ old('fk_idPlaces') == $place->name ? 'selected' : '' }} value="{{ $place->name }}">{{ $place->name }}</option>
                             @endforeach
                         </select>
                         @error('fk_idPlaces')
@@ -153,7 +153,7 @@
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
                         </label>
-                        <textarea name="reach" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
+                        <textarea value="{{ old('reach') }}" name="reach" id="" rows="10" cols="45" placeholder="Máximo 2500 caracteres, no debe contener caracteres especiales"
                             maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ old('reach') }}</textarea>
                         @error('reach')
                         <br>

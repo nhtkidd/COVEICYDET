@@ -57,7 +57,7 @@
                         </label>
                         <div class="flex">
                             <div class="grow h-14 ">
-                                <input id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16"
+                                <input remember id="password" class="inputsStyle focus:outline-none focus:shadow-outline flex-none" type="password" name="password" minlength="8" maxlength="16"
                                 value="{{ old('password') }}" placeholder="Genere una contraseña de al menos 8 caracteres"required pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[?!$%^&*-])(?!.*@).{8,32}$" title="Contraseña no valida. Requiere al menos un numero, una letra mayúscula, una minúscula y uno de los siguientes: ?!$%^&*- "/>
                               </div>
                               <div class="flex-none w-14 h-14 ">
@@ -83,13 +83,13 @@
                     </div>
                     <div class="md:ml-2 2xl:my-4">
                         <label class="labelStyle 2xl:text-xl" for="fk_idEducations">
-                            Escolaridad
+                            Nivel de estudios
                         </label>
                         <select required name="fk_idEducations" class="inputsStyle focus:outline-none focus:shadow-outline" >
-                            <option value="">Selecciona tu escolaridad</option>
+                            <option value="">Selecciona tu nivel de estudios</option>
                             <optgroup label="Escolaridad">
                                 @foreach ($escolaridades as $escolaridad)
-                                    <option value="{{ $escolaridad->idEducations }}">{{ $escolaridad->name }}</option>
+                                    <option {{ old('fk_idEducations') == $escolaridad->idEducations ? 'selected' : '' }} value="{{ $escolaridad->idEducations }}">{{ $escolaridad->name }}</option>
                                 @endforeach
                             </optgroup>
                         </select>
@@ -104,13 +104,13 @@
                             class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
                             <option value="" selected>Selecciona su sector</option>
                             <optgroup label="Sector social">
-                                <option value="Sociedad civil">Sociedad civil</option>
-                                <option value="otros">Sector empresarial</option>
+                                <option value="Sociedad civil"  {{ old('sector') == 'Sociedad civil' ? 'selected' : '' }}>Sociedad civil</option>
+                                <option value="otros" >Sector empresarial</option>
                                 <option value="otros">Sector gubernamental</option>
                             </optgroup>
                             <optgroup label="Sector educativo">
                                 @foreach ($sectores as $sectorEdu)
-                                <option value="{{$sectorEdu->name}}">{{$sectorEdu->name}}</option>
+                                <option value="{{$sectorEdu->name}}" {{ old('sector') == $sectorEdu->name ? 'selected' : '' }}>{{$sectorEdu->name}}</option>
                                 @endforeach
                                 <option value="otros">Institución de educación particular</option>
                             </optgroup>
@@ -120,8 +120,8 @@
                         <label class="labelStyle 2xl:text-xl" for="sector">
                             Especifica cual
                         </label>
-                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector"
-                            disabled id="sectorInput" value="{{ old('sector') }}" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
+                        <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector" required
+                            disabled id="sectorInput" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
                         @error('sector')
                             <small class="text-red-800">*{{ $message }}</small>
                         @enderror
@@ -147,9 +147,9 @@
                             <label class="labelStyle 2xl:text-xl" for="fk_idHeadquarters">
                                 Participacion presencial
                             </label>
-                            <select required id="selectSede" name="fk_idHeadquarters" value=""  disabled 
-                                class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                                <option>Selecciona tu sede de Participacion</option>
+                            <select id="selectSede" name="fk_idHeadquarters" value=""  disabled 
+                                class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required  title="Dale pa">
+                                <option value="" selected>Seleccione su sede</option>
                                 <optgroup label="Sedes">
                                     @foreach ($sedes as $sede)
                                         <option value="{{ $sede->idHeadquarters }}">{{ $sede->name }}</option>

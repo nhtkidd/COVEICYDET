@@ -55,7 +55,7 @@ class propuestaRequest extends FormRequest
             'fk_idOds' => 'required|exists:ods,idOds|max:5',
             'fk_idUsers' => 'Required|exists:users,idUser',
             'area' => 'nullable|exists:areas,name',
-            'fk_idAnnexe' => 'nullable|exists:annexes,idAnnexes'
+            'fk_idAnnexe' => 'required|exists:annexes,idAnnexes'
         ];
 
     }
