@@ -25,13 +25,33 @@ class propuestaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'Required|max:100|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-            'objetive' => 'nullable|max:500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-            'description' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-            'group' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
-            'reach' => 'nullable|max:2500|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
+            'name' => [
+                'Required',
+                'max:100',
+                'regex:/^[^$%&|<>#@]+$/'
+            ],
+            'objetive' => [
+                'nullable',
+                'max:500',
+                'regex:/^[^$%&|<>#@]+$/'
+            ],
+            'description' => [
+                'nullable',
+                'max:2500',
+                'regex:/^[^$%&|<>#@]+$/'
+            ],
+            'group' => [
+                'nullable',
+                'max:2500',
+                'regex:/^[^$%&|<>#@]+$/'
+            ],
+            'reach' => [
+                'nullable',
+                'max:2500',
+                'regex:/^[^$%&|<>#@]+$/'
+            ],
             'finished' => 'nullable',
-            'fk_idPlaces' => 'nullable',
+            'fk_idPlaces' => 'nullable|exists:places,name',
             'fk_idOds' => 'required|exists:ods,idOds|max:5',
             'fk_idUsers' => 'Required|exists:users,idUser',
             'area' => 'nullable|exists:areas,name',

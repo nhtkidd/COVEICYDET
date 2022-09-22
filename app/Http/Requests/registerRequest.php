@@ -45,7 +45,7 @@ class registerRequest extends FormRequest
                 'required',
                 'min:8',
                 'max:16',
-                'regex: /^[@]*$/'
+                'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[?!$%^&*-])(?!.*@).{8,32}$/'
 
             ],
             'fk_idEducations' => 'required|exists:schoolings,idEducations',
