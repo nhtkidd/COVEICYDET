@@ -154,6 +154,7 @@ return [
         'group' => 'grupos de impacto',
         'objetive' => 'objetivo',
         'description' => 'descripción',
+        'fk_idHeadquarters' => 'sede'
     ],
 
 ];
