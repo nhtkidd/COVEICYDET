@@ -122,7 +122,10 @@ class propuestaController extends Controller
         $request->fk_idOds = implode(",", $ods);
         
         if ($request->fk_idUsers != $idUsuario || $propuesta->finished == true) {
-            abort(403,'ACCESO DENEGADO');
+            //abort(403,'ACCESO DENEGADO');
+            return back()->withErrors([
+                'message' => 'Acceso denegado'
+            ]);
         }
         /*if ($propuesta->finished == 'true' ) {
             return redirect(route('proveicydet.inicio'))->with('denegado','No puedes modificar propuestas que ya han sido enviadas.');
