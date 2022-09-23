@@ -28,27 +28,27 @@ class propuestaRequest extends FormRequest
             'name' => [
                 'Required',
                 'max:100',
-                'regex:/^[^$%&|<>#@]+$/'
+                'regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/'
             ],
             'objetive' => [
                 'nullable',
                 'max:500',
-                'regex:/^[^$%&|<>#@]+$/'
+                'regex:/^[^&|<>#@]+$/'
             ],
             'description' => [
                 'nullable',
                 'max:2500',
-                'regex:/^[^$%&|<>#@]+$/'
+                'regex:/^[^&|<>#@]+$/'
             ],
             'group' => [
                 'nullable',
                 'max:2500',
-                'regex:/^[^$%&|<>#@]+$/'
+                'regex:/^[^&|<>#@]+$/'
             ],
             'reach' => [
                 'nullable',
                 'max:2500',
-                'regex:/^[^$%&|<>#@]+$/'
+                'regex:/^[^&|<>#@]+$/'
             ],
             'finished' => 'nullable',
             'fk_idPlaces' => 'nullable|exists:places,name',

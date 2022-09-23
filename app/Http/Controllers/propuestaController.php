@@ -145,27 +145,27 @@ class propuestaController extends Controller
                 'name' => [
                     'Required',
                     'max:100',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/'
                 ],
                 'objetive' => [
                     'Required',
                     'max:500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'description' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'group' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'reach' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
@@ -227,27 +227,27 @@ class propuestaController extends Controller
                 'name' => [
                     'Required',
                     'max:100',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/'
                 ], 
                 'objetive' => [
                     'Required',
                     'max:500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'description' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'group' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'reach' => [
                     'Required',
                     'max:2500',
-                    'regex:/^[^$%&|<>#@]+$/'
+                    'regex:/^[^&|<>#@]+$/'
                 ],
                 'finished' => 'Required',
                 'fk_idPlaces' => 'Required|exists:places,name',
