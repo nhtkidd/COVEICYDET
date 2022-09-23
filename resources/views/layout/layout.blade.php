@@ -27,7 +27,7 @@
     @yield('content')
 
     <!-- footer -->
-    <div class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col">
+    <footer class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col">
         <h2 class="font-bold">En caso de problemas técnicos, contactar por medio de los siguientes medios:</h2>
         <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail pr-1" width="24"
@@ -48,7 +48,7 @@
             <a class="text-white font-semibold" href="tel:9211440267">921 144 0267</a>
         </div>
 
-    </div>
+    </footer>
     <!-- scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
 
