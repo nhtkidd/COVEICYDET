@@ -28,7 +28,7 @@
 
     <!-- footer -->
     <footer class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col p-2 mt-auto" >
-        <h2 class="font-bold text-center ">En caso de problemas técnicos, contactar por medio de los siguientes medios:</h2>
+        <h2 class="font-bold text-center ">En caso de problemas técnicos, contactanos en:</h2>
         <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail pr-1" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="red" fill="white"
@@ -39,13 +39,6 @@
 
             </svg>
             <a class="text-white font-semibold" href="mailto:dudas.soporteProveicydet@gmail.com">dudas.soporteProveicydet@gmail.com</a>
-        </div>
-        <div class="flex flex-row">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone  pr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="black" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path>
-             </svg>
-            <a class="text-white font-semibold" href="tel:9211440267">921 144 0267</a>
         </div>
 
     </footer>
