@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-spaceGray flex flex-col h-screen justify-between">
+<body class="bg-spaceGray flex flex-col h-auto justify-between ">
     <!--header  -->
     <header class="bg-gold w-100 h-44 ">
         <div class="bg-spaceGray w-full h-8">
