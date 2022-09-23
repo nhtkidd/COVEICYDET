@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-spaceGray">
+<body class="bg-spaceGray flex flex-col h-screen justify-between">
     <!--header  -->
     <header class="bg-gold w-100 h-44 ">
         <div class="bg-spaceGray w-full h-8">
@@ -27,8 +27,8 @@
     @yield('content')
 
     <!-- footer -->
-    <footer class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col">
-        <h2 class="font-bold">En caso de problemas técnicos, contactar por medio de los siguientes medios:</h2>
+    <footer class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col p-2 bottom-0 mt-5" >
+        <h2 class="font-bold text-center ">En caso de problemas técnicos, contactar por medio de los siguientes medios:</h2>
         <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail pr-1" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="red" fill="white"
