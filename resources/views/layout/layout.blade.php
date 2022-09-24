@@ -28,7 +28,7 @@
 
     <!-- footer -->
     <footer class="footer bg-[#AA983F] w-auto h-28 flex justify-center items-center flex-col p-2 mt-auto" >
-        <h2 class="font-bold text-center ">En caso de problemas técnicos, contactanos en:</h2>
+        <h2 class="font-bold text-center ">En caso de algún incidente con el uso de la plataforma para captura de propuestas, se brindará asistencia técnica a través:</h2>
         <div class="flex flex-row">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail pr-1" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="red" fill="white"
@@ -39,8 +39,9 @@
 
             </svg>
             <a class="text-white font-semibold" href="mailto:dudas.soporteProveicydet@gmail.com">dudas.soporteProveicydet@gmail.com</a>
+            
         </div>
-
+        <h2 class="font-bold">Lunes a viernes de 8:00 a.m. - 8:00 p.m. hrs. </h2>
     </footer>
     <!-- scripts -->
     <script src="https://cdn.tailwindcss.com"></script>

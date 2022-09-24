@@ -39,6 +39,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
+                        <label class="text-red-800">*Requiere que selecciones una opción para guardarlo para más tarde</label><br>
                         @foreach ($areas as $area)
                         <input  required type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}" {{ old('area')==$area->name ? 'checked='.'"checked"' : '' }}><label for="{{$area->position}}">
                             {{$area->name}}</label><br>
@@ -52,9 +53,25 @@
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
                         </label>
+                        <label class="text-red-800">*Requiere que selecciones una opción para guardarlo para más tarde</label>
                         <div class="bg-spaceGray w-full h-[30vh]" style="overflow-y: scroll" id="resultados">
                             <!-- M O S T R A R - A N E X O S -->
-
+                            @foreach ($annexes as $anexo)
+                                @if (old('fk_idAnnexe') == $anexo->idAnnexes)
+                                    <div class="md:w-full flex flex-wrap items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                                        <input required checked id="bordered-radio-{{$anexo->idAnnexes}}" type="radio" value="{{$anexo->idAnnexes}}" name="fk_idAnnexe"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="bordered-radio-{{ $anexo->idAnnexes }}"
+                                        class="py-4 ml-2 w-[90%] text-sm font-medium text-gray-700 dark:text-gray-700">
+                                            {{$anexo->problematic}}
+                                        </label>
+                                        @if ($anexo->note != null)
+                                        <label class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">Nota: {{ $anexo->note }}</label>
+                                        @endif
+                                    </div>
+                                @endif
+                            @endforeach
+                            
                         </div>
 
 
@@ -74,6 +91,7 @@
                             &nbsp; Nombre de la propuesta
 
                         </label>
+                        <label class="text-red-800">*Requiere que llenes este campo para guardarlo para más tarde</label><br>
                         <input value="{{ old('name') }}" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
                             name="name" placeholder="Máximo 100 caracteres, no debe contener caracteres especiales" value="{{ old('name') }}" maxlength="100" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,100}" title="El campo no debe contener caracteres especiales"/>
                             @error('name')
@@ -168,13 +186,12 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
-
+                            <label class="text-red-800">*Requiere que selecciones al menos una opción para guardar para más tarde</label>
                         <div class="w-[60%] h-[30vh] flex overflow-y-auto flex-col flex-grow">
                             @foreach ($ods as $odsOption)
                                 <div
                                     class="md:w-full flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
-                                    <input id="{{ $odsOption->idOds }}" type="checkbox" value="{{ $odsOption->idOds }}"
-                                        name="fk_idOds[]"
+                                    <input id="{{ $odsOption->idOds }}" name="fk_idOds[]" type="checkbox" value="{{ $odsOption->idOds }}" @if(is_array(old('fk_idOds')) && in_array($odsOption->idOds, old('fk_idOds'))) checked @endif
                                         class="idOds w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="{{ $odsOption->idOds }}"
                                         class="py-4 ml-2 w-full text-sm font-medium text-gray-700 dark:text-gray-700">{{ $odsOption->objetive }}

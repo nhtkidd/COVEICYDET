@@ -78,6 +78,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
+                        <label class="text-red-800">*Este campo es obligatorio</label><br>
                         @foreach ($areas as $area)
 
                             @if ($area->name == $data->area)
@@ -97,6 +98,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
                         </label>
+                        <label class="text-red-800">*Este campo es obligatorio</label>
                         <input type="hidden" name="annexes" value="{{ $data->fk_idAnnexe }}">
                         <div class="bg-spaceGray w-full h-[30vh] overflow-y-auto" id="resultados">
                             <!-- MOSTRAR ANEXO GUARDADO ANERIORMENTE -->
@@ -133,8 +135,8 @@
                         </label>
                         <label class="labelStyle 2xl:text-xl">
                             &nbsp; Nombre de la propuesta
-
                         </label>
+                        <label class="text-red-800">*Este campo es obligatorio</label><br>
                         <input class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
                             maxlength="200" name="name" placeholder="Máximo 100 caracteres, no debe contener caracteres especiales" value="{{ $data->name }}" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,100}" title="El campo no debe contener caracteres especiales"/>
                             @error('name')
@@ -146,7 +148,7 @@
 
                         </label>
                         <textarea name="objetive" id="" rows="10" cols="45"placeholder="Máximo 500 caracteres, no debe contener estos caracteres especiales & | <> # @"
-                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->objetive }}</textarea>
+                            maxlength="500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline margin-0" >@if ($data->objetive <> null && old('objetive') == null){{ $data->objetive }}@elseif(old('objetive') <> null){{old('objetive')}}@endif</textarea>
                             @error('objetive')
                             <br>
                             <small class="text-red-800">*{{ $message }}</small>
@@ -156,7 +158,7 @@
 
                         </label>
                         <textarea name="description" id="" rows="10" cols="45" placeholder="Máximo 500 caracteres, no debe contener estos caracteres especiales & | <> # @"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->description }}</textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >@if ($data->description <> null && old('description') == null){{ $data->description }}@elseif(old('description') <> null){{old('description')}}@endif</textarea>
                             @error('description')
                             <br>
                             <small class="text-red-800">*{{ $message }}</small>
@@ -184,7 +186,7 @@
                             </div>
                         </div>
                         <textarea name="group" id="" rows="10" cols="45" placeholder="Máximo 500 caracteres, no debe contener estos caracteres especiales & | <> # @"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >{{ $data->group }}</textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" >@if ($data->group <> null && old('group') == null){{ $data->group }}@elseif(old('group') <> null){{old('group')}}@endif</textarea>
                         @error('group')
                         <br>
                         <small class="text-red-800">*{{ $message }}</small>
@@ -206,7 +208,7 @@
                                     <option selected value="{{ $place->name }}">{{ $place->name }}</option>
                                 @endif
                                 @if ($place->name != $data->fk_idPlaces)
-                                    <option value="{{ $place->name }}">{{ $place->name }}</option>
+                                    <option {{ old('fk_idPlaces') == $place->name ? 'selected' : '' }} value="{{ $place->name }}">{{ $place->name }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -219,8 +221,9 @@
                             &nbsp; ¿Qué esperas lograr con tu propuesta?
 
                         </label>
+                        
                         <textarea name="reach" id="" rows="10" cols="45" placeholder="Máximo 500 caracteres, no debe contener estos caracteres especiales & | <> # @"
-                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">{{ $data->reach }}</textarea>
+                            maxlength="2500" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline">@if ($data->reach <> null && old('reach') == null){{ $data->reach }}@elseif(old('reach') <> null){{old('reach')}}@endif</textarea>
                         @error('reach')
                         <br>
                         <small class="text-red-800">*{{ $message }}</small>
@@ -234,6 +237,7 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
+                            <label class="text-red-800">*Este campo es obligatorio, selecciona al menos una opción para guardarlo</label>
                         <div class="w-[60%] h-[30vh] flex overflow-y-auto flex-col flex-grow">
                             @foreach ($ods as $odsOption)
                                 @if ($odsOption->idOds == $odsOne ||

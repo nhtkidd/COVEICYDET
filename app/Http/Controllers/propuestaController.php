@@ -29,9 +29,9 @@ class propuestaController extends Controller
             if ($usuario < 2) {
                 $ods = Od::all();
                 $places = Place::all();
-                $data = Annexe::all();
+                $annexes = Annexe::all();
                 $areas = Area::all();
-                return view('screens.propuesta', compact('ods', 'places','data','areas'));
+                return view('screens.propuesta', compact('ods', 'places','areas','annexes'));
             }else{
                 return redirect()->route('proveicydet.inicio');
             }
