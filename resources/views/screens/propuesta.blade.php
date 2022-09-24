@@ -39,7 +39,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             1._ Para iniciar, deberás elegir qué área buscas atender con tu propuesta
                         </label>
-                        <label class="text-red-800">*Requiere que selecciones una opción para guardarlo para más tarde</label><br>
+                        <label class="text-red-800">*Este campo es obligatorio</label><br>
                         @foreach ($areas as $area)
                         <input  required type="radio" name="area" id="{{$area->position}}" value="{{$area->name}}" {{ old('area')==$area->name ? 'checked='.'"checked"' : '' }}><label for="{{$area->position}}">
                             {{$area->name}}</label><br>
@@ -53,7 +53,7 @@
                         <label class="labelStyle 2xl:text-xl">
                             2._ Selecciona el problema prioritario que atenderá tu propuesta
                         </label>
-                        <label class="text-red-800">*Requiere que selecciones una opción para guardarlo para más tarde</label>
+                        <label class="text-red-800">*Este campo es obligatorio</label>
                         <div class="bg-spaceGray w-full h-[30vh]" style="overflow-y: scroll" id="resultados">
                             <!-- M O S T R A R - A N E X O S -->
                             @foreach ($annexes as $anexo)
@@ -91,7 +91,7 @@
                             &nbsp; Nombre de la propuesta
 
                         </label>
-                        <label class="text-red-800">*Requiere que llenes este campo para guardarlo para más tarde</label><br>
+                        <label class="text-red-800">*Este campo es obligatorio</label><br>
                         <input value="{{ old('name') }}" class="inputsStyle md:w-[60%] focus:outline-none focus:shadow-outline" type="text"
                             name="name" placeholder="Máximo 100 caracteres, no debe contener caracteres especiales" value="{{ old('name') }}" maxlength="100" required pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,100}" title="El campo no debe contener caracteres especiales"/>
                             @error('name')
@@ -186,7 +186,7 @@
                         </label>
                         <span class="block mb-2 text-sm font-thin text-gray-700 2xl:text-xl md:w-[60%]">
                             Podrás elegir como máximo 5 opciones</span>
-                            <label class="text-red-800">*Requiere que selecciones al menos una opción para guardar para más tarde</label>
+                            <label class="text-red-800">*Este campo es obligatorio, selecciona al menos una opción para guardarlo</label>
                         <div class="w-[60%] h-[30vh] flex overflow-y-auto flex-col flex-grow">
                             @foreach ($ods as $odsOption)
                                 <div

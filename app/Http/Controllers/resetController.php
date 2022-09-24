@@ -57,7 +57,13 @@ class resetController extends Controller
         //Valido datos
         $request->validate([
             'email' => 'Required|email|exists:resets,email',
-            'password' => 'Required|min:8|max:16|confirmed',
+            //'password' => 'Required|min:8|max:16|confirmed',
+            'password' => [
+                'Required',
+                'min:8',
+                'max:16',
+                'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[?!$%^&*-])(?!.*@).{8,32}$/'
+            ],
             'password_confirmation' => 'Required'
         ]);
 
