@@ -51,7 +51,7 @@ class registerRequest extends FormRequest
             'fk_idEducations' => 'required|exists:schoolings,idEducations',
             'sector' => 'required|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'participation' => 'required|boolean',
-            'fk_idHeadquarters' => 'required|exists:headquarters,idHeadquarters',
+            'fk_idHeadquarters' => 'sometimes|exists:headquarters,idHeadquarters',
             'conditions' => 'required'
         ];
     }

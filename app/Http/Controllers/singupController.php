@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\registerRequest;
-use App\Models\Escolaridad;
 use App\Models\Headquarter;
 use App\Models\Schooling;
 use App\Models\Sector;
@@ -51,9 +50,12 @@ class singupController extends Controller
                 abort(403,'ERROR DE REGISTRO');
             } else {
                 $userr = User::create($request->validated());
+                if (Auth::check() && auth()->user()->role == "admin"){
+                    return view('messages.success-admin');
+                }
                 return view('messages.success');
             }
-      
+
         } else {
             return back()->withErrors([
                 'message' => 'Para participar necesitas ser mayor de edad'
