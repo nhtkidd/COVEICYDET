@@ -60,7 +60,7 @@ Route::get('proveicydet/admin/mensaje',[adminController::class,'mensaje'])->midd
 
 Route::get('proveicydet/admin/{id}/view-proposal',[adminController::class,'view'])->middleware('auth.admin')->name('proveicydet.admin.view');
 Route::put('proveicydet/admin/{id}/update',[adminController::class,'validateProposal'])->middleware('auth.admin')->name('proveicydet.admin.proposal-update');
-//Route::get('proveicydet/admin/create-user',[adminController::class,'create'])->middleware('auth.admin')->name('proveicydet.admin.create');
+Route::get('proveicydet/admin/create-user',[adminController::class,'create'])->middleware('auth.admin')->name('proveicydet.admin.create');
 Route::get('proveicydet/admin/{id}/editar-user',[adminController::class,'editar'])->middleware('auth.admin')->name('proveicydet.admin.editar');
 Route::put('proveicydet/admin/{id}/update-user',[adminController::class,'update'])->middleware('auth.admin')->name('proveicydet.admin.update');
 Route::delete('proveicydet/admin/{id}/delete-user',[adminController::class,'delete'])->middleware('auth.admin')->name('proveicydet.admin.delete');
