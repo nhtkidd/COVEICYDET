@@ -14,7 +14,8 @@ class homeController extends Controller
             
             $id = auth()->user()->idUser;
             $proposal = Proposal::where('fk_idUsers','=',$id)->get();
-            return view('screens.inicio',compact('proposal'));
+            $proposalsFinished = Proposal::where('finished','=','true')->where('fk_idUsers','=',$id)->count();
+            return view('screens.inicio',compact('proposal','proposalsFinished'));
 
         }
         return view('screens.login');

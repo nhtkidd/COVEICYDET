@@ -63,6 +63,12 @@
                 @endforeach
 
                 @endif
+                <!-- V A L I D A R - P R O P U E S T A S - F I N A L I Z A D A S -->
+                @if ($proposalsFinished == 2)
+                    <h1>HOLA</h1>
+                @endif
+                <!-- V A L I D A R - P R O P U E S T A S - F I N A L I Z A D A S -->
+
                 <br>
                 <div class="overflow-x-auto relative">
                 <table class="w-full text-sm text-left">
