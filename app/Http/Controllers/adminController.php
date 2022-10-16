@@ -41,8 +41,11 @@ class adminController extends Controller
         return view('admin.proposalsAccepted',compact('proposals','users','sedes','sectors'));
     }
 
-    public function mensaje(){
-        return view('admin.proposalsRefused');
+    public function crudUser(){
+        $escolaridades = Schooling::all();
+        $sedes = Headquarter::all();
+        $usuarios = User::paginate(10);
+        return view('admin.index',compact('escolaridades','sedes','usuarios'));
     }
 
     public function proposalRefused(){
