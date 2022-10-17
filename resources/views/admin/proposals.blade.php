@@ -129,7 +129,7 @@
                             @endif
                         </td>
                         <td class="text-black p-2">
-                            <p class="truncate w-86">{{$user->idUser}}</p>
+                            <p class="truncate w-86">{{$user->name}}</p>
                         </td>
                         <td class="text-black p-2">
                             <p class="truncate w-56">{{$proposal->fk_idPlaces}}</p>

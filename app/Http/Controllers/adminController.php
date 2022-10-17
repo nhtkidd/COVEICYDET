@@ -175,10 +175,10 @@ class adminController extends Controller
             $propuesta->save();
 
 
-            /* Mail::send('mails.proposalAcepted',['name' => $propuesta->name], function ($message) use ($email) {
+            Mail::send('mails.proposalAcepted',['name' => $propuesta->name], function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Propuesta aceptada');
-            });  */
+            }); 
 
             return redirect()->route('proveicydet.admin.proposal')->with([
                 'Aceptado' => 'La propuesta ha sido aceptada.'
@@ -188,10 +188,10 @@ class adminController extends Controller
             $propuesta->status = 'false';
             $propuesta->save();
 
-            /* Mail::send('mails.proposalDecline',['name' => $propuesta->name], function ($message) use ($email) {
+            Mail::send('mails.proposalDecline',['name' => $propuesta->name], function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Propuesta rechazada');
-            }); */ 
+            });
 
             return redirect()->route('proveicydet.admin.proposal')->with([
                 'Rechazado' => 'La propuesta ha sido rechazada.'
