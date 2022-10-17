@@ -38,7 +38,7 @@
                 <polyline points="3 7 12 13 21 7"></polyline>
 
             </svg>
-            <a class="text-white font-semibold" href="mailto:soporte@proveicydet.com">soporte@proveicydet.com</a>
+            <a class="text-white font-semibold" href="mailto:soporte@proveicydet.gob.mx">soporte@proveicydet.gob.mx</a>
             
         </div>
         <h2 class="font-bold">Lunes a viernes de 8:00 a.m. - 8:00 p.m. hrs. </h2>

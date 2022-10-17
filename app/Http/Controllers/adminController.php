@@ -26,18 +26,22 @@ class adminController extends Controller
 
     public function proposal(Request $request)
     {
-        $buscarpor=strtolower($request->get('sectors'));
+        $sectorFind=$request->get('sectors');
+        $sedeFind=$request->get('sedes');
         
         $proposals = DB::table('proposals')
         ->join('users','users.idUser','=','proposals.fk_idUsers')
+        ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
         ->where('status', '=', null)
-        ->where('users.sector','like','%'.$buscarpor.'%')
-        ->select('proposals.*','users.sector')->paginate(10);
+        ->where('finished','=','true')
+        ->where('users.sector','like','%'.$sectorFind.'%')
+        ->where('headquarters.name','like','%'.$sedeFind.'%')
+        ->select('proposals.*')->paginate(10);
         //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
-        return view('admin.proposals', compact('proposals', 'users', 'sedes', 'sectors','buscarpor'));
+        return view('admin.proposals', compact('proposals', 'users', 'sedes', 'sectors','sectorFind','sedeFind'));
         /* $buscarpor=$request->get('sectors');
         $proposals = DB::table('proposals')->where('status', '=', null)->where('')->paginate(10);
         //$proposals = Proposal::paginate(10);
@@ -47,13 +51,24 @@ class adminController extends Controller
         return view('admin.proposals', compact('proposals', 'users', 'sedes', 'sectors','buscarpor')); */
     }
 
-    public function proposalAccepted()
+    public function proposalAccepted(Request $request)
     {
-        $proposals = DB::table('proposals')->where('status', '=', 'Aceptar')->paginate(10);
+        $sectorFind=$request->get('sectors');
+        $sedeFind=$request->get('sedes');
+        
+        $proposals = DB::table('proposals')
+        ->join('users','users.idUser','=','proposals.fk_idUsers')
+        ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
+        ->where('status', '=', 'true')
+        ->where('finished','=','true')
+        ->where('users.sector','like','%'.$sectorFind.'%')
+        ->where('headquarters.name','like','%'.$sedeFind.'%')
+        ->select('proposals.*')->paginate(10);
+        //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
-        return view('admin.proposalsAccepted', compact('proposals', 'users', 'sedes', 'sectors'));
+        return view('admin.proposalsAccepted', compact('proposals', 'users', 'sedes', 'sectors','sectorFind','sedeFind'));
     }
 
     public function crudUser(){
@@ -63,13 +78,24 @@ class adminController extends Controller
         return view('admin.users', compact('escolaridades', 'sedes', 'usuarios'));
     }
 
-    public function proposalRefused()
+    public function proposalRefused(Request $request)
     {
-        $proposals = DB::table('proposals')->where('status', '=', 'Rechazar')->paginate(10);
+        $sectorFind=$request->get('sectors');
+        $sedeFind=$request->get('sedes');
+        
+        $proposals = DB::table('proposals')
+        ->join('users','users.idUser','=','proposals.fk_idUsers')
+        ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
+        ->where('status', '=', 'false')
+        ->where('finished','=','true')
+        ->where('users.sector','like','%'.$sectorFind.'%')
+        ->where('headquarters.name','like','%'.$sedeFind.'%')
+        ->select('proposals.*')->paginate(10);
+        //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
-        return view('admin.proposalsRefused', compact('proposals', 'users', 'sedes', 'sectors'));
+        return view('admin.proposalsRefused', compact('proposals', 'users', 'sedes', 'sectors','sectorFind','sedeFind'));
     }
 
     public function editar($id)
@@ -94,7 +120,6 @@ class adminController extends Controller
                 'regex:/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]/'
             ],
             'fk_idEducations' => 'required|exists:schoolings,idEducations',
-            'sector' => 'required|regex:/^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]+$/',
             'participation' => 'required|boolean',
             'fk_idHeadquarters' => 'sometimes|exists:headquarters,idHeadquarters',
         ]);
@@ -102,7 +127,6 @@ class adminController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->fk_idEducations = $request->input('fk_idEducations');
-        $user->sector = $request->input('sector');
         $user->participation = $request->input('participation');
         if ($request->input('participation') == 0) {
             $user->fk_idHeadquarters == null;
@@ -133,16 +157,10 @@ class adminController extends Controller
         $places = Place::all();
         $annexes = Annexe::all();
         $users = User::all();
-        //$propuesta = Proposal::find($id);
-        //$propuesta = Proposal::where('idProposal','=',$id)->get();
         $proposal = Proposal::findOrFail($id);
    
         $propuesta = Proposal::where('idProposal', '=', $id)->get();
         return view('admin.viewProposal', compact('ods', 'places', 'annexes', 'propuesta', 'users'));
-
-        //return view('screens.login');
-
-        //return view('screens.annexes',compact('ods','places','annexes','propuesta'));
 
     }
 
@@ -153,27 +171,27 @@ class adminController extends Controller
         $email = $emailUser->email;
 
         if ($request->status == 'Aceptar') {
-            $propuesta->status = $request->status;
+            $propuesta->status = 'true';
             $propuesta->save();
 
 
-            Mail::send('mails.proposalAcepted',['name' => $propuesta->name], function ($message) use ($email) {
+            /* Mail::send('mails.proposalAcepted',['name' => $propuesta->name], function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Propuesta aceptada');
-            }); 
+            });  */
 
             return redirect()->route('proveicydet.admin.proposal')->with([
                 'Aceptado' => 'La propuesta ha sido aceptada.'
             ]);
             //return $request;
         } elseif ($request->status == 'Rechazar') {
-            $propuesta->status = $request->status;
+            $propuesta->status = 'false';
             $propuesta->save();
 
-            Mail::send('mails.proposalDecline',['name' => $propuesta->name], function ($message) use ($email) {
+            /* Mail::send('mails.proposalDecline',['name' => $propuesta->name], function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Propuesta rechazada');
-            }); 
+            }); */ 
 
             return redirect()->route('proveicydet.admin.proposal')->with([
                 'Rechazado' => 'La propuesta ha sido rechazada.'
