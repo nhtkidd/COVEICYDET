@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\confirmHeadquarter;
+use App\Http\Controllers\fileProposalController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\propuestaController;
@@ -48,6 +50,13 @@ Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->nam
 Route::get('proveicydet/propuesta/mostrar/{id}',[propuestaController::class,'mostrar'])->name('proveicydet.propuesta.mostrar');
 Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');
 
+//CONTROLADOR PARA CONFIRMACION DE PARTICIPACION
+
+Route::post('confirmarsede', [confirmHeadquarter::class, 'updateHeadquarter'])->name('proveicydet.updateHeadquarter');
+//CONTROLADOR PARA SUBIR ARCHIVOS PARA LAS PROPUESTAS
+Route::get('proveicydet/propuesta/archivo/{id}',[fileProposalController::class,'showForm'])->name('proveicydet.file');
+Route::post('proveicydet/propuesta/archivo/upload',[fileProposalController::class,'storePresentation'])->name('proveicydet.storePresentation');
+Route::get('proveicydet/propuesta/archivo/download/{file}',[fileProposalController::class,'download'])->name('proveicydet.download');
 
 // ADMIN
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Headquarter;
 use Illuminate\Http\Request;
 use App\Models\Proposal;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class homeController extends Controller
@@ -14,9 +16,21 @@ class homeController extends Controller
             
             $id = auth()->user()->idUser;
             $proposal = Proposal::where('fk_idUsers','=',$id)->get();
+            //$headquarterConfirmed = User::select('headquarterConfirmed')->where('idUser','=',$id)->get();
             $proposalsFinished = Proposal::where('finished','=','true')->where('fk_idUsers','=',$id)->count();
-            return view('screens.inicio',compact('proposal','proposalsFinished'));
 
+
+            $user = User::find($id);
+            $confirmHeadquarter = $user->headquarterConfirmed;
+            //encontrar y mostrar la sede de participacion
+            $id = $user->fk_idHeadquarters;
+            $findHeadquarterUser = Headquarter::findOrFail($id)->name;
+
+
+            $sedes = Headquarter::all();
+            
+            return view('screens.inicio',compact('proposal','proposalsFinished','confirmHeadquarter','findHeadquarterUser','id','sedes'));
+            
         }
         return view('screens.login');
     }
