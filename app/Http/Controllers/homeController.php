@@ -23,13 +23,14 @@ class homeController extends Controller
             $user = User::find($id);
             $confirmHeadquarter = $user->headquarterConfirmed;
             //encontrar y mostrar la sede de participacion
-            $id = $user->fk_idHeadquarters;
-            $findHeadquarterUser = Headquarter::findOrFail($id)->name;
+            $idHq = $user->fk_idHeadquarters;
 
+            $findHeadquarterUser = Headquarter::find($idHq);
+    
 
             $sedes = Headquarter::all();
             
-            return view('screens.inicio',compact('proposal','proposalsFinished','confirmHeadquarter','findHeadquarterUser','id','sedes'));
+            return view('screens.inicio',compact('proposal','proposalsFinished','confirmHeadquarter','findHeadquarterUser','sedes'));
             
         }
         return view('screens.login');

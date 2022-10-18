@@ -122,7 +122,7 @@
                                                     </td>
                                                     <td class="py-4 px-6 text-black">
 
-                                                        @if ($data->status == 'Aceptar')
+                                                        @if ($data->status == 'true')
                                                             <span
                                                                 class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                                                 Aceptada
@@ -130,7 +130,7 @@
                                                         @endif
 
 
-                                                        @if ($data->status == 'Rechazar')
+                                                        @if ($data->status == 'false')
                                                             <span
                                                                 class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                                                 Rechazada
@@ -173,7 +173,9 @@
                                         <select id="selectSede" name="fk_idHeadquarters" value=""
                                             class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                             required title="Selecciona tu sede">
-                                            <option value="{{ $id }}" selected>{{ $findHeadquarterUser }}</option>
+                                            @if ($findHeadquarterUser)
+                                            <option value="{{ $findHeadquarterUser->idHeadquarters }}" selected>{{ $findHeadquarterUser->name }}</option>
+                                            @endif
                                             <optgroup label="Sedes">
                                                 @foreach ($sedes as $sede)
                                                     <option value="{{ $sede->idHeadquarters }}">{{ $sede->name }}</option>

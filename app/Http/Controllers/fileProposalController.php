@@ -11,7 +11,9 @@ class fileProposalController extends Controller
 
         $validateIfExist = Proposal::findOrFail($id)->file;
         if($validateIfExist){
-            return redirect()->route('proveicydet.inicio');
+            return redirect()->route('proveicydet.inicio')->withErrors([
+                'message' => 'No puedes hacer esta acciòn'
+            ]);
         }else{
         $nameProposal = Proposal::findOrFail($id)->name;
         return view ('screens.fileProposal', compact('nameProposal','id'));
@@ -25,7 +27,7 @@ class fileProposalController extends Controller
         $id= $request->idProposal;   
         $validateIfExist = Proposal::findOrFail($id)->file;
         if($validateIfExist){
-            return back()->withErrors([
+            return redirect()->route('proveicydet.inicio')->withErrors([
                 'message' => 'No puedes hacer esta acciòn'
             ]);
         }else{
