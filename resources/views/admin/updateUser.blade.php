@@ -117,42 +117,7 @@
     
                     </div>--}}
                     {{--CUARTA FILA--}}
-                    <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
-                        <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
-                            <label class="labelStyle 2xl:text-xl" for="sector">
-                                Sector de la sociedad
-                            </label>
-                            <select required name="sector" onchange="selectSector()" id="sectorSelected" 
-                                class="shadow  border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="" selected>Selecciona su sector</option>
-                                <optgroup label="Sector social">
-                                    <option value="Sociedad civil"  {{ old('sector') == 'Sociedad civil' ? 'selected' : '' }}>Sociedad civil</option>
-                                    <option value="otros" >Sector empresarial</option>
-                                    <option value="otros">Sector gubernamental</option>
-                                </optgroup>
-                                <optgroup label="Sector educativo">
-                                    @foreach ($sectores as $sectorEdu)
-                                    @if ($user->sector == $sectorEdu->name)
-                                        <option value="{{$sectorEdu->name}}" selected >{{$sectorEdu->name}}</option>
-                                    @endif
-                                    <option value="{{$sectorEdu->name}}" {{ old('sector') == $sectorEdu->name ? 'selected' : '' }}>{{$sectorEdu->name}}</option>
-                                    @endforeach
-                                    <option value="otros">Institución de educación particular</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                        <div id="hiddenInput" class="md:ml-2 2xl:my-4 hidden">
-                            <label class="labelStyle 2xl:text-xl" for="sector">
-                                Especifica cual
-                            </label>
-                            <input class="inputsStyle focus:outline-none focus:shadow-outline" type="text" name="sector" required
-                                disabled id="sectorInput" placeholder="Ingresa tu sector" pattern="[A-Za-zÑñáéíóúÁÉÍÓÚ ]{1,200}" title="El campo no debe contener números o caracteres especiales." />
-                            @error('sector')
-                                <small class="text-red-800">*{{ $message }}</small>
-                            @enderror
-                        </div>
-    
-                    </div>
+                    
                     {{--QUINTA FILA--}}
                     <div class="mb-4 md:grid md:grid-cols-2 md:gap-4">
                         <div class="mb-4 md:mr-2 md:mb-0 2xl:my-4">
