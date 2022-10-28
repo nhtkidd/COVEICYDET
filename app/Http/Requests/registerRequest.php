@@ -36,7 +36,7 @@ class registerRequest extends FormRequest
             ], //no te olivdes de poner de nuevos los unique
             'email' => [
                 'required',
-                'max:50',
+                'max:60',
                 'email',
                 'unique:users',
                 'regex:/[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]/'

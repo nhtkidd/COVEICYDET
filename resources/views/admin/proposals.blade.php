@@ -6,9 +6,9 @@
 <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
                 
     <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
-    <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
-    <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.users')}}">Usuarios</a>
-    <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin')}}">Inicio</a>
+    <a class="px-5 font-bold text-lg text-gray-500 underline" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
+    <a class="px-5 font-bold text-lg text-black" href="{{route('proveicydet.admin.users')}}">Usuarios</a>
+    <a class="px-5 font-bold text-lg text-black" href="{{route('proveicydet.admin')}}">Inicio</a>
     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
 </div>
 <div id="father" class="flex items-center justify-center h-auto">
@@ -60,9 +60,9 @@
             
             <br>
             <div class="flex flex-warp">
-                <a class="px-5 font-bold text-lg text-cyan-400 underline">Por validar</a>
-                <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.aceptado')}}">Aceptadas</a>
-                <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.rechazado')}}">Rechazadas</a>
+                <a class="px-5 font-bold text-lg text-[#AA983F] underline" href="{{route('proveicydet.admin.proposal')}}" title="Propuestas por validar">Por validar</a>
+                <a class="px-5 font-bold text-lg text-green-600" href="{{route('proveicydet.admin.aceptado')}}" title="Propuestas aceptadas">Aceptadas</a>
+                <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.rechazado')}}" title="Propuestas rechazadas">Rechazadas</a>
             </div>
             <!-- M E N S A J E S -->
             @if(session()->has('Aceptado'))
