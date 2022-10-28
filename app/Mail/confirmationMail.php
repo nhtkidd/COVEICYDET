@@ -36,4 +36,6 @@ class confirmationMail extends Mailable
     
         return $this->view('mails.proposalConfirmation',['name'=>$name]);
     }
+
+    
 }
