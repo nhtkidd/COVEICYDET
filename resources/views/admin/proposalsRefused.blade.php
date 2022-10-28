@@ -6,7 +6,7 @@
 <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
                 
     <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
-    <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
+    <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
     <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.users')}}">Usuarios</a>
     <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin')}}">Inicio</a>
     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
@@ -29,8 +29,8 @@
                         <input type="text" name="sectors" id="buscar" class="w-100 inputsStyle focus:outline-none focus:shadow-outline" placeholder="Buscar" value="">
                     </div>-->
                     <div class="p-2">
-                        <select name="sectors" id="sectores" class="inputsStyle focus:outline-none focus:shadow-outline">
-                            <option value="">Sectores</option>
+                        <select name="sectors" id="sectors" class="inputsStyle focus:outline-none focus:shadow-outline">
+                            <option value="">Todos los sectores</option>
                             @foreach ($sectors as $sector)
                                 @if ($sectorFind == $sector->name)
                                     <option selected value="{{$sector->name}}">{{$sector->name}}</option>
@@ -43,12 +43,12 @@
                     </div>
                     <div class="p-2">
                         <select name="sedes" id="sedes" class="inputsStyle focus:outline-none focus:shadow-outline">
-                            <option value="">Sedes</option>
+                            <option value="">Todas las sedes</option>
                             @foreach ($sedes as $headquarter)
-                                @if ($sedeFind == $headquarter->idHeadquarters)
-                                    <option selected value="{{$headquarter->idHeadquarters}}">{{$headquarter->name}}</option>
+                                @if ($sedeFind == $headquarter->name)
+                                    <option selected value="{{$headquarter->name}}">{{$headquarter->name}}</option>
                                 @else
-                                    <option value="{{$headquarter->idHeadquarters}}">{{$headquarter->name}}</option>
+                                    <option value="{{$headquarter->name}}">{{$headquarter->name}}</option>
                                 @endif
                                 
                             @endforeach
@@ -62,7 +62,7 @@
             <div class="flex flex-warp">
                 <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.proposal')}}">Por validar</a>
                 <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.aceptado')}}">Aceptadas</a>
-                <a class="px-5 font-bold text-lg text-green-600 underline">Rechazadas</a>
+                <a class="px-5 font-bold text-lg text-cyan-400 underline">Rechazadas</a>
             </div>
 
 
@@ -78,6 +78,7 @@
                         <th scope="col" class="py-3 px-6">Usuario</th>
                         <th scope="col" class="py-3 px-6">Región</th>
                         <th scope="col" class="py-3 px-6">Área</th>
+                        <th scope="col" class="py-3 px-6">Ver</th>
                     </tr>
                 </thead>
                 @foreach ($proposals as $proposal)
@@ -120,6 +121,17 @@
                         </td>
                         <td class="text-black p-2">
                             <p class="truncate w-86">{{$proposal->area}}</p>
+                        </td>
+                        <td class="text-black p-2 w-86 flex flex-nowrap justify-center align-content-center">
+                            <!-- E D I T A R -->
+                            <form action="{{ route('proveicydet.admin.view',$proposal->idProposal) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="h-8 w-8" title="Editar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" stroke="orange" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                    </svg>                     
+                                </button>
+                            </form>
                         </td>
                         @endif
                     @endforeach

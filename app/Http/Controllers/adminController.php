@@ -21,7 +21,21 @@ class adminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        //PROPUESTAS
+        $proposals = Proposal::where('status')->count();
+        $proposalsA = Proposal::where('status','=','true')->count();
+        $proposalsR= Proposal::where('status','=','false')->count();
+        //USUARIOS
+        $users = User::where('fk_idHeadquarters')->count();
+        $users1 = User::where('fk_idHeadquarters','=','1')->count();
+        $users2 = User::where('fk_idHeadquarters','=','2')->count();
+        $users3 = User::where('fk_idHeadquarters','=','3')->count();
+        $users4 = User::where('fk_idHeadquarters','=','4')->count();
+        $users5 = User::where('fk_idHeadquarters','=','5')->count();
+        $users6 = User::where('fk_idHeadquarters','=','6')->count();
+        $users7 = User::where('fk_idHeadquarters','=','7')->count();
+        $users8 = User::where('fk_idHeadquarters','=','8')->count();
+        return view('admin.index',compact('proposals','proposalsA','proposalsR','users','users1','users2','users3','users4','users5','users6','users7','users8'));
     }
 
     public function proposal(Request $request)
@@ -32,7 +46,7 @@ class adminController extends Controller
         $proposals = DB::table('proposals')
         ->join('users','users.idUser','=','proposals.fk_idUsers')
         ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
-        ->where('status', '=', null)
+        ->where('status')
         ->where('finished','=','true')
         ->where('users.sector','like','%'.$sectorFind.'%')
         ->where('headquarters.name','like','%'.$sedeFind.'%')

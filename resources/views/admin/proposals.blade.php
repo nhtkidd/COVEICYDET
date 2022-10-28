@@ -6,7 +6,7 @@
 <div class="flex flex-row-reverse py-3 border-b-4 border-[#AA983F]">
                 
     <a class="px-5 font-bold text-lg text-red-800" href="{{ route('proveicydet.destroy') }}">Cerrar sesión</a>
-    <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
+    <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.proposal')}}">Propuestas</a>
     <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.users')}}">Usuarios</a>
     <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin')}}">Inicio</a>
     <h1 class="px-5 font-bold text-lg"> {{ auth()->user()->name }}</h1>
@@ -29,7 +29,7 @@
                         <input type="text" name="sectors" id="buscar" class="w-100 inputsStyle focus:outline-none focus:shadow-outline" placeholder="Buscar" value="">
                     </div>-->
                     <div class="p-2">
-                        <select name="sectors" id="sectores" class="inputsStyle focus:outline-none focus:shadow-outline">
+                        <select name="sectors" id="sectors" class="inputsStyle focus:outline-none focus:shadow-outline">
                             <option value="">Todos los sectores</option>
                             @foreach ($sectors as $sector)
                                 @if ($sectorFind == $sector->name)
@@ -45,8 +45,8 @@
                         <select name="sedes" id="sedes" class="inputsStyle focus:outline-none focus:shadow-outline">
                             <option value="">Todas las sedes</option>
                             @foreach ($sedes as $headquarter)
-                                @if ($sedeFind == $headquarter->idHeadquarters)
-                                    <option selected value="{{$headquarter->idHeadquarters}}">{{$headquarter->name}}</option>
+                                @if ($sedeFind == $headquarter->name)
+                                    <option selected value="{{$headquarter->name}}">{{$headquarter->name}}</option>
                                 @else
                                     <option value="{{$headquarter->name}}">{{$headquarter->name}}</option>
                                 @endif
@@ -60,7 +60,7 @@
             
             <br>
             <div class="flex flex-warp">
-                <a class="px-5 font-bold text-lg text-green-600 underline">Por validar</a>
+                <a class="px-5 font-bold text-lg text-cyan-400 underline">Por validar</a>
                 <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.aceptado')}}">Aceptadas</a>
                 <a class="px-5 font-bold text-lg text-cyan-600" href="{{route('proveicydet.admin.rechazado')}}">Rechazadas</a>
             </div>
@@ -93,7 +93,7 @@
                         <th scope="col" class="py-3 px-6">Usuario</th>
                         <th scope="col" class="py-3 px-6">Región</th>
                         <th scope="col" class="py-3 px-6">Área</th>
-                        <th scope="col" class="py-3 px-6">Acción</th>
+                        <th scope="col" class="py-3 px-6">Ver</th>
                     </tr>
                 </thead>
                 @foreach ($proposals as $proposal)

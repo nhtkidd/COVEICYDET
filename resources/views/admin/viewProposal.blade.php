@@ -159,6 +159,7 @@
 
                             </div>
                         {{-- BOTON SUBMIT --}}
+                        @if ($data->status == null)
                         <form action="{{route('proveicydet.admin.proposal-update',$data->idProposal)}}" method="post" class=" p-[5%] mt-5 lg:mt-0  " name="form1">
                             @csrf
                             @method('PUT')
@@ -171,6 +172,8 @@
                                 </div>
                             </div>
                         </form>
+                        @endif
+                        
                         </div>
                     @endforeach
                 </div>
