@@ -22,10 +22,14 @@ class adminController extends Controller
     public function index()
     {
         //PROPUESTAS
+        $totalP = Proposal::all()->count();
         $proposals = Proposal::where('status')->count();
         $proposalsA = Proposal::where('status','=','true')->count();
         $proposalsR= Proposal::where('status','=','false')->count();
+        $proposalsFinished= Proposal::where('finished','=','true')->count();
+        $proposalsUnfinished= Proposal::where('finished')->count();
         //USUARIOS
+        $totalU = User::all()->count();
         $users = User::where('fk_idHeadquarters')->count();
         $users1 = User::where('fk_idHeadquarters','=','1')->count();
         $users2 = User::where('fk_idHeadquarters','=','2')->count();
@@ -35,7 +39,7 @@ class adminController extends Controller
         $users6 = User::where('fk_idHeadquarters','=','6')->count();
         $users7 = User::where('fk_idHeadquarters','=','7')->count();
         $users8 = User::where('fk_idHeadquarters','=','8')->count();
-        return view('admin.index',compact('proposals','proposalsA','proposalsR','users','users1','users2','users3','users4','users5','users6','users7','users8'));
+        return view('admin.index',compact('totalP','proposals','proposalsA','proposalsR','proposalsFinished','proposalsUnfinished','totalU','users','users1','users2','users3','users4','users5','users6','users7','users8'));
     }
 
     public function proposal(Request $request)

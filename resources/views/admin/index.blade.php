@@ -76,8 +76,9 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
+            </div>
 
-                <hr class="border-b-2 border-gray-600 my-8 mx-4">
+            <br>
 
                 <div class="flex flex-row flex-wrap flex-grow mt-2 bg-transparent">
 
@@ -85,7 +86,7 @@
                         <!--Graph Card-->
                         <div class="bg-white rounded shadow-lg">
                             <div class="bg-[#AA983F] rounded p-3">
-                                <h5 class="font-bold uppercase text-white">Propuestas</h5>
+                                <h5 class="font-bold uppercase text-white">Total Propuestas - {{$totalP}}</h5>
                             </div>
                             <div class="p-5 piechart w-100" id="piechart">
                                 <script type="text/javascript">
@@ -96,9 +97,8 @@
                                     
                                         var data = google.visualization.arrayToDataTable([
                                             ['Task', 'Propuestas'],
-                                            ['Aceptadas',     {{$proposalsA}}],
-                                            ['Rechazadas',      {{$proposalsR}}],
-                                            ['Por validar',  {{$proposals}}]
+                                            ['Finalizadas',  {{$proposalsFinished}}],
+                                            ['Sin finalizar',  {{$proposalsUnfinished}}]
                                         ]);
                                 
                                     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -115,7 +115,7 @@
                         <!--Graph Card-->
                         <div class="bg-white rounded shadow-lg">
                             <div class="bg-[#AA983F] rounded p-3">
-                                <h5 class="font-bold uppercase text-white">Usuarios</h5>
+                                <h5 class="font-bold uppercase text-white">Total Usuarios - {{$totalU}}</h5>
                             </div>
                             <div class="p-5 piechart w-100" id="piechart2">
                                 <script type="text/javascript">
