@@ -15,7 +15,7 @@
     <div class="wrapper bg-white w-full md:w-[90%] h-auto] mt-10 ">
               
         <section id="bienvenida" class="w-full h-[60vh] md:h-[35%] lg:h-[70%]  p-[5%] text-center  ">
-            <h1 class="text-xl lg:text-4xl font-bold">Propuestas por Validar</h1>
+            <h1 class="text-xl lg:text-4xl font-bold">Propuestas sin Sede</h1>
             <form>
                 @csrf
                 <div class="flex flex-wrap w-100 flex-row-reverse p-4">
@@ -37,20 +37,6 @@
                                 @else
                                     <option value="{{$sector->name}}">{{$sector->name}}</option>
                                 @endif
-                                
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="p-2">
-                        <select name="sedes" id="sedes" class="inputsStyle focus:outline-none focus:shadow-outline">
-                            <option value="">Todas las sedes</option>
-                            @foreach ($sedes as $headquarter)
-                                @if ($sedeFind == $headquarter->idHeadquarters)
-                                    <option selected value="{{$headquarter->idHeadquarters}}">{{$headquarter->name}}</option>
-                                @else
-                                    <option value="{{$headquarter->idHeadquarters}}">{{$headquarter->name}}</option>
-                                @endif
-                                
                             @endforeach
                         </select>
                     </div>
@@ -63,7 +49,7 @@
                 <a class="px-5 font-bold text-lg text-[#AA983F] underline" href="{{route('proveicydet.admin.proposal')}}" title="Propuestas por validar">Por validar</a>
                 <a class="px-5 font-bold text-lg text-green-600" href="{{route('proveicydet.admin.aceptado')}}" title="Propuestas aceptadas">Aceptadas</a>
                 <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.rechazado')}}" title="Propuestas rechazadas">Rechazadas</a>
-                <a class="px-5 font-bold text-lg text-gary-600" href="{{route('proveicydet.admin.proposalNS')}}" title="Propuestas sin sede">Sin sede</a>
+                <a class="px-5 font-bold text-lg text-gary-600 underline" href="{{route('proveicydet.admin.proposalNS')}}" title="Propuestas sin sede">Sin sede</a>
             </div>
             <!-- M E N S A J E S -->
             @if(session()->has('Aceptado'))

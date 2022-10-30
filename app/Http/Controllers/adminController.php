@@ -23,7 +23,7 @@ class adminController extends Controller
     {
         //PROPUESTAS
         $totalP = Proposal::all()->count();
-        $proposals = Proposal::where('status')->count();
+        $proposals = Proposal::where('status')->where('finished','=','true')->count();
         $proposalsA = Proposal::where('status','=','true')->count();
         $proposalsR= Proposal::where('status','=','false')->count();
         $proposalsFinished= Proposal::where('finished','=','true')->count();
@@ -49,24 +49,36 @@ class adminController extends Controller
         
         $proposals = DB::table('proposals')
         ->join('users','users.idUser','=','proposals.fk_idUsers')
-        ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
+        //->join('headquarters','headquarters.idHeadquarters','like','users.fk_idHeadquarters')
         ->where('status')
         ->where('finished','=','true')
         ->where('users.sector','like','%'.$sectorFind.'%')
-        ->where('headquarters.name','like','%'.$sedeFind.'%')
+        ->where('users.fk_idHeadquarters','like','%'.$sedeFind.'%')
         ->select('proposals.*')->paginate(10);
         //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
         return view('admin.proposals', compact('proposals', 'users', 'sedes', 'sectors','sectorFind','sedeFind'));
-        /* $buscarpor=$request->get('sectors');
-        $proposals = DB::table('proposals')->where('status', '=', null)->where('')->paginate(10);
+    }
+
+    public function proposalNS(Request $request)
+    {
+        $sectorFind=$request->get('sectors');
+        
+        $proposals = DB::table('proposals')
+        ->join('users','users.idUser','=','proposals.fk_idUsers')
+        //->join('headquarters','headquarters.idHeadquarters','like','users.fk_idHeadquarters')
+        ->where('status')
+        ->where('finished','=','true')
+        ->where('users.sector','like','%'.$sectorFind.'%')
+        ->where('users.fk_idHeadquarters')
+        ->select('proposals.*')->paginate(10);
         //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
-        return view('admin.proposals', compact('proposals', 'users', 'sedes', 'sectors','buscarpor')); */
+        return view('admin.proposalsNS', compact('proposals', 'users', 'sedes', 'sectors','sectorFind'));
     }
 
     public function proposalAccepted(Request $request)
