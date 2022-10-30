@@ -46,7 +46,7 @@
             
             <br>
             <div class="flex flex-warp">
-                <a class="px-5 font-bold text-lg text-[#AA983F] underline" href="{{route('proveicydet.admin.proposal')}}" title="Propuestas por validar">Por validar</a>
+                <a class="px-5 font-bold text-lg text-[#AA983F]" href="{{route('proveicydet.admin.proposal')}}" title="Propuestas por validar">Por validar</a>
                 <a class="px-5 font-bold text-lg text-green-600" href="{{route('proveicydet.admin.aceptado')}}" title="Propuestas aceptadas">Aceptadas</a>
                 <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.rechazado')}}" title="Propuestas rechazadas">Rechazadas</a>
                 <a class="px-5 font-bold text-lg text-gary-600 underline" href="{{route('proveicydet.admin.proposalNS')}}" title="Propuestas sin sede">Sin sede</a>
