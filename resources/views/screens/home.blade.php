@@ -41,10 +41,12 @@
                 </body>
             </div>
             {{-- <iframe src="{{URL('docs/Aviso de privacidad.pdf')}}" class="w-[80%] h-[70vh] md:w-[70%] md:h-[70vh] py-7"></iframe> --}}
-
-            <a href="{{ route('proveicydet.login') }}"
-                class="px-6 py-2 w-auto h-auto bg-gold hover:bg-[#998b47] rounded-lg text-lg font-semibold text-white">Estoy
+            <div class="m-5">
+                <a href="{{ route('proveicydet.login') }}"
+                class="text-center px-3 py-2  bg-gold hover:bg-[#998b47] h-auto rounded-lg text-sm md:text-lg  font-semibold text-white">Estoy
                 de acuerdo con el aviso de privacidad</a>
+            </div>
+            
         </div>
 
     </div>
