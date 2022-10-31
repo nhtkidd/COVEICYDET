@@ -81,7 +81,7 @@ class adminController extends Controller
         return view('admin.proposalsNS', compact('proposals', 'users', 'sedes', 'sectors','sectorFind'));
     }
 
-    public function proposalAccepted(Request $request)
+    public function proposalAccepted(Request $request,)
     {
         $sectorFind=$request->get('sectors');
         $sedeFind=$request->get('sedes');
@@ -111,21 +111,37 @@ class adminController extends Controller
     public function proposalRefused(Request $request)
     {
         $sectorFind=$request->get('sectors');
-        $sedeFind=$request->get('sedes');
         
         $proposals = DB::table('proposals')
         ->join('users','users.idUser','=','proposals.fk_idUsers')
-        ->join('headquarters','headquarters.idHeadquarters','=','users.fk_idHeadquarters')
         ->where('status', '=', 'false')
         ->where('finished','=','true')
         ->where('users.sector','like','%'.$sectorFind.'%')
-        ->where('headquarters.name','like','%'.$sedeFind.'%')
+        ->where('users.fk_idHeadquarters')
         ->select('proposals.*')->paginate(10);
         //$proposals = Proposal::paginate(10);
         $users = User::all();
         $sedes = Headquarter::all();
         $sectors = Sector::all();
-        return view('admin.proposalsRefused', compact('proposals', 'users', 'sedes', 'sectors','sectorFind','sedeFind'));
+        return view('admin.proposalsRefused', compact('proposals', 'users', 'sedes', 'sectors','sectorFind'));
+    }
+
+    public function proposalNSAccepted(Request $request)
+    {
+        $sectorFind=$request->get('sectors');
+        
+        $proposals = DB::table('proposals')
+        ->join('users','users.idUser','=','proposals.fk_idUsers')
+        ->where('status', '=', 'true')
+        ->where('finished','=','true')
+        ->where('users.sector','like','%'.$sectorFind.'%')
+        ->where('users.fk_idHeadquarters')
+        ->select('proposals.*')->paginate(10);
+        //$proposals = Proposal::paginate(10);
+        $users = User::all();
+        $sedes = Headquarter::all();
+        $sectors = Sector::all();
+        return view('admin.proposalsNSAccepted', compact('proposals', 'users', 'sedes', 'sectors','sectorFind'));
     }
 
     public function editar($id)

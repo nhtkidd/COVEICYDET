@@ -65,6 +65,7 @@ Route::get('proveicydet/admin/users',[adminController::class,'crudUser'])->middl
 
 Route::get('proveicydet/admin/proposals',[adminController::class,'proposal'])->middleware('auth.admin')->name('proveicydet.admin.proposal');
 Route::get('proveicydet/admin/proposalsNS',[adminController::class,'proposalNS'])->middleware('auth.admin')->name('proveicydet.admin.proposalNS');
+Route::get('proveicydet/admin/proposalsNSAccepted',[adminController::class,'proposalNSAccepted'])->middleware('auth.admin')->name('proveicydet.admin.proposalNSAccepted');
 Route::get('proveicydet/admin/accepted',[adminController::class,'proposalAccepted'])->middleware('auth.admin')->name('proveicydet.admin.aceptado');
 Route::get('proveicydet/admin/refused',[adminController::class,'proposalRefused'])->middleware('auth.admin')->name('proveicydet.admin.rechazado');
 

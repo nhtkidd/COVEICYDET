@@ -15,7 +15,7 @@
     <div class="wrapper bg-white w-full md:w-[90%] h-auto] mt-10 ">
               
         <section id="bienvenida" class="w-full h-[60vh] md:h-[35%] lg:h-[70%]  p-[5%] text-center  ">
-            <h1 class="text-xl lg:text-4xl font-bold">Propuestas Rechazadas</h1>
+            <h1 class="text-xl lg:text-4xl font-bold">Propuestas sin Sede Aceptadas</h1>
             <form>
                 @csrf
                 <div class="flex flex-wrap w-100 flex-row-reverse p-4">
@@ -50,10 +50,9 @@
                 <a class="px-5 font-bold text-lg text-gray-600" href="{{route('proveicydet.admin.proposal')}}" title="Propuestas por validar">Por validar</a>
                 <a class="px-5 font-bold text-lg text-green-600" href="{{route('proveicydet.admin.aceptado')}}" title="Propuestas aceptadas">Aceptadas</a>
                 <a class="px-5 font-bold text-lg text-gray-600" href="{{route('proveicydet.admin.proposalNS')}}" title="Propuestas sin sede">Sin sede</a>
-                <a class="px-5 font-bold text-lg text-green-600" href="{{route('proveicydet.admin.proposalNSAccepted')}}" title="Propuestas sin sede">Aceptadas sin sede</a>
-                <a class="px-5 font-bold text-lg text-red-600 underline" href="{{route('proveicydet.admin.rechazado')}}" title="Propuestas sin sede">Rechazadas</a>
+                <a class="px-5 font-bold text-lg text-green-600 underline" href="{{route('proveicydet.admin.proposalNSAccepted')}}" title="Propuestas sin sede">Aceptadas sin sede</a>
+                <a class="px-5 font-bold text-lg text-red-600" href="{{route('proveicydet.admin.rechazado')}}" title="Propuestas sin sede">Rechazadas</a>
             </div>
-
 
             <br><br>
             <div class="overflow-x-auto relative py-3">
@@ -71,10 +70,10 @@
                     </tr>
                 </thead>
                 @foreach ($proposals as $proposal)
-                @if ($proposal->status == 'false')
+                @if ($proposal->status == 'true')
                     
                 
-                <tbody>                    
+                <tbody>
                     @foreach ($users as $user)
                         @if ($user->idUser == $proposal->fk_idUsers)
                         <td class="text-black p-2">
