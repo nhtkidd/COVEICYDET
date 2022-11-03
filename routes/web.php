@@ -35,20 +35,34 @@ Route::get('logout', [loginController::class, 'destroy'])->name('proveicydet.des
 
 //controlador para el registro de usuario
 
-Route::get('proveicydet/singup', [singupController::class, 'singup'])->name('proveicydet.singup');
+//Route::get('proveicydet/singup', [singupController::class, 'singup'])->name('proveicydet.singup');
+Route::get('proveicydet/singup', function () {
+    return view('screens.closure');
+})->name('proveicydet.singup');
 Route::post('singup', [singupController::class, 'store'])->name('proveicydet.store');
+
+
 
 //controller para el inicio
 Route::get('proveicydet/inicio',[homeController::class, 'inicio'])->name('proveicydet.inicio');
 
-//controlador para el formulario de la propuesta
 
-Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
-Route::get('proveicydet/editPropuesta/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
+//controlador modificado para redirigir las propuestas al inicio
+
+Route::get('proveicydet/propuesta',[homeController::class, 'inicio']);
+Route::get('proveicydet/editPropuesta/{id}',[homeController::class, 'inicio']);
 //Route::get('proveicydet/annexes',[propuestaController::class,'annexes'])->name('proveicydet.propuesta.annexes');
-Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->name('proveicydet.propuesta.update');
+Route::get('proveicydet/update/{id}',[homeController::class, 'inicio']);
 Route::get('proveicydet/propuesta/mostrar/{id}',[propuestaController::class,'mostrar'])->name('proveicydet.propuesta.mostrar');
-Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');
+Route::get('proveicydet/registro/propuesta',[homeController::class, 'inicio']);
+// PRPUESTAS ANTES DEL CIERRE
+
+//Route::get('proveicydet/propuesta',[propuestaController::class,'propuesta'])->name('proveicydet.propuesta');
+//Route::get('proveicydet/editPropuesta/{id}',[propuestaController::class,'edit'])->name('proveicydet.propuesta.edit');
+//Route::get('proveicydet/annexes',[propuestaController::class,'annexes'])->name('proveicydet.propuesta.annexes');
+//Route::put('proveicydet/update/{id}',[propuestaController::class,'update'])->name('proveicydet.propuesta.update');
+//Route::get('proveicydet/propuesta/mostrar/{id}',[propuestaController::class,'mostrar'])->name('proveicydet.propuesta.mostrar');
+//Route::post('proveicydet/registro/propuesta',[propuestaController::class,'store'])->name('proveicydet.propuesta.store');
 
 //CONTROLADOR PARA CONFIRMACION DE PARTICIPACION
 
