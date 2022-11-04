@@ -168,11 +168,21 @@
                                 @endif
                             @endforeach
                         </div>
-
+                        
+                        @if ($data->file)
+                    
                         <div class="w-100 h-auto flex justify-center items-center mt-5 pt-10">
                             <a class=" text-center focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"
                                 href="{{ url('storage/docs/' . $data->file) }}" target="_blank">Ver documento de la propuesta</a>
                         </div>
+                        @else
+                        <div class="w-100 h-auto flex justify-center items-center mt-5 pt-10">
+                            <a class="text-center focus:outline-none text-white bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 "
+                             target="_blank">sin documento</a>
+                        </div>
+                            
+                        @endif
+                    
 
                     </div>
                     {{-- BOTON SUBMIT --}}
